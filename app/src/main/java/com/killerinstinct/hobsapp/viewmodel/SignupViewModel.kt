@@ -1,13 +1,12 @@
 package com.killerinstinct.hobsapp.viewmodel
 
-import android.widget.Toast
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
-import com.killerinstinct.hobsapp.Model.User
-import com.killerinstinct.hobsapp.Model.Worker
+import com.killerinstinct.hobsapp.model.User
+import com.killerinstinct.hobsapp.model.Worker
 import kotlinx.coroutines.launch
 
 class SignupViewModel: ViewModel() {
@@ -34,7 +33,7 @@ class SignupViewModel: ViewModel() {
                                 .set(worker)
                                 .addOnSuccessListener {
                                     db.collection("LoginCheck")
-                                        .document("workers").update("workers", FieldValue.arrayUnion(it1.uid))
+                                        .document("LoginCheck").update("workers", FieldValue.arrayUnion(it1.uid))
                                     makeToast("Created")
                                 }.addOnFailureListener {
                                     makeToast(it.message.toString())
@@ -50,7 +49,7 @@ class SignupViewModel: ViewModel() {
                                 .set(user)
                                 .addOnSuccessListener {
                                     db.collection("LoginCheck")
-                                        .document("users")
+                                        .document("LoginCheck")
                                         .update("users", FieldValue.arrayUnion(it1.uid))
                                     makeToast("User account added")
                                 }.addOnFailureListener {

@@ -1,7 +1,5 @@
-package com.killerinstinct.hobsapp.Model
+package com.killerinstinct.hobsapp.model
 
-import android.location.Geocoder
-import android.location.Location
 import com.google.firebase.firestore.GeoPoint
 
 data class Worker (

@@ -4,11 +4,10 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.GeoPoint
-import com.killerinstinct.hobsapp.Model.LoginCheck
+import com.killerinstinct.hobsapp.model.LoginCheck
 
-class LoginViewModel: ViewModel()
-{
+class LoginViewModel: ViewModel()  {
+
     private val auth = FirebaseAuth.getInstance()
     private val db = FirebaseFirestore.getInstance()
     private val mAuth = FirebaseAuth.getInstance()
@@ -18,31 +17,30 @@ class LoginViewModel: ViewModel()
         auth.signInWithEmailAndPassword(email, password)
             .addOnSuccessListener {
                 db.collection("LoginCheck")
+                    .document("LoginCheck")
                     .get().addOnCompleteListener {
-                        if (it.isSuccessful)
-                        {
-//                            val loginCheck = it.get
-//                            when {
-//                                loginCheck!!.users.contains(mAuth.currentUser?.uid) -> {
-//                                    Log.d("LoginChecker","Student")
-//                                    makeToast("Worker")
-//                                }
-//                                loginCheck.workers.contains(mAuth.currentUser?.uid) -> {
-//                                    Log.d("LoginChecker","Tutor")
-//                                    makeToast("User")
-//                                }
-//                                else -> {
-//                                    makeToast("Failure")
-//                                }
-//                            }
-                        }
-                        else {
+                        if (it.isSuccessful) {
+                            val loginCheck = it.result?.toObject(LoginCheck::class.java)
+                            when {
+                                loginCheck!!.users.contains(mAuth.currentUser?.uid) -> {
+                                    Log.d("LoginChecker","User")
+                                    makeToast("User")
+                                }
+                                loginCheck.workers.contains(mAuth.currentUser?.uid) -> {
+                                    Log.d("LoginChecker","Worker")
+                                    makeToast("Worker")
+                                }
+                                else -> {
+                                    makeToast("Failure")
+                                }
+                            }
+                        } else {
                             makeToast("Failure")
                         }
                     }
             }.addOnFailureListener {
-                makeToast(it.message.toString())
+                makeToast("Failure")
             }
     }
-}
 
+}

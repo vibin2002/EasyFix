@@ -1,4 +1,4 @@
-package com.killerinstinct.hobsapp.Model
+package com.killerinstinct.hobsapp.model
 
 data class Review (
     val uid:String="",

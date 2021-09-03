@@ -1,4 +1,4 @@
-package com.killerinstinct.hobsapp.Model
+package com.killerinstinct.hobsapp.model
 
 import com.google.firebase.firestore.GeoPoint
 
