@@ -10,12 +10,13 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import com.killerinstinct.hobsapp.databinding.ActivityLoginBinding
 import com.killerinstinct.hobsapp.viewmodel.LoginViewModel
+import com.killerinstinct.hobsapp.worker.WorkerMainActivity
 
 class LoginActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityLoginBinding
     private lateinit var progressDialog: ProgressDialog
-    val loginViewModel: LoginViewModel by viewModels()
+    private val loginViewModel: LoginViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,7 +47,7 @@ class LoginActivity : AppCompatActivity() {
                     if (isValid == "Worker") {
                         progressDialog!!.dismiss()
                         Toast.makeText(this, "login Successful", Toast.LENGTH_SHORT).show()
-                        startActivity(Intent(this, MainActivity::class.java))
+                        startActivity(Intent(this, WorkerMainActivity::class.java))
                     } else if (isValid == "User") {
                         progressDialog!!.dismiss()
                         Toast.makeText(this, "login Successful", Toast.LENGTH_SHORT).show()

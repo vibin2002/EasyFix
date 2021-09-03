@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/worker_bottomnav_navigation"
+    app:startDestination="@id/worker_navigation_home">
+
+    <fragment
+        android:id="@+id/worker_navigation_home"
+        android:name="com.killerinstinct.hobsapp.worker.fragments.WorkerHomeFragment"
+        android:label="Home"
+        tools:layout="@layout/fragment_worker_home" />
+    <fragment
+        android:id="@+id/worker_navigation_search"
+        android:name="com.killerinstinct.hobsapp.worker.fragments.WorkerSearchFragment"
+        android:label="Search"
+        tools:layout="@layout/fragment_worker_search" />
+    <fragment
+        android:id="@+id/worker_navigation_notifications"
+        android:name="com.killerinstinct.hobsapp.worker.fragments.WorkerNotificationFragment"
+        android:label="Notifications"
+        tools:layout="@layout/fragment_worker_notification" />
+    <fragment
+        android:id="@+id/worker_navigation_profile"
+        android:name="com.killerinstinct.hobsapp.worker.fragments.WorkerProfileFragment"
+        android:label="Profile"
+        tools:layout="@layout/fragment_worker_profile" />
+</navigation>

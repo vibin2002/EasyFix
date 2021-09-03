@@ -35,6 +35,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
+                android:inputType="textEmailAddress"
                 android:layout_height="wrap_content"
                 android:id="@+id/sp_email"
                 android:hint="Email" />
@@ -50,6 +51,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/sp_password"
+                android:inputType="textPassword"
                 android:hint="Password" />
         </com.google.android.material.textfield.TextInputLayout>
         <RadioGroup
@@ -61,21 +63,19 @@
             android:weightSum="100">
 
             <RadioButton
-                android:id="@+id/radioButtonstudent"
+                android:id="@+id/radioButtonWorker"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="50"
                 android:text="Worker"
-                android:textColor="@color/black"
                 android:textSize="16dp" />
 
             <RadioButton
-                android:id="@+id/radioButtontutor"
+                android:id="@+id/radioButtonUser"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="50"
                 android:text="User"
-                android:textColor="@color/black"
                 android:textSize="16dp" />
         </RadioGroup>
 

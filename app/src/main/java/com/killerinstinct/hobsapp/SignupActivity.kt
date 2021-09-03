@@ -31,6 +31,7 @@ class SignupActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         progressDialog = ProgressDialog(this)
+        binding.radioGrp.check(R.id.radioButtonWorker)
 
 
         binding.spBtn.setOnClickListener {
