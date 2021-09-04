@@ -9,7 +9,11 @@
         android:id="@+id/worker_navigation_home"
         android:name="com.killerinstinct.hobsapp.worker.fragments.WorkerHomeFragment"
         android:label="Home"
-        tools:layout="@layout/fragment_worker_home" />
+        tools:layout="@layout/fragment_worker_home" >
+        <action
+            android:id="@+id/action_worker_navigation_home_self"
+            app:destination="@id/worker_navigation_home" />
+    </fragment>
     <fragment
         android:id="@+id/worker_navigation_search"
         android:name="com.killerinstinct.hobsapp.worker.fragments.WorkerSearchFragment"

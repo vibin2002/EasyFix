@@ -55,7 +55,7 @@ class SignupActivity : AppCompatActivity() {
                     when (signUpState) {
                         "Worker" -> {
                             progressDialog!!.dismiss()
-                            startActivity(Intent(this, MainActivity::class.java))
+                            startActivity(Intent(this, WorkerDetails::class.java))
                             finish()
                         }
                         "User" -> {

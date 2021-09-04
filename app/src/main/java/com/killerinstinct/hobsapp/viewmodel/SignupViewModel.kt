@@ -34,7 +34,7 @@ class SignupViewModel: ViewModel() {
                                 .addOnSuccessListener {
                                     db.collection("LoginCheck")
                                         .document("LoginCheck").update("workers", FieldValue.arrayUnion(it1.uid))
-                                    makeToast("Created")
+                                    makeToast("Worker")
                                 }.addOnFailureListener {
                                     makeToast(it.message.toString())
                                 }
@@ -51,7 +51,7 @@ class SignupViewModel: ViewModel() {
                                     db.collection("LoginCheck")
                                         .document("LoginCheck")
                                         .update("users", FieldValue.arrayUnion(it1.uid))
-                                    makeToast("User account added")
+                                    makeToast("User")
                                 }.addOnFailureListener {
                                     makeToast(it.message.toString())
                                 }
