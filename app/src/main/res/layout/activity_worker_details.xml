@@ -10,7 +10,28 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingTop="24dp">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/iv_propic"
+            android:src="@drawable/ic_person"
+            android:layout_gravity="center"
+            android:layout_width="160dp"
+            android:layout_height="160dp"
+            android:layout_marginBottom="12dp"
+            app:srcCompat="@drawable/ic_person"
+            />
+
+        <TextView
+            android:id="@+id/add_propic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:textSize="18sp"
+            android:text="Add profile photo"
+            android:layout_gravity="center"
+            android:focusable="true" />
 
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -95,6 +116,7 @@
             android:layout_height="wrap_content"/>
 
         <Button
+            android:text="Submit"
             android:id="@+id/btn_ok"
             android:layout_margin="12dp"
             android:layout_width="match_parent"
