@@ -20,6 +20,11 @@
         android:label="Search"
         tools:layout="@layout/fragment_worker_search" />
     <fragment
+        android:id="@+id/worker_navigation_chat"
+        android:label="Chat"
+        tools:layout="@layout/fragment_worker_chat"
+        android:name="com.killerinstinct.hobsapp.worker.fragments.WorkerChatFragment"/>
+    <fragment
         android:id="@+id/worker_navigation_notifications"
         android:name="com.killerinstinct.hobsapp.worker.fragments.WorkerNotificationFragment"
         android:label="Notifications"
@@ -29,4 +34,5 @@
         android:name="com.killerinstinct.hobsapp.worker.fragments.WorkerProfileFragment"
         android:label="Profile"
         tools:layout="@layout/fragment_worker_profile" />
+
 </navigation>

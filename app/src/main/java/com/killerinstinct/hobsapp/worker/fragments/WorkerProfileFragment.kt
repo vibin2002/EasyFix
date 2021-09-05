@@ -1,5 +1,6 @@
 package com.killerinstinct.hobsapp.worker.fragments
 
+import android.app.ActionBar
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
