@@ -1,4 +1,4 @@
-package com.killerinstinct.hobsapp.worker.fragments
+package com.killerinstinct.hobsapp.user.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,19 +6,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.killerinstinct.hobsapp.R
-import com.killerinstinct.hobsapp.databinding.FragmentWorkerChatBinding
-import com.killerinstinct.hobsapp.databinding.FragmentWorkerHomeBinding
+import com.killerinstinct.hobsapp.databinding.FragmentUserNotificationBinding
+import com.killerinstinct.hobsapp.databinding.FragmentUserSearchBinding
 
-class WorkerChatFragment : Fragment() {
+class UserSearchFragment : Fragment() {
 
-    lateinit var binding: FragmentWorkerChatBinding
+    lateinit var binding: FragmentUserSearchBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentWorkerChatBinding.inflate(inflater, container, false)
+        binding = FragmentUserSearchBinding.inflate(inflater, container, false)
         return binding.root
     }
 }

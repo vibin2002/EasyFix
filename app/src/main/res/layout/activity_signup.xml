@@ -68,7 +68,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="50"
                 android:text="Worker"
-                android:textSize="16dp" />
+                android:textSize="16sp" />
 
             <RadioButton
                 android:id="@+id/radioButtonUser"
@@ -76,7 +76,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="50"
                 android:text="User"
-                android:textSize="16dp" />
+                android:textSize="16sp" />
         </RadioGroup>
 
         <Button

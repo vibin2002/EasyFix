@@ -18,4 +18,9 @@
         <item name="android:windowBackground">@drawable/splash_image</item>
         <item name="android:statusBarColor">?attr/colorButtonNormal</item>
     </style>
+
+
+    <style name="Theme.HobsApp.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.HobsApp.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

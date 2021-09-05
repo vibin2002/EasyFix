@@ -3,4 +3,10 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="app_bar" translatable="false">com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior</string>
+
+    <string name="lorem_ipsum"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc facilisis, dolor vitae efficitur gravida, erat odio aliquet nisl, quis pulvinar augue nunc nec dui. Nunc nec rhoncus lacus, vitae fringilla urna. Donec id tellus orci. Fusce maximus fringilla congue. In a arcu eu diam viverra ultrices. Fusce fringilla feugiat eros, at iaculis erat laoreet consequat. Suspendisse eget ipsum eget sem mattis varius nec nec massa. Vestibulum ac pretium elit. Phasellus quis consectetur neque. Vivamus leo dolor, lobortis rhoncus congue nec, imperdiet et magna.
+
+Morbi pellentesque interdum odio sit amet semper. Integer quis est mollis, finibus dui non, condimentum felis. Quisque rutrum aliquam lacus sit amet dictum. Cras molestie libero nisi, et sollicitudin libero viverra eu. Etiam at tempor dolor. Proin eu diam ipsum. Nullam pharetra ligula at libero dignissim eleifend eget nec ante. Sed laoreet libero a lectus interdum tempor. Etiam et nisl vel nibh condimentum dignissim in in sem. Etiam non elit elit. Proin faucibus venenatis quam in sagittis.
+
+Curabitur ut posuere urna. Donec vehicula ipsum turpis, id facilisis purus egestas nec. Phasellus ut erat placerat, tincidunt augue quis, luctus nibh. Mauris magna libero, cursus vitae tristique vel, efficitur a tellus. Morbi at dui dui. Donec in dolor vel justo pellentesque dignissim. Maecenas turpis mi, pretium non dolor ut, mattis tincidunt ex. Integer nec dignissim nulla, ut convallis libero. Vivamus euismod in diam vitae cursus. Duis finibus at sem in varius. </string>
 </resources>
