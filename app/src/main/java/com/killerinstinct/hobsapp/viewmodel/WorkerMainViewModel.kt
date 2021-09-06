@@ -21,7 +21,7 @@ class WorkerMainViewModel: ViewModel() {
 
     private val _worker: MutableLiveData<Worker> = MutableLiveData()
     val worker: LiveData<Worker> = _worker
-    
+
     private val _allWorkers: MutableLiveData<MutableList<Worker>> = MutableLiveData()
     val allWorkers: LiveData<MutableList<Worker>> = _allWorkers
 
@@ -41,13 +41,13 @@ class WorkerMainViewModel: ViewModel() {
                 }
         }
     }
-    
+
     fun getAllWorkers(){
-        viewModelScope.launch { 
+        viewModelScope.launch {
             val workers = mutableListOf<Worker>()
             db.collection("Worker")
                 .get()
-                .addOnSuccessListener { documents -> 
+                .addOnSuccessListener { documents ->
                     for (doc in documents){
                         val worker = doc.toObject(Worker::class.java)
                         workers.add(worker)
@@ -56,6 +56,20 @@ class WorkerMainViewModel: ViewModel() {
                     Log.d(TAG, "getAllWorkers: Obtained all workers")
                 }.addOnFailureListener {
                     Log.d(TAG, "getAllWorkers: $it")
+                }
+        }
+    }
+
+    fun getSpecificWorker(uid: String,isSuccessful: (Worker) -> Unit)
+    {
+        viewModelScope.launch {
+            db.collection("Worker")
+                .document(uid)
+                .get()
+                .addOnSuccessListener {
+                     isSuccessful(it.toObject(Worker::class.java)!!)
+                }.addOnFailureListener {
+                    Log.d(TAG, "getSpecificWorker: $it")
                 }
         }
     }

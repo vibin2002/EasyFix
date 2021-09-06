@@ -8,17 +8,20 @@ import android.widget.Filter
 import android.widget.Filterable
 import android.widget.TextView
 import androidx.appcompat.content.res.AppCompatResources
+import androidx.navigation.NavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.killerinstinct.hobsapp.R
 import com.killerinstinct.hobsapp.model.Worker
+import com.killerinstinct.hobsapp.worker.fragments.WorkerSearchFragmentDirections
 import de.hdodenhof.circleimageview.CircleImageView
 
 class SearchAdapter(
+    private val navController: NavController,
     private val context: Context,
-    var workerList: MutableList<Worker>,
+    private val workerList: MutableList<Worker>,
     private val workerListAll: List<Worker> = workerList.toList()
-): RecyclerView.Adapter<SearchAdapter.SearchViewHolder>(),Filterable {
+) : RecyclerView.Adapter<SearchAdapter.SearchViewHolder>(), Filterable {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchViewHolder {
         return SearchViewHolder(
@@ -28,8 +31,20 @@ class SearchAdapter(
 
     override fun onBindViewHolder(holder: SearchViewHolder, position: Int) {
         holder.apply {
-            if(workerList[position].profilePic == "")
-                propic.setImageDrawable(AppCompatResources.getDrawable(context,R.drawable.ic_person))
+            itemView.setOnClickListener {
+                val action =
+                    WorkerSearchFragmentDirections.actionWorkerNavigationSearchToShowProfileFragment(
+                        workerList[position].uid // UID to be passed
+                    )
+                navController.navigate(action)
+            }
+            if (workerList[position].profilePic == "")
+                propic.setImageDrawable(
+                    AppCompatResources.getDrawable(
+                        context,
+                        R.drawable.ic_person
+                    )
+                )
             else {
                 Glide.with(context)
                     .load(workerList[position].profilePic)
@@ -43,8 +58,8 @@ class SearchAdapter(
     override fun getItemCount() = workerList.size
 
     inner class SearchViewHolder(
-        private val itemView: View
-    ) : RecyclerView.ViewHolder(itemView) {
+        view: View
+    ) : RecyclerView.ViewHolder(view) {
         val propic = itemView.findViewById<CircleImageView>(R.id.search_propic)
         val name = itemView.findViewById<TextView>(R.id.search_name)
         val designation = itemView.findViewById<TextView>(R.id.search_designation)
@@ -54,14 +69,14 @@ class SearchAdapter(
         return searchFilter
     }
 
-    private val searchFilter = object : Filter(){
+    private val searchFilter = object : Filter() {
         override fun performFiltering(charSequence: CharSequence): FilterResults {
             val list = mutableListOf<Worker>()
-            if (charSequence.isEmpty()){
+            if (charSequence.isEmpty()) {
                 list.addAll(workerListAll)
             } else {
-                for (worker in workerListAll){
-                    if(worker.userName.lowercase().contains(charSequence.toString().lowercase())){
+                for (worker in workerListAll) {
+                    if (worker.userName.lowercase().contains(charSequence.toString().lowercase())) {
                         list.add(worker)
                     }
                 }

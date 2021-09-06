@@ -3,30 +3,30 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/admin/AndroidStudioProjects/Project1/HobsApp/app/src/main/res/drawable/email_image.xml" value="0.22552083333333334" />
-        <entry key="..\:/Users/admin/AndroidStudioProjects/Project1/HobsApp/app/src/main/res/drawable/ic_baseline_local_phone_24.xml" value="0.22552083333333334" />
-        <entry key="..\:/Users/admin/AndroidStudioProjects/Project1/HobsApp/app/src/main/res/drawable/location_image.xml" value="0.2" />
-        <entry key="..\:/Users/admin/AndroidStudioProjects/Project1/HobsApp/app/src/main/res/layout/fragment_user_search.xml" value="0.209375" />
-        <entry key="..\:/Users/admin/AndroidStudioProjects/Project1/HobsApp/app/src/main/res/layout/fragment_worker_chat.xml" value="0.14" />
-        <entry key="..\:/Users/admin/AndroidStudioProjects/Project1/HobsApp/app/src/main/res/layout/fragment_worker_home.xml" value="0.209375" />
-        <entry key="..\:/Users/admin/AndroidStudioProjects/Project1/HobsApp/app/src/main/res/layout/fragment_worker_profile.xml" value="0.25" />
-        <entry key="..\:/Users/admin/AndroidStudioProjects/Project1/HobsApp/app/src/main/res/layout/search_card.xml" value="0.20425724637681159" />
-        <entry key="..\:/Users/admin/AndroidStudioProjects/Project1/HobsApp/app/src/main/res/layout/worker_content_scrolling.xml" value="0.1" />
+        <entry key="..\:/androidprojects/HobsApp/app/src/main/res/drawable/border_only.xml" value="0.22395833333333334" />
+        <entry key="..\:/androidprojects/HobsApp/app/src/main/res/drawable/profle_bg.xml" value="0.22395833333333334" />
         <entry key="..\:/androidprojects/HobsApp/app/src/main/res/layout/activity_login.xml" value="0.22" />
         <entry key="..\:/androidprojects/HobsApp/app/src/main/res/layout/activity_main.xml" value="0.2078125" />
-        <entry key="..\:/androidprojects/HobsApp/app/src/main/res/layout/activity_signup.xml" value="0.2078125" />
+        <entry key="..\:/androidprojects/HobsApp/app/src/main/res/layout/activity_signup.xml" value="0.1" />
         <entry key="..\:/androidprojects/HobsApp/app/src/main/res/layout/activity_worker_details.xml" value="0.2078125" />
         <entry key="..\:/androidprojects/HobsApp/app/src/main/res/layout/activity_worker_main.xml" value="0.2078125" />
         <entry key="..\:/androidprojects/HobsApp/app/src/main/res/layout/categorychip.xml" value="0.2078125" />
+        <entry key="..\:/androidprojects/HobsApp/app/src/main/res/layout/fragment_show_profile.xml" value="0.2078125" />
+        <entry key="..\:/androidprojects/HobsApp/app/src/main/res/layout/fragment_user_profile.xml" value="0.2078125" />
+        <entry key="..\:/androidprojects/HobsApp/app/src/main/res/layout/fragment_worker_chat.xml" value="0.2078125" />
         <entry key="..\:/androidprojects/HobsApp/app/src/main/res/layout/fragment_worker_home.xml" value="0.2078125" />
         <entry key="..\:/androidprojects/HobsApp/app/src/main/res/layout/fragment_worker_notification.xml" value="0.2078125" />
-        <entry key="..\:/androidprojects/HobsApp/app/src/main/res/layout/fragment_worker_profile.xml" value="0.2078125" />
-        <entry key="..\:/androidprojects/HobsApp/app/src/main/res/layout/fragment_worker_search.xml" value="0.2078125" />
+        <entry key="..\:/androidprojects/HobsApp/app/src/main/res/layout/fragment_worker_profile.xml" value="0.2" />
+        <entry key="..\:/androidprojects/HobsApp/app/src/main/res/layout/fragment_worker_profilee.xml" value="0.19270833333333334" />
+        <entry key="..\:/androidprojects/HobsApp/app/src/main/res/layout/fragment_worker_search.xml" value="0.25" />
+        <entry key="..\:/androidprojects/HobsApp/app/src/main/res/layout/fragment_worker_update_details.xml" value="0.25" />
+        <entry key="..\:/androidprojects/HobsApp/app/src/main/res/layout/search_card.xml" value="0.25" />
+        <entry key="..\:/androidprojects/HobsApp/app/src/main/res/layout/worker_content_scrolling.xml" value="0.2078125" />
         <entry key="..\:/androidprojects/HobsApp/app/src/main/res/menu/worker_bottomnav_menu.xml" value="0.2078125" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_15_PREVIEW" project-jdk-name="14" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_14_PREVIEW" project-jdk-name="14" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

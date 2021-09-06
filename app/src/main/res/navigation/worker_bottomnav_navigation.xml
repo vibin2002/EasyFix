@@ -9,16 +9,16 @@
         android:id="@+id/worker_navigation_home"
         android:name="com.killerinstinct.hobsapp.worker.fragments.WorkerHomeFragment"
         android:label="Home"
-        tools:layout="@layout/fragment_worker_home" >
-        <action
-            android:id="@+id/action_worker_navigation_home_self"
-            app:destination="@id/worker_navigation_home" />
-    </fragment>
+        tools:layout="@layout/fragment_worker_home" />
     <fragment
         android:id="@+id/worker_navigation_search"
         android:name="com.killerinstinct.hobsapp.worker.fragments.WorkerSearchFragment"
         android:label="Search"
-        tools:layout="@layout/fragment_worker_search" />
+        tools:layout="@layout/fragment_worker_search" >
+        <action
+            android:id="@+id/action_worker_navigation_search_to_showProfileFragment"
+            app:destination="@id/showProfileFragment" />
+    </fragment>
     <fragment
         android:id="@+id/worker_navigation_chat"
         android:label="Chat"
@@ -34,5 +34,15 @@
         android:name="com.killerinstinct.hobsapp.worker.fragments.WorkerProfileFragment"
         android:label="Profile"
         tools:layout="@layout/fragment_worker_profile" />
+    <fragment
+        android:id="@+id/showProfileFragment"
+        android:name="com.killerinstinct.hobsapp.worker.ShowProfileFragment"
+        android:label="fragment_show_profile"
+        tools:layout="@layout/fragment_show_profile" >
+        <argument
+            android:name="workerid"
+            app:argType="string"
+            android:defaultValue="NULL" />
+    </fragment>
 
 </navigation>

@@ -9,6 +9,7 @@ import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.killerinstinct.hobsapp.adapters.SearchAdapter
 import com.killerinstinct.hobsapp.databinding.FragmentWorkerSearchBinding
@@ -34,29 +35,27 @@ class WorkerSearchFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.getAllWorkers()
 
-        val searchAdapter = SearchAdapter(requireContext(),workerList)
+        val searchAdapter = SearchAdapter(findNavController(),requireContext(),workerList)
         binding.searchRv.apply {
             adapter = searchAdapter
             layoutManager = LinearLayoutManager(requireContext())
         }
 
         viewModel.allWorkers.observe(viewLifecycleOwner){
-            it.forEach { worker ->
-                workerList.add(worker)
-            }
+            workerList.clear()
+            workerList.addAll(it)
             searchAdapter.notifyDataSetChanged()
         }
 
         binding.wrkrsearchview.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(query: String?): Boolean {
-                return false
+                return true
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
                 searchAdapter.filter.filter(newText)
-                return false
+                return true
             }
 
         })

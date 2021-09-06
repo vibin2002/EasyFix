@@ -26,6 +26,7 @@ class WorkerMainActivity : AppCompatActivity() {
         binding.workerBtmNavbar.setupWithNavController(navController)
 
         viewModel.getWorkerDetails()
+        viewModel.getAllWorkers()
 
 
     }

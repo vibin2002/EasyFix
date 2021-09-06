@@ -25,8 +25,11 @@ class SignupViewModel: ViewModel() {
             auth.createUserWithEmailAndPassword(email, password)
                 .addOnSuccessListener {
                     //  if user created
+                    val uid = it.user?.uid
+                    if (uid == null)
+                        return@addOnSuccessListener
                     if (designation == "Worker"){
-                        val worker = Worker(email = email,userName = username)
+                        val worker = Worker(uid = uid,email = email,userName = username)
                         auth.currentUser?.let { it1 ->
                             db.collection("Worker")
                                 .document(it1.uid)
@@ -42,7 +45,7 @@ class SignupViewModel: ViewModel() {
                             makeToast(it.message.toString())
                         }
                     }else if(designation == "User"){
-                        val user = User(userName = username)
+                        val user = User(uid = uid,userName = username)
                         auth.currentUser?.let { it1 ->
                             db.collection("User")
                                 .document(it1.uid)

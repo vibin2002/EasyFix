@@ -3,6 +3,7 @@ package com.killerinstinct.hobsapp.model
 import com.google.firebase.firestore.GeoPoint
 
 data class User(
+    val uid: String = "",
     val phoneNumber: String = "",
     val userName: String = "",
     val city: String = "",
