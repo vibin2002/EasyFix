@@ -6,6 +6,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
+import android.widget.ProgressBar
 import androidx.core.text.TextUtilsCompat
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
@@ -32,9 +34,12 @@ class ShowProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
+        binding.progbar.visibility = ProgressBar.VISIBLE
+        binding.staticLayoutx.visibility = LinearLayout.GONE
 
         viewModel.getSpecificWorker(args.workerid){
+            binding.progbar.visibility = ProgressBar.GONE
+            binding.staticLayoutx.visibility = LinearLayout.VISIBLE
             binding.apply {
                 tutorName.text = it.userName
                 tutEmail.text = it.email

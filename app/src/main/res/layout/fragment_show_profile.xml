@@ -82,6 +82,8 @@
             android:text="Hyderabad"
             android:textSize="13dp" />
         <TextView
+            android:layout_marginHorizontal="36dp"
+            android:layout_marginVertical="12dp"
             android:id="@+id/tut_category"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
