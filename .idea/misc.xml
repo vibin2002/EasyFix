@@ -6,6 +6,7 @@
         <entry key="..\:/Users/admin/AndroidStudioProjects/Project1/HobsApp/app/src/main/res/drawable/email_image.xml" value="0.22552083333333334" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/Project1/HobsApp/app/src/main/res/drawable/ic_baseline_local_phone_24.xml" value="0.22552083333333334" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/Project1/HobsApp/app/src/main/res/drawable/location_image.xml" value="0.2" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/Project1/HobsApp/app/src/main/res/layout/activity_login.xml" value="0.1" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/Project1/HobsApp/app/src/main/res/layout/fragment_user_search.xml" value="0.209375" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/Project1/HobsApp/app/src/main/res/layout/fragment_worker_chat.xml" value="0.14" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/Project1/HobsApp/app/src/main/res/layout/fragment_worker_home.xml" value="0.209375" />
@@ -26,7 +27,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_15_PREVIEW" project-jdk-name="14" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_15" project-jdk-name="14" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
