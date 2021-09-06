@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
+import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
@@ -19,6 +20,7 @@ class WorkerSearchFragment : Fragment() {
 
     lateinit var binding: FragmentWorkerSearchBinding
     private val viewModel: WorkerMainViewModel by activityViewModels()
+    private val workerList = mutableListOf<Worker>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -32,21 +34,36 @@ class WorkerSearchFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setupRecyclerView(listOf())
+        viewModel.getAllWorkers()
 
-        viewModel.worker.observe(viewLifecycleOwner){
-            val list = listOf(it,it,it,it,it)
-            setupRecyclerView(list)
-        }
-
-    }
-
-    private fun setupRecyclerView(list: List<Worker>){
+        val searchAdapter = SearchAdapter(requireContext(),workerList)
         binding.searchRv.apply {
-            adapter = SearchAdapter(requireContext(),list)
+            adapter = searchAdapter
             layoutManager = LinearLayoutManager(requireContext())
         }
+
+        viewModel.allWorkers.observe(viewLifecycleOwner){
+            it.forEach { worker ->
+                workerList.add(worker)
+            }
+            searchAdapter.notifyDataSetChanged()
+        }
+
+        binding.wrkrsearchview.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                searchAdapter.filter.filter(newText)
+                return false
+            }
+
+        })
+
+
     }
+
 
 
 
