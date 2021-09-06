@@ -7,4 +7,16 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="navText">#BEBEBE</color>
+    <color name="text_blue">#3CA6DA</color>
+    <color name="grey">#7D7D7D</color>
+    <color name="light_grey">#F2F2F2</color>
+    <color name="light_green">#51C46D</color>
+    <color name="med_grey">#BEBEBE</color>
+    <color name="luc_white">#CCF2F2F2</color>
+    <color name="selected">#04C652</color>
+    <color name="light_red">#1AFB3B57</color>
+    <color name="yellow">#FFDD6B</color>
+    <color name="red">#FE4954</color>
 </resources>
