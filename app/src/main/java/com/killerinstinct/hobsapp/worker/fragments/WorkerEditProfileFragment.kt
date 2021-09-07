@@ -13,6 +13,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.google.android.material.chip.Chip
+import com.google.android.material.snackbar.Snackbar
 import com.killerinstinct.hobsapp.R
 import com.killerinstinct.hobsapp.Utils
 import com.killerinstinct.hobsapp.databinding.FragmentWorkerEditProfileBinding
@@ -81,6 +82,19 @@ class WorkerEditProfileFragment : Fragment() {
                 cats,
                 imageUri ?: Uri.parse(""),
             ){
+                if (it) {
+                    Snackbar.make(
+                        requireActivity().findViewById(android.R.id.content),
+                        "Profile Updated Successfully",
+                        Snackbar.LENGTH_SHORT
+                    ).show()
+                } else {
+                    Snackbar.make(
+                        requireActivity().findViewById(android.R.id.content),
+                        "Profile not updated",
+                        Snackbar.LENGTH_SHORT
+                    ).show()
+                }
                 findNavController().navigateUp()
             }
         }
