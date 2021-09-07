@@ -38,11 +38,11 @@
         android:id="@+id/showProfileFragment"
         android:name="com.killerinstinct.hobsapp.worker.ShowProfileFragment"
         android:label="fragment_show_profile"
-        tools:layout="@layout/fragment_show_profile" >
+        tools:layout="@layout/fragment_show_profile">
         <argument
-            android:name="workerid"
-            app:argType="string"
-            android:defaultValue="NULL" />
+            android:name="workerId"
+            android:defaultValue="NULL"
+            app:argType="string" />
     </fragment>
 
 </navigation>

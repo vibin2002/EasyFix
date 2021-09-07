@@ -4,6 +4,12 @@ import android.content.Context
 import android.location.Address
 import android.location.Geocoder
 import android.util.Log
+import androidx.lifecycle.viewModelScope
+import com.google.firebase.firestore.FirebaseFirestore
+import com.killerinstinct.hobsapp.model.Worker
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import java.lang.StringBuilder
 import java.util.*
 
@@ -25,6 +31,21 @@ object Utils {
             Log.e("Errorin", e.message.toString())
         }
         return sb.toString()
+    }
+
+    fun getSpecificWorker(uid: String,isSuccessful: (Worker) -> Unit)
+    {
+        Log.d("KEDO", "getSpecificWorker: $uid")
+        CoroutineScope(Dispatchers.IO).launch {
+            FirebaseFirestore.getInstance().collection("Worker")
+                .document(uid)
+                .get()
+                .addOnSuccessListener {
+                    isSuccessful(it.toObject(Worker::class.java)!!)
+                }.addOnFailureListener {
+                    Log.d("KEDO", "getSpecificWorker: $it")
+                }
+        }
     }
 
 

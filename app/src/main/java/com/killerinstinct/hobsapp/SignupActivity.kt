@@ -12,6 +12,7 @@ import androidx.activity.viewModels
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.killerinstinct.hobsapp.databinding.ActivitySignupBinding
+import com.killerinstinct.hobsapp.user.UserMainActivity
 import com.killerinstinct.hobsapp.viewmodel.SignupViewModel
 
 class SignupActivity : AppCompatActivity() {
@@ -60,7 +61,7 @@ class SignupActivity : AppCompatActivity() {
                         }
                         "User" -> {
                             progressDialog!!.dismiss()
-                            startActivity(Intent(this, MainActivity::class.java))
+                            startActivity(Intent(this, UserMainActivity::class.java))
                             finish()
                         }
                         else -> {

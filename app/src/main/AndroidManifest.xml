@@ -10,9 +10,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HobsApp">
         <activity
+            android:name=".user.UserMainActivity"
+            android:exported="true" />
+        <activity
             android:name=".WorkerDetails"
-            android:exported="true" >
-        </activity>
+            android:exported="true"></activity>
         <activity
             android:name=".worker.WorkerMainActivity"
             android:exported="true" />

@@ -118,6 +118,7 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
+                    android:id="@+id/call"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
 
@@ -173,6 +174,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:id="@+id/mailIntent"
                     android:orientation="vertical">
 
                     <androidx.cardview.widget.CardView

@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
+import android.widget.Toast
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -15,7 +16,6 @@ import com.killerinstinct.hobsapp.adapters.SearchAdapter
 import com.killerinstinct.hobsapp.databinding.FragmentWorkerSearchBinding
 import com.killerinstinct.hobsapp.model.Worker
 import com.killerinstinct.hobsapp.viewmodel.WorkerMainViewModel
-
 
 class WorkerSearchFragment : Fragment() {
 
@@ -36,7 +36,11 @@ class WorkerSearchFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
-        val searchAdapter = SearchAdapter(findNavController(),requireContext(),workerList)
+        val searchAdapter = SearchAdapter(requireContext(),workerList){
+            Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
+            val action = WorkerSearchFragmentDirections.actionWorkerNavigationSearchToShowProfileFragment(it)
+            findNavController().navigate(action)
+        }
         binding.searchRv.apply {
             adapter = searchAdapter
             layoutManager = LinearLayoutManager(requireContext())

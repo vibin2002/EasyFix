@@ -1,6 +1,7 @@
 package com.killerinstinct.hobsapp.adapters
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,11 +18,11 @@ import com.killerinstinct.hobsapp.worker.fragments.WorkerSearchFragmentDirection
 import de.hdodenhof.circleimageview.CircleImageView
 
 class SearchAdapter(
-    private val navController: NavController,
     private val context: Context,
     private val workerList: MutableList<Worker>,
-    private val workerListAll: List<Worker> = workerList.toList()
-) : RecyclerView.Adapter<SearchAdapter.SearchViewHolder>(), Filterable {
+    private val workerListAll: List<Worker> = workerList.toList(),
+    val workerid: (String) -> Unit,
+    ) : RecyclerView.Adapter<SearchAdapter.SearchViewHolder>(), Filterable {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchViewHolder {
         return SearchViewHolder(
@@ -32,11 +33,8 @@ class SearchAdapter(
     override fun onBindViewHolder(holder: SearchViewHolder, position: Int) {
         holder.apply {
             itemView.setOnClickListener {
-                val action =
-                    WorkerSearchFragmentDirections.actionWorkerNavigationSearchToShowProfileFragment(
-                        workerList[position].uid // UID to be passed
-                    )
-                navController.navigate(action)
+                Log.d("Helloworld", "onBindViewHolder: ${workerList[position].uid}")
+                workerid(workerList[position].uid)
             }
             if (workerList[position].profilePic == "")
                 propic.setImageDrawable(
