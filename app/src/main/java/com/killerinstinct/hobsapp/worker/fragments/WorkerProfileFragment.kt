@@ -14,6 +14,7 @@ import android.widget.Toast
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.google.firebase.Timestamp
 import com.google.firebase.auth.FirebaseAuth
@@ -54,6 +55,10 @@ class WorkerProfileFragment : Fragment() {
             startActivity(mailIntent)
         }
 
+        binding.editProfile.setOnClickListener {
+            findNavController().navigate(R.id.action_worker_navigation_profile_to_workerEditProfileFragment)
+        }
+
     }
 
     private fun setWorkerData() {
@@ -82,6 +87,7 @@ class WorkerProfileFragment : Fragment() {
                     .load(it.profilePic)
                     .into(binding.workerProfile)
             }
+
         }
     }
 

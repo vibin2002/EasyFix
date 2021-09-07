@@ -6,6 +6,7 @@ import android.location.Geocoder
 import android.util.Log
 import androidx.lifecycle.viewModelScope
 import com.google.firebase.firestore.FirebaseFirestore
+import com.killerinstinct.hobsapp.model.Job
 import com.killerinstinct.hobsapp.model.Worker
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -14,6 +15,19 @@ import java.lang.StringBuilder
 import java.util.*
 
 object Utils {
+
+     val categories = listOf(
+        "Plumber",
+        "Painter",
+        "Fitter",
+        "Electrician",
+        "Gardner",
+        "Interior decorator",
+        "Mason",
+        "Smart appliances installer",
+        "Automobile repair",
+        "Two-wheeler repair"
+    )
 
     fun getLocationAddress(lat: Double, long: Double, context: Context): String {
         var sb = StringBuilder()
@@ -48,5 +62,16 @@ object Utils {
         }
     }
 
+    fun sendRequest(request: Job,documentId: (String) -> Unit){
+        FirebaseFirestore.getInstance()
+            .collection("")
+            .add(request)
+            .addOnSuccessListener {
+                documentId(it.id)
+            }.addOnFailureListener {
+                Log.d("TAG", "sendRequest: $it")
+                documentId("")
+            }
+    }
 
 }

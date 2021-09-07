@@ -33,7 +33,11 @@
         android:id="@+id/worker_navigation_profile"
         android:name="com.killerinstinct.hobsapp.worker.fragments.WorkerProfileFragment"
         android:label="Profile"
-        tools:layout="@layout/fragment_worker_profile" />
+        tools:layout="@layout/fragment_worker_profile" >
+        <action
+            android:id="@+id/action_worker_navigation_profile_to_workerEditProfileFragment"
+            app:destination="@id/workerEditProfileFragment" />
+    </fragment>
     <fragment
         android:id="@+id/showProfileFragment"
         android:name="com.killerinstinct.hobsapp.worker.ShowProfileFragment"
@@ -44,5 +48,10 @@
             android:defaultValue="NULL"
             app:argType="string" />
     </fragment>
+    <fragment
+        android:id="@+id/workerEditProfileFragment"
+        android:name="com.killerinstinct.hobsapp.worker.fragments.WorkerEditProfileFragment"
+        android:label="fragment_worker_edit_profile"
+        tools:layout="@layout/fragment_worker_edit_profile" />
 
 </navigation>

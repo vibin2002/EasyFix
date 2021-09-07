@@ -15,5 +15,7 @@ data class Worker (
     val profilePic:String="",
     val location: GeoPoint=GeoPoint(11.0168,76.9558),
     val minWage:String="",
-    val posts: List<String> = listOf()
+    val posts: List<String> = listOf(),
+    val requests : List<Job> = listOf(),
+    val jobs: List<Job> = listOf()
     )

@@ -84,6 +84,7 @@
             android:text="Hyderabad"
             android:textSize="13dp" />
         <TextView
+            android:textAlignment="center"
             android:id="@+id/category"
             android:layout_marginVertical="12dp"
             android:layout_marginHorizontal="36dp"
@@ -96,6 +97,16 @@
             android:fontFamily="@font/nunito_bold"
             android:text="Carpenter, Painter, Plumberasdasdsaasdasdasdasdasddasdsadaasdasdasdasdadasd"
             android:textSize="15dp" />
+
+        <TextView
+            android:id="@+id/edit_profile"
+            android:padding="4dp"
+            android:drawableStart="@drawable/ic_baseline_edit_24"
+            android:layout_gravity="center"
+            android:textSize="16sp"
+            android:text="Edit Profile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -339,6 +350,19 @@
             </androidx.cardview.widget.CardView>
         </LinearLayout>
 
+        <TextView
+            android:textSize="24sp"
+            android:layout_marginBottom="24dp"
+            android:text="My Posts"
+            android:layout_marginStart="24dp"
+            android:textColor="@color/text_blue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/posts_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 
 
     </LinearLayout>

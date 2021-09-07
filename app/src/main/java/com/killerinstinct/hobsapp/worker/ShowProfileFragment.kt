@@ -8,13 +8,16 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
+import com.google.firebase.auth.FirebaseAuth
 import com.killerinstinct.hobsapp.Utils
 import com.killerinstinct.hobsapp.databinding.FragmentShowProfileBinding
+import com.killerinstinct.hobsapp.model.Job
 
 class ShowProfileFragment : Fragment() {
 
     lateinit var binding: FragmentShowProfileBinding
     private val args: ShowProfileFragmentArgs by navArgs()
+    private val userUid = FirebaseAuth.getInstance().currentUser?.uid
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -49,6 +52,17 @@ class ShowProfileFragment : Fragment() {
                 }
             }
         }
+//
+//        binding.btnHire.setOnClickListener {
+//            if (userUid == null)
+//                return@setOnClickListener
+//            val request = Job(
+//                args.workerId,
+//                userUid,
+//
+//            )
+//            Utils.sendRequest()
+//        }
 
 
 

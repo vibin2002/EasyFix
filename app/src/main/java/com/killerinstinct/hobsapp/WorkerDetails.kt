@@ -26,25 +26,14 @@ class WorkerDetails : AppCompatActivity() {
     private val viewModel: WorkerDetailsViewModel by viewModels()
     private var imageUri: Uri? = null
 
-    private val categories = listOf(
-        "Plumber",
-        "Painter",
-        "Fitter",
-        "Electrician",
-        "Gardner",
-        "Interior decorator",
-        "Mason",
-        "Smart appliances installer",
-        "Automobile repair",
-        "Two-wheeler repair"
-    )
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityWorkerDetailsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        categories.forEach {
+        Utils.categories.forEach {
             val chip = layoutInflater.inflate(R.layout.categorychip, binding.categoryCg, false) as Chip
             chip.text = it
             binding.categoryCg.addView(chip)

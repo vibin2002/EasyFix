@@ -8,5 +8,7 @@ data class User(
     val userName: String = "",
     val city: String = "",
     val location:GeoPoint=GeoPoint(0.0,0.0),
-    val profile: String = ""
+    val profile: String = "",
+    val requests : List<Job> = listOf(),
+    val jobs: List<Job> = listOf()
 )
