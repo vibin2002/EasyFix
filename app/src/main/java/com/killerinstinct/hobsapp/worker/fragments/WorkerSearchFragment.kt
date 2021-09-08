@@ -35,7 +35,6 @@ class WorkerSearchFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val viewModel=ViewModelProvider(requireActivity()).get(WorkerMainViewModel::class.java)
-        viewModel.getWorkerDetails()
         viewModel.getAllWorkers()
 
 
