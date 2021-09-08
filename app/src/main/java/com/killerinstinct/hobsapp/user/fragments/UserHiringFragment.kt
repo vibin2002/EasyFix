@@ -6,14 +6,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.content.res.AppCompatResources
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
+import com.google.firebase.firestore.GeoPoint
 import com.killerinstinct.hobsapp.R
 import com.killerinstinct.hobsapp.databinding.FragmentUserHiringBinding
+import com.killerinstinct.hobsapp.viewmodel.UserMainViewModel
 
 class UserHiringFragment : Fragment() {
     lateinit var binding: FragmentUserHiringBinding
     private val args: UserHiringFragmentArgs by navArgs()
+    private val viewModel: UserMainViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -43,5 +47,16 @@ class UserHiringFragment : Fragment() {
                 .into(binding.workerPropic)
         }
 
+        binding.btnSendServicereq.setOnClickListener {
+            val user = viewModel.user.value ?: return@setOnClickListener
+            viewModel.sendWorkRequest(
+                user.uid,
+                args.workerId,
+                binding.description.text.toString(),
+                GeoPoint(0.0,0.0),
+                "",
+                user.phoneNumber
+            )
+        }
     }
 }

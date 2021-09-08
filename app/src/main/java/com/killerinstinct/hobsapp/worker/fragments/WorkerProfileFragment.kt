@@ -1,34 +1,21 @@
 package com.killerinstinct.hobsapp.worker.fragments
 
-import android.app.ActionBar
 import android.content.Intent
-import android.location.Address
-import android.location.Geocoder
 import android.net.Uri
-import android.opengl.Visibility
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentContainer
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
-import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.firebase.Timestamp
-import com.google.firebase.auth.FirebaseAuth
 import com.killerinstinct.hobsapp.R
 import com.killerinstinct.hobsapp.Utils
 import com.killerinstinct.hobsapp.databinding.FragmentWorkerProfileBinding
 import com.killerinstinct.hobsapp.viewmodel.WorkerMainViewModel
-import java.io.IOException
-import java.lang.StringBuilder
-import java.util.*
 
 class WorkerProfileFragment : Fragment() {
 

@@ -32,9 +32,14 @@ class UserShowProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.nestedScrollView.visibility = View.INVISIBLE
+        binding.progbar.visibility = View.VISIBLE
+
         Utils.getSpecificWorker(args.workerId){
             worker = it
             binding.apply {
+                nestedScrollView.visibility = View.VISIBLE
+                progbar.visibility = View.GONE
                 tutorName.text = it.userName
                 tutEmail.text = it.email
                 tutPhonenum.text = it.phoneNumber
@@ -61,7 +66,8 @@ class UserShowProfileFragment : Fragment() {
             val action = UserShowProfileFragmentDirections.actionUserShowProfileFragmentToUserHiringFragment(
                 worker!!.userName,
                 worker!!.category.toString().removePrefix("[").removeSuffix("]"),
-                worker!!.profilePic
+                worker!!.profilePic,
+                args.workerId
             )
             findNavController().navigate(action)
         }

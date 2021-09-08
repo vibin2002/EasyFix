@@ -23,6 +23,7 @@ class UserMainActivity : AppCompatActivity() {
         binding.userBtmNavbar.setupWithNavController(navController)
 
         viewModel.getAllWorkers()
+        viewModel.fetchUserDetail()
 
 
     }

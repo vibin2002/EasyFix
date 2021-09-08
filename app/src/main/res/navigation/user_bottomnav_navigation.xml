@@ -45,6 +45,10 @@
             android:name="propic"
             app:argType="string"
             android:defaultValue="" />
+        <argument
+            android:name="workerId"
+            app:argType="string"
+            android:defaultValue=""/>
     </fragment>
     <fragment
         android:id="@+id/userShowProfileFragment"
