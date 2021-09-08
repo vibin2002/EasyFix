@@ -62,20 +62,6 @@ class WorkerMainViewModel : ViewModel() {
         }
     }
 
-//    fun getSpecificWorker(uid: String,isSuccessful: (Worker) -> Unit)
-//    {
-//        viewModelScope.launch {
-//            db.collection("Worker")
-//                .document(uid)
-//                .get()
-//                .addOnSuccessListener {
-//                     isSuccessful(it.toObject(Worker::class.java)!!)
-//                }.addOnFailureListener {
-//                    Log.d(TAG, "getSpecificWorker: $it")
-//                }
-//        }
-//    }
-
     fun updateWorkerInfo(
 //        location: String,
         phoneNumber: String,
