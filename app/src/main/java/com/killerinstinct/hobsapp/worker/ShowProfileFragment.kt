@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
@@ -30,6 +31,11 @@ class ShowProfileFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding.btnHire.setOnClickListener {
+            val action = ShowProfileFragmentDirections.actionShowProfileFragmentToNestedNavigation(args.workerId)
+            findNavController().navigate(action)
+        }
 
         Utils.getSpecificWorker(args.workerId){
             binding.apply {

@@ -38,5 +38,18 @@
             android:name="workerId"
             app:argType="string"
             android:defaultValue="NULL" />
+        <argument
+            android:name="userType"
+            app:argType="string"
+            android:defaultValue="NULL" />
+        <action
+            android:id="@+id/action_showProfileFragment2_to_nested_navigation"
+            app:destination="@id/nested_navigation" >
+            <argument
+                android:name="fromId"
+                app:argType="string"
+                android:defaultValue="NULL" />
+        </action>
     </fragment>
+    <include app:graph="@navigation/nested_navigation" />
 </navigation>
