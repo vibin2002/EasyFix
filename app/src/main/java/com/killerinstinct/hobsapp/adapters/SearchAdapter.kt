@@ -14,15 +14,20 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.killerinstinct.hobsapp.R
 import com.killerinstinct.hobsapp.model.Worker
-import com.killerinstinct.hobsapp.worker.fragments.WorkerSearchFragmentDirections
 import de.hdodenhof.circleimageview.CircleImageView
+import java.util.*
+import kotlin.collections.ArrayList
 
 class SearchAdapter(
     private val context: Context,
     private val workerList: MutableList<Worker>,
-    private val workerListAll: List<Worker> = workerList.toList(),
     val workerid: (String) -> Unit,
-    ) : RecyclerView.Adapter<SearchAdapter.SearchViewHolder>(), Filterable {
+    ) : RecyclerView.Adapter<SearchAdapter.SearchViewHolder>(),Filterable {
+
+    var workerListFiltered=ArrayList<Worker>()
+    init {
+        workerListFiltered=workerList as ArrayList<Worker>
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchViewHolder {
         return SearchViewHolder(
@@ -33,10 +38,10 @@ class SearchAdapter(
     override fun onBindViewHolder(holder: SearchViewHolder, position: Int) {
         holder.apply {
             itemView.setOnClickListener {
-                Log.d("Helloworld", "onBindViewHolder: ${workerList[position].uid}")
-                workerid(workerList[position].uid)
+                Log.d("Helloworld", "onBindViewHolder: ${workerListFiltered[position].uid}")
+                workerid(workerListFiltered[position].uid)
             }
-            if (workerList[position].profilePic == "")
+            if (workerListFiltered[position].profilePic == "")
                 propic.setImageDrawable(
                     AppCompatResources.getDrawable(
                         context,
@@ -45,15 +50,15 @@ class SearchAdapter(
                 )
             else {
                 Glide.with(context)
-                    .load(workerList[position].profilePic)
+                    .load(workerListFiltered[position].profilePic)
                     .into(propic)
             }
-            name.text = workerList[position].userName
-            designation.text = workerList[position].category.toString()
+            name.text = workerListFiltered[position].userName
+            designation.text = workerListFiltered[position].category.toString().removePrefix("[").removeSuffix("]")
         }
     }
 
-    override fun getItemCount() = workerList.size
+    override fun getItemCount() = workerListFiltered.size
 
     inner class SearchViewHolder(
         view: View
@@ -68,31 +73,28 @@ class SearchAdapter(
     }
 
     private val searchFilter = object : Filter() {
-        override fun performFiltering(charSequence: CharSequence): FilterResults {
-            val list = mutableListOf<Worker>()
-            if (charSequence.isEmpty()) {
-                list.addAll(workerListAll)
+        override fun performFiltering(charSequence: CharSequence?): FilterResults {
+            val str=charSequence.toString()
+            if (str.isEmpty()) {
+                workerListFiltered=workerList as ArrayList<Worker>
             } else {
-                for (worker in workerListAll) {
-                    if (worker.userName.lowercase().contains(charSequence.toString().lowercase())) {
+                val list = ArrayList<Worker>()
+                for (worker in workerList) {
+                    if (worker.userName.toLowerCase().contains(charSequence.toString().toLowerCase())) {
                         list.add(worker)
+                        Log.e("FilterResultinFirebase",worker.userName)
                     }
                 }
+                workerListFiltered=list
             }
-            val filterResult = FilterResults().apply {
-                values = list
-            }
+            val filterResult = FilterResults()
+            filterResult.values=workerListFiltered
             return filterResult
         }
 
         override fun publishResults(p0: CharSequence?, filterRes: FilterResults?) {
-            workerList.apply {
-                clear()
-                if (filterRes != null) {
-                    addAll(filterRes.values as Collection<Worker>)
-                }
-                notifyDataSetChanged()
-            }
+            workerListFiltered=filterRes?.values as ArrayList<Worker>
+            notifyDataSetChanged()
         }
 
     }
