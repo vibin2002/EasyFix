@@ -16,8 +16,8 @@
         android:label="Search"
         tools:layout="@layout/fragment_user_search" >
         <action
-            android:id="@+id/action_userSearchFragment_to_showProfileFragment2"
-            app:destination="@id/showProfileFragment2" />
+            android:id="@+id/action_user_navigation_search_to_userShowProfileFragment"
+            app:destination="@id/userShowProfileFragment" />
     </fragment>
     <fragment
         android:id="@+id/user_navigation_notifications"
@@ -30,26 +30,23 @@
         android:label="Chats"
         tools:layout="@layout/fragment_user_chat" />
     <fragment
-        android:id="@+id/showProfileFragment2"
-        android:name="com.killerinstinct.hobsapp.worker.ShowProfileFragment"
-        android:label="fragment_show_profile"
-        tools:layout="@layout/fragment_show_profile" >
+        android:id="@+id/userHiringFragment"
+        android:name="com.killerinstinct.hobsapp.user.fragments.UserHiringFragment"
+        android:label="fragment_user_hiring"
+        tools:layout="@layout/fragment_user_hiring" />
+    <fragment
+        android:id="@+id/userShowProfileFragment"
+        android:name="com.killerinstinct.hobsapp.user.fragments.UserShowProfileFragment"
+        android:label="fragment_user_show_profile"
+        tools:layout="@layout/fragment_user_show_profile" >
+
         <argument
             android:name="workerId"
-            app:argType="string"
-            android:defaultValue="NULL" />
-        <argument
-            android:name="userType"
-            app:argType="string"
-            android:defaultValue="NULL" />
+            android:defaultValue="NULL"
+            app:argType="string" />
+
         <action
-            android:id="@+id/action_showProfileFragment2_to_nested_navigation"
-            app:destination="@id/nested_navigation" >
-            <argument
-                android:name="fromId"
-                app:argType="string"
-                android:defaultValue="NULL" />
-        </action>
+            android:id="@+id/action_userShowProfileFragment_to_userHiringFragment"
+            app:destination="@id/userHiringFragment" />
     </fragment>
-    <include app:graph="@navigation/nested_navigation" />
 </navigation>

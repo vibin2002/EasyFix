@@ -1,37 +1,29 @@
-package com.killerinstinct.hobsapp.worker
+package com.killerinstinct.hobsapp.user.fragments
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.fragment.navArgs
 import com.killerinstinct.hobsapp.R
-import com.killerinstinct.hobsapp.Utils
-import com.killerinstinct.hobsapp.databinding.FragmentHireBinding
+import com.killerinstinct.hobsapp.databinding.FragmentUserHiringBinding
 
-class HireFragment : Fragment() {
-
-    lateinit var binding: FragmentHireBinding
-    val args: HireFragmentArgs by navArgs()
+class UserHiringFragment : Fragment() {
+    lateinit var binding: FragmentUserHiringBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentHireBinding.inflate(inflater,container,false)
+        binding = FragmentUserHiringBinding.inflate(inflater,container,false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        Log.d("Thanos", "onViewCreated: ${args.fromId}")
 
 
     }
-
-
 }

@@ -33,7 +33,9 @@ class UserSearchFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val searchAdapter = SearchAdapter(requireContext(),workerList){
-            val action = UserSearchFragmentDirections.actionUserSearchFragmentToShowProfileFragment2(it,"User")
+            val action = UserSearchFragmentDirections.actionUserNavigationSearchToUserShowProfileFragment(
+                it
+            )
             findNavController().navigate(action)
         }
 

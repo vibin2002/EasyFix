@@ -1,44 +1,36 @@
-package com.killerinstinct.hobsapp.worker
+package com.killerinstinct.hobsapp.user.fragments
 
 import android.os.Bundle
 import android.util.Log
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
-import com.google.firebase.auth.FirebaseAuth
+import com.killerinstinct.hobsapp.R
 import com.killerinstinct.hobsapp.Utils
-import com.killerinstinct.hobsapp.databinding.FragmentShowProfileBinding
-import com.killerinstinct.hobsapp.model.Job
-import com.killerinstinct.hobsapp.model.Worker
+import com.killerinstinct.hobsapp.databinding.FragmentUserShowProfileBinding
 
-class ShowProfileFragment : Fragment() {
+class UserShowProfileFragment : Fragment() {
 
-    lateinit var binding: FragmentShowProfileBinding
-    private val args: ShowProfileFragmentArgs by navArgs()
-    private val userUid = FirebaseAuth.getInstance().currentUser?.uid
-    private var worker: Worker? = null
+    lateinit var binding: FragmentUserShowProfileBinding
+    private val args: UserShowProfileFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentShowProfileBinding.inflate(inflater,container,false)
+        binding = FragmentUserShowProfileBinding.inflate(inflater,container,false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-//        binding.btnHire.setOnClickListener
-
         Utils.getSpecificWorker(args.workerId){
             binding.apply {
-                worker = it
                 tutorName.text = it.userName
                 tutEmail.text = it.email
                 tutPhonenum.text = it.phoneNumber
@@ -58,19 +50,6 @@ class ShowProfileFragment : Fragment() {
                 }
             }
         }
-//
-        binding.btnHire.setOnClickListener {
-            if (worker == null)
-                return@setOnClickListener
-            val action = ShowProfileFragmentDirections.actionShowProfileFragmentToWorkerHiringFragment(
-                worker!!.userName,
-                worker!!.category.toString().removePrefix("[").removeSuffix("]"),
-                worker!!.profilePic
-            )
-            findNavController().navigate(action)
-        }
-
-
 
     }
 

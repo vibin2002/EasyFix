@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".worker.HireFragment">
+    tools:context=".worker.WorkerHiringFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/card"
@@ -18,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/search_propic"
+            android:id="@+id/worker_propic"
             android:layout_width="72dp"
             android:layout_height="72dp"
             android:layout_marginStart="16dp"
@@ -30,21 +30,21 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/search_name"
+            android:id="@+id/worker_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
             android:text="Name"
             android:textSize="18sp"
-            app:layout_constraintBottom_toTopOf="@+id/search_designation"
+            app:layout_constraintBottom_toTopOf="@+id/worker_designation"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/search_propic"
+            app:layout_constraintStart_toEndOf="@+id/worker_propic"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/search_designation"
+            android:id="@+id/worker_designation"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -54,8 +54,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/search_propic"
-            app:layout_constraintTop_toBottomOf="@+id/search_name" />
+            app:layout_constraintStart_toEndOf="@+id/worker_propic"
+            app:layout_constraintTop_toBottomOf="@+id/worker_name" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -81,7 +81,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/wd_phonenumber"
+            android:id="@+id/description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Description"
@@ -95,7 +95,7 @@
         android:layout_height="wrap_content"
         android:padding="12dp"
         android:text="Do you agree to share your contact and location with the service provider"
-        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintBottom_toTopOf="@+id/btn_send_servicereq"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent" />
@@ -103,7 +103,7 @@
     <Button
         android:text="Send service request"
         android:layout_margin="12dp"
-        android:id="@+id/button"
+        android:id="@+id/btn_send_servicereq"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"

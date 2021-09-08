@@ -38,7 +38,7 @@ class WorkerSearchFragment : Fragment() {
 
         val searchAdapter = SearchAdapter(requireContext(),workerList){
             Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
-            val action = WorkerSearchFragmentDirections.actionWorkerNavigationSearchToShowProfileFragment(it,"Worker")
+            val action = WorkerSearchFragmentDirections.actionWorkerNavigationSearchToShowProfileFragment(it)
             findNavController().navigate(action)
         }
         binding.searchRv.apply {
