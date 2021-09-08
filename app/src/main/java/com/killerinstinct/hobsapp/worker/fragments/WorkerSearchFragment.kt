@@ -10,6 +10,7 @@ import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.killerinstinct.hobsapp.adapters.SearchAdapter
@@ -20,7 +21,6 @@ import com.killerinstinct.hobsapp.viewmodel.WorkerMainViewModel
 class WorkerSearchFragment : Fragment() {
 
     lateinit var binding: FragmentWorkerSearchBinding
-    private val viewModel: WorkerMainViewModel by activityViewModels()
     private val workerList = mutableListOf<Worker>()
 
     override fun onCreateView(
@@ -34,6 +34,8 @@ class WorkerSearchFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val viewModel=ViewModelProvider(requireActivity()).get(WorkerMainViewModel::class.java)
+        viewModel.getAllWorkers()
 
 
         val searchAdapter = SearchAdapter(requireContext(),workerList){

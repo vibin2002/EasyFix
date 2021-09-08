@@ -26,9 +26,6 @@ class WorkerMainActivity : AppCompatActivity() {
 
       setupNav()
 
-        viewModel.getWorkerDetails()
-        viewModel.getAllWorkers()
-
 
     }
 
