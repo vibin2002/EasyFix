@@ -6,16 +6,19 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.killerinstinct.hobsapp.R
 import com.killerinstinct.hobsapp.Utils
 import com.killerinstinct.hobsapp.databinding.FragmentUserShowProfileBinding
+import com.killerinstinct.hobsapp.model.Worker
 
 class UserShowProfileFragment : Fragment() {
 
     lateinit var binding: FragmentUserShowProfileBinding
     private val args: UserShowProfileFragmentArgs by navArgs()
+    private var worker: Worker? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -30,6 +33,7 @@ class UserShowProfileFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         Utils.getSpecificWorker(args.workerId){
+            worker = it
             binding.apply {
                 tutorName.text = it.userName
                 tutEmail.text = it.email
@@ -49,6 +53,17 @@ class UserShowProfileFragment : Fragment() {
                         .into(binding.tutorProfile)
                 }
             }
+        }
+
+        binding.btnHire.setOnClickListener {
+            if (worker == null)
+                return@setOnClickListener
+            val action = UserShowProfileFragmentDirections.actionUserShowProfileFragmentToUserHiringFragment(
+                worker!!.userName,
+                worker!!.category.toString().removePrefix("[").removeSuffix("]"),
+                worker!!.profilePic
+            )
+            findNavController().navigate(action)
         }
 
     }

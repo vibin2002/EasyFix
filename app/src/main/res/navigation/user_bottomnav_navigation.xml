@@ -33,20 +33,32 @@
         android:id="@+id/userHiringFragment"
         android:name="com.killerinstinct.hobsapp.user.fragments.UserHiringFragment"
         android:label="fragment_user_hiring"
-        tools:layout="@layout/fragment_user_hiring" />
+        tools:layout="@layout/fragment_user_hiring" >
+        <argument
+            android:name="workerName"
+            app:argType="string"
+            android:defaultValue="NULL" />
+        <argument android:name="workerDesignation"
+            app:argType="string"
+            android:defaultValue="NULL" />
+        <argument
+            android:name="propic"
+            app:argType="string"
+            android:defaultValue="" />
+    </fragment>
     <fragment
         android:id="@+id/userShowProfileFragment"
         android:name="com.killerinstinct.hobsapp.user.fragments.UserShowProfileFragment"
         android:label="fragment_user_show_profile"
         tools:layout="@layout/fragment_user_show_profile" >
 
-        <argument
-            android:name="workerId"
-            android:defaultValue="NULL"
-            app:argType="string" />
 
         <action
             android:id="@+id/action_userShowProfileFragment_to_userHiringFragment"
             app:destination="@id/userHiringFragment" />
+        <argument
+            android:name="workerId"
+            app:argType="string"
+            android:defaultValue="NULL" />
     </fragment>
 </navigation>
