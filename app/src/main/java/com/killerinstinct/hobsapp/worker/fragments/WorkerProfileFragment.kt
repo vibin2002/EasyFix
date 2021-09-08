@@ -16,6 +16,7 @@ import androidx.appcompat.content.res.AppCompatResources
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentContainer
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -32,7 +33,6 @@ import java.util.*
 class WorkerProfileFragment : Fragment() {
 
     lateinit var binding: FragmentWorkerProfileBinding
-    private val viewModel: WorkerMainViewModel by viewModels()
     private val TAG = "WorkerProfile"
 
     override fun onCreateView(
@@ -65,6 +65,7 @@ class WorkerProfileFragment : Fragment() {
     }
 
     private fun setWorkerData() {
+        val viewModel= ViewModelProvider(requireActivity()).get(WorkerMainViewModel::class.java)
         viewModel.getWorkerDetails()
         viewModel.worker.observe(viewLifecycleOwner) {
             binding.email.text = it.email
