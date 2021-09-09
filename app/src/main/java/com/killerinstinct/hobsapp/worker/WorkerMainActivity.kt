@@ -45,19 +45,19 @@ class WorkerMainActivity : AppCompatActivity() {
     }
 
     private fun showBottomNav() {
-//        binding.workerBtmNavbar.visibility = View.VISIBLE
         if (!shown) {
             binding.workerBtmNavbar.animate()
                 .translationY(0f)
                 .alpha(1.0f)
                 .setListener(null)
+            binding.workerBtmNavbar.visibility = View.VISIBLE
             shown = !shown
         }
     }
 
     private fun hideBottomNav() {
-//        binding.workerBtmNavbar.visibility = View.GONE
         if (shown) {
+            binding.workerBtmNavbar.visibility = View.GONE
             binding.workerBtmNavbar.animate()
                 .translationY(binding.workerBtmNavbar.height.toFloat())
                 .alpha(1.0f)
