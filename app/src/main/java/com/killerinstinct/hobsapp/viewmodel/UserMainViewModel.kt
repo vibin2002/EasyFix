@@ -53,6 +53,7 @@ class UserMainViewModel: ViewModel() {
                 .get()
                 .addOnSuccessListener {
                     _user.value = it.toObject(User::class.java)
+                    Log.d(TAG, "fetchUserDetail: User fetched ${user.value}")
                 }.addOnFailureListener {
                     Log.d(TAG, "fetchUserDetail: User not fetched")
                 }
@@ -64,14 +65,17 @@ class UserMainViewModel: ViewModel() {
         toId: String,
         description: String,
         location: GeoPoint,
-        dateTime: String,
-        contact: String
+        date: String,
+        time: String,
+        contact: String,
+        isSent: (Boolean) -> Unit
     ){
         val request = Request(
             fromId,
             toId,
             description,
-            "",
+            date,
+            time,
             location,
             contact
         )
@@ -83,13 +87,23 @@ class UserMainViewModel: ViewModel() {
                     .document(toId)
                     .update("requests",FieldValue.arrayUnion(reqId))
                     .addOnSuccessListener {
-                        Log.d(TAG, "sendWorkRequest: Request added")
-
+                        db.collection("User")
+                            .document(fromId)
+                            .update("requests",FieldValue.arrayUnion(reqId))
+                            .addOnSuccessListener {
+                                Log.d(TAG, "sendWorkRequest: Request added")
+                                isSent(true)
+                            }
+                            .addOnFailureListener {
+                                isSent(false)
+                            }
                     }.addOnFailureListener {
+                        isSent(false)
                         Log.d(TAG, "sendWorkRequest: Request not sent")
                     }
+            }.addOnFailureListener {
+                isSent(false)
             }
-
     }
 
 

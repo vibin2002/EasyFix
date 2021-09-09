@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
@@ -53,9 +54,12 @@ class UserShowProfileFragment : Fragment() {
                         .into(binding.tutorProfile)
                 }else{
                     Log.d("Glidy", "onViewCreated: here")
-                    Glide.with(requireContext())
-                        .load("https://firebasestorage.googleapis.com/v0/b/hobsapp-dade2.appspot.com/o/3t7eeIK8BdTtKjcm0RTewMk1xPh1%2FprofilePicture?alt=media&token=c3b704f0-12bb-425e-b95d-0deeb7dc3550")
-                        .into(binding.tutorProfile)
+                    binding.tutorProfile.setImageDrawable(
+                        AppCompatResources.getDrawable(
+                            requireContext(),
+                            R.drawable.ic_person
+                        )
+                    )
                 }
             }
         }

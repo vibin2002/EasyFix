@@ -163,6 +163,8 @@
             android:padding="12dp">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/date_picker"
+                android:focusableInTouchMode="false"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="Date" />
@@ -179,6 +181,8 @@
             android:padding="12dp">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/timePicker"
+                android:focusableInTouchMode="false"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="Time" />

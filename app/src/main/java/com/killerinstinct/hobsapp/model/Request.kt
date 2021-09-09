@@ -6,7 +6,8 @@ data class Request(
     val from: String,
     val to: String,
     val description: String,
-    val reqDateTime: String,
+    val reqDate: String,
+    val reqTime: String,
     val location: GeoPoint,
     val contact: String
 )
