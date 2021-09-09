@@ -26,6 +26,9 @@ class UserMainViewModel: ViewModel() {
     private val _user: MutableLiveData<User> = MutableLiveData()
     val user: LiveData<User> = _user
 
+    private val _requests: MutableLiveData<List<Request>> = MutableLiveData()
+    val requests: LiveData<List<Request>> = _requests
+
     fun getAllWorkers(){
         viewModelScope.launch {
             val workers = mutableListOf<Worker>()
@@ -106,6 +109,23 @@ class UserMainViewModel: ViewModel() {
             }
     }
 
+    fun getUserRequests(){
+
+        db.collection("Request")
+            .get()
+            .addOnSuccessListener {
+                val mutableList = mutableListOf<Request>()
+                it.forEach { doc ->
+                    val request = doc.toObject(Request::class.java)
+                    if(request.from == userUid)
+                    mutableList.add(request)
+                }
+                _requests.value = mutableList.toList()
+            }.addOnFailureListener {
+                Log.d(TAG, "getUserRequests: Failed to fetch requests")
+            }
+
+    }
 
 
 

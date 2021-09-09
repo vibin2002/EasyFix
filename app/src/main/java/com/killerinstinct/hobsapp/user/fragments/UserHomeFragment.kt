@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -17,9 +18,11 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.material.chip.Chip
 import com.killerinstinct.hobsapp.ChooseLocationFragment
 import com.killerinstinct.hobsapp.PermissionUtils
 import com.killerinstinct.hobsapp.R
+import com.killerinstinct.hobsapp.Utils
 import com.killerinstinct.hobsapp.databinding.FragmentUserChatBinding
 import com.killerinstinct.hobsapp.databinding.FragmentUserHomeBinding
 import com.killerinstinct.hobsapp.viewmodel.UserMainViewModel
@@ -50,6 +53,32 @@ class UserHomeFragment : Fragment(),OnMapReadyCallback {
         val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?
         mapFragment?.getMapAsync(this)
 
+        Utils.categories.forEach {
+            val chip = layoutInflater.inflate(R.layout.categorychip, binding.catchips, false) as Chip
+            chip.text = it
+            binding.catchips.addView(chip)
+        }
+
+        binding.showRequests.setOnClickListener {
+            val action = UserHomeFragmentDirections.actionUserNavigationHomeToUserShowRequestsFragment()
+            findNavController().navigate(action)
+        }
+
+    }
+
+    override fun onMapReady(googleMap: GoogleMap) {
+        gMap = googleMap
+        checkPermissions()
+        if (ActivityCompat.checkSelfPermission(
+                requireContext(),
+                Manifest.permission.ACCESS_FINE_LOCATION
+            ) == PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
+                requireContext(),
+                Manifest.permission.ACCESS_COARSE_LOCATION
+            ) == PackageManager.PERMISSION_GRANTED
+        ) {
+            googleMap.isMyLocationEnabled = true
+        }
         viewModel.allWorkers.observe(viewLifecycleOwner){ workers ->
             if (workers == null)
                 return@observe
@@ -63,25 +92,9 @@ class UserHomeFragment : Fragment(),OnMapReadyCallback {
             }
 
         }
-
     }
 
-    override fun onMapReady(googleMap: GoogleMap) {
-        gMap = googleMap
-        if (ActivityCompat.checkSelfPermission(
-                requireContext(),
-                Manifest.permission.ACCESS_FINE_LOCATION
-            ) == PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
-                requireContext(),
-                Manifest.permission.ACCESS_COARSE_LOCATION
-            ) == PackageManager.PERMISSION_GRANTED
-        ) {
-            googleMap.isMyLocationEnabled = true
-        }
-    }
-
-    override fun onStart() {
-        super.onStart()
+    private fun checkPermissions(){
         when {
             PermissionUtils.isAccessFineLocationGranted(requireContext())
                     && PermissionUtils.isAccessCoarseLocationGranted(requireContext())

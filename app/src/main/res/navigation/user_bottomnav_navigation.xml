@@ -9,7 +9,11 @@
         android:id="@+id/user_navigation_home"
         android:name="com.killerinstinct.hobsapp.user.fragments.UserHomeFragment"
         android:label="Home"
-        tools:layout="@layout/fragment_user_home" />
+        tools:layout="@layout/fragment_user_home" >
+        <action
+            android:id="@+id/action_user_navigation_home_to_userShowRequestsFragment"
+            app:destination="@id/userShowRequestsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/user_navigation_search"
         android:name="com.killerinstinct.hobsapp.user.fragments.UserSearchFragment"
@@ -99,4 +103,9 @@
             android:name="workerId"
             app:argType="string" />
     </fragment>
+    <fragment
+        android:id="@+id/userShowRequestsFragment"
+        android:name="com.killerinstinct.hobsapp.user.fragments.UserShowRequestsFragment"
+        android:label="fragment_user_show_requests"
+        tools:layout="@layout/fragment_user_show_requests" />
 </navigation>
