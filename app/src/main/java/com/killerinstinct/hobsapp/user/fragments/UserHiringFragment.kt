@@ -53,7 +53,12 @@ class UserHiringFragment : Fragment() {
             contact = it.phoneNumber
         }
         binding.chooseLocation.setOnClickListener {
-            val action = UserHiringFragmentDirections.actionUserHiringFragmentToChooseLocationFragment()
+            val action = UserHiringFragmentDirections.actionUserHiringFragmentToChooseLocationFragment(
+                args.workerName,
+                args.workerDesignation,
+                args.propic,
+                args.workerId
+            )
             findNavController().navigate(action)
         }
 

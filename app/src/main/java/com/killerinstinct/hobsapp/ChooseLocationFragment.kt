@@ -12,6 +12,8 @@ import android.widget.Toast
 import androidx.appcompat.widget.SearchView
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -26,6 +28,8 @@ class ChooseLocationFragment : Fragment(), OnMapReadyCallback ,OnMapClickListene
 
     lateinit var binding: FragmentChooseLocationBinding
     lateinit var gMap: GoogleMap
+    private val args: ChooseLocationFragmentArgs by navArgs()
+    var chosenLocation: LatLng? = null
 
     companion object {
         private const val LOCATION_REQ_CODE = 10001;
@@ -58,6 +62,20 @@ class ChooseLocationFragment : Fragment(), OnMapReadyCallback ,OnMapClickListene
 
         })
 
+        binding.confirmloc.setOnClickListener {
+            if (chosenLocation == null)
+                return@setOnClickListener
+            val action = ChooseLocationFragmentDirections.actionChooseLocationFragmentToUserHiringFragment(
+                args.workerName,
+                args.workerDesignation,
+                args.propic,
+                args.workerId,
+                chosenLocation!!.latitude.toFloat(),
+                chosenLocation!!.longitude.toFloat(),
+            )
+            findNavController().navigate(action)
+        }
+
     }
 
     override fun onMapReady(googleMap: GoogleMap) {
@@ -81,6 +99,7 @@ class ChooseLocationFragment : Fragment(), OnMapReadyCallback ,OnMapClickListene
         gMap.clear()
         gMap.addMarker(MarkerOptions().position(latLng).title("Your postion"))
         gMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng,16f))
+        chosenLocation = latLng
     }
 
     override fun onStart() {

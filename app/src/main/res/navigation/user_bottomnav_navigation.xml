@@ -78,5 +78,21 @@
         android:id="@+id/chooseLocationFragment"
         android:name="com.killerinstinct.hobsapp.ChooseLocationFragment"
         android:label="fragment_choose_location"
-        tools:layout="@layout/fragment_choose_location" />
+        tools:layout="@layout/fragment_choose_location" >
+        <action
+            android:id="@+id/action_chooseLocationFragment_to_userHiringFragment"
+            app:destination="@id/userHiringFragment" />
+        <argument
+            android:name="workerName"
+            app:argType="string" />
+        <argument
+            android:name="workerDesignation"
+            app:argType="string" />
+        <argument
+            android:name="propic"
+            app:argType="string" />
+        <argument
+            android:name="workerId"
+            app:argType="string" />
+    </fragment>
 </navigation>
