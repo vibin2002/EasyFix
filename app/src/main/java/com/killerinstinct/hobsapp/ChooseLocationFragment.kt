@@ -2,18 +2,20 @@ package com.killerinstinct.hobsapp
 
 import android.Manifest
 import android.content.pm.PackageManager
+import android.location.Geocoder
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.widget.SearchView
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
-import com.google.android.gms.maps.GoogleMap.*
+import com.google.android.gms.maps.GoogleMap.OnMapClickListener
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
@@ -43,6 +45,19 @@ class ChooseLocationFragment : Fragment(), OnMapReadyCallback ,OnMapClickListene
         super.onViewCreated(view, savedInstanceState)
         val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?
         mapFragment?.getMapAsync(this)
+
+        binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                if (query == null)
+                    return false
+                moveToSearchedLocation(query)
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean = false
+
+        })
+
     }
 
     override fun onMapReady(googleMap: GoogleMap) {
@@ -114,6 +129,22 @@ class ChooseLocationFragment : Fragment(), OnMapReadyCallback ,OnMapClickListene
             }
         }
 
+    }
+
+    private fun moveToSearchedLocation(location: String) {
+        gMap.clear()
+        val geocoder = Geocoder(requireContext())
+        try {
+            val addresses = geocoder.getFromLocationName(location,1)
+            if(addresses.isNotEmpty()){
+                val address = addresses[0]
+                val position = LatLng(address.latitude,address.longitude)
+                gMap.addMarker(MarkerOptions().position(position).title(address.featureName))
+                gMap.animateCamera(CameraUpdateFactory.newLatLngZoom(position,15f))
+            }
+        } catch (e: Exception){
+            e.printStackTrace()
+        }
     }
 
 

@@ -86,7 +86,7 @@ class UserHiringFragment : Fragment() {
                 userid!!,
                 args.workerId,
                 binding.description.text.toString(),
-                GeoPoint(0.0,0.0),
+                GeoPoint(args.latitude.toDouble(),args.longitude.toDouble()),
                 endDateSelected!!,
                 time!!,
                 contact!!
