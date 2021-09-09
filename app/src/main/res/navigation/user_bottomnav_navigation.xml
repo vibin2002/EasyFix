@@ -49,6 +49,15 @@
             android:name="workerId"
             app:argType="string"
             android:defaultValue=""/>
+        <action
+            android:id="@+id/action_userHiringFragment_to_chooseLocationFragment"
+            app:destination="@id/chooseLocationFragment" />
+        <argument
+            android:name="latitude"
+            android:defaultValue="0.0" />
+        <argument
+            android:name="longitude"
+            android:defaultValue="0.0" />
     </fragment>
     <fragment
         android:id="@+id/userShowProfileFragment"
@@ -65,4 +74,9 @@
             app:argType="string"
             android:defaultValue="NULL" />
     </fragment>
+    <fragment
+        android:id="@+id/chooseLocationFragment"
+        android:name="com.killerinstinct.hobsapp.ChooseLocationFragment"
+        android:label="fragment_choose_location"
+        tools:layout="@layout/fragment_choose_location" />
 </navigation>

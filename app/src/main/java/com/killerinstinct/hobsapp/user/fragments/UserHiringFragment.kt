@@ -13,6 +13,7 @@ import android.widget.DatePicker
 import android.widget.Toast
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.google.android.material.snackbar.Snackbar
@@ -50,6 +51,10 @@ class UserHiringFragment : Fragment() {
         viewModel.user.observe(viewLifecycleOwner){
             userid = it.uid
             contact = it.phoneNumber
+        }
+        binding.chooseLocation.setOnClickListener {
+            val action = UserHiringFragmentDirections.actionUserHiringFragmentToChooseLocationFragment()
+            findNavController().navigate(action)
         }
 
         binding.workerName.text = args.workerName
