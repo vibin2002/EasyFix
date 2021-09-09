@@ -2,6 +2,7 @@ package com.killerinstinct.hobsapp
 
 import android.Manifest
 import android.content.pm.PackageManager
+import android.location.Address
 import android.location.Geocoder
 import android.os.Bundle
 import android.util.Log
@@ -63,8 +64,22 @@ class ChooseLocationFragment : Fragment(), OnMapReadyCallback ,OnMapClickListene
         })
 
         binding.confirmloc.setOnClickListener {
+            var address: Address? = null
             if (chosenLocation == null)
                 return@setOnClickListener
+            try {
+                val geocoder = Geocoder(requireContext())
+                val addresses = geocoder.getFromLocation(
+                    chosenLocation!!.latitude,
+                    chosenLocation!!.longitude,
+                    1
+                )
+                if(addresses.isNotEmpty()){
+                    address = addresses[0]
+                }
+            } catch (e: Exception){
+                e.printStackTrace()
+            }
             val action = ChooseLocationFragmentDirections.actionChooseLocationFragmentToUserHiringFragment(
                 args.workerName,
                 args.workerDesignation,
@@ -72,6 +87,7 @@ class ChooseLocationFragment : Fragment(), OnMapReadyCallback ,OnMapClickListene
                 args.workerId,
                 chosenLocation!!.latitude.toFloat(),
                 chosenLocation!!.longitude.toFloat(),
+                address?.locality ?: "None"
             )
             findNavController().navigate(action)
         }
@@ -159,7 +175,8 @@ class ChooseLocationFragment : Fragment(), OnMapReadyCallback ,OnMapClickListene
                 val address = addresses[0]
                 val position = LatLng(address.latitude,address.longitude)
                 gMap.addMarker(MarkerOptions().position(position).title(address.featureName))
-                gMap.animateCamera(CameraUpdateFactory.newLatLngZoom(position,15f))
+                gMap.animateCamera(CameraUpdateFactory.newLatLngZoom(position,16f))
+                chosenLocation = position
             }
         } catch (e: Exception){
             e.printStackTrace()

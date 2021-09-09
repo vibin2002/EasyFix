@@ -146,4 +146,9 @@ class UserHiringFragment : Fragment() {
         )
         timePickerDialog.show()
     }
+
+    override fun onStart() {
+        super.onStart()
+        binding.etLocation.setText(args.city)
+    }
 }

@@ -58,6 +58,10 @@
         <argument
             android:name="longitude"
             android:defaultValue="0.0" />
+        <argument
+            android:name="city"
+            app:argType="string"
+            android:defaultValue="None" />
     </fragment>
     <fragment
         android:id="@+id/userShowProfileFragment"
