@@ -34,6 +34,9 @@ class UserMainViewModel: ViewModel() {
     private val _notifications: MutableLiveData<List<Notification>> = MutableLiveData()
     val notification: LiveData<List<Notification>> = _notifications
 
+    private val _notifyIds: MutableLiveData<List<String>> = MutableLiveData()
+    val notifyIds: LiveData<List<String>> = _notifyIds
+
     fun getAllWorkers(){
         viewModelScope.launch {
             val workers = mutableListOf<Worker>()
@@ -78,10 +81,13 @@ class UserMainViewModel: ViewModel() {
                 .get()
                 .addOnSuccessListener {
                     val list = mutableListOf<Notification>()
+                    val ids = mutableListOf<String>()
                     it.forEach { document ->
+                        ids.add(document.id)
                         list.add(document.toObject(Notification::class.java))
                     }
                     _notifications.value = list.toList()
+                    _notifyIds.value = ids.toList()
                     Log.d(TAG, "getUserNotifications: ${notification.value}")
                 }.addOnFailureListener {
                     TODO()

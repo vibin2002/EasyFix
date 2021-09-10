@@ -43,8 +43,12 @@ class UserNotificationFragment : Fragment() {
 
         viewModel.notification.observe(viewLifecycleOwner){
             setupRecyclerView(it)
+//
+        }
+        viewModel.notifyIds.observe(viewLifecycleOwner){
+            val userId = viewModel.user.value?.uid ?: return@observe
             Toast.makeText(requireContext(), "$it", Toast.LENGTH_SHORT).show()
-            Utils.checkReadNotifications()
+            Utils.checkReadNotifications(userId,it)
         }
 
     }

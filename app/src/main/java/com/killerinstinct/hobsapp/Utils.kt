@@ -19,7 +19,7 @@ import java.util.*
 
 object Utils {
 
-     val categories = listOf(
+    val categories = listOf(
         "Plumber",
         "Painter",
         "Fitter",
@@ -50,8 +50,7 @@ object Utils {
         return sb.toString()
     }
 
-    fun getSpecificWorker(uid: String,isSuccessful: (Worker) -> Unit)
-    {
+    fun getSpecificWorker(uid: String, isSuccessful: (Worker) -> Unit) {
         Log.d("KEDO", "getSpecificWorker: $uid")
         CoroutineScope(Dispatchers.IO).launch {
             FirebaseFirestore.getInstance().collection("Worker")
@@ -65,7 +64,7 @@ object Utils {
         }
     }
 
-    fun sendRequest(request: Job,documentId: (String) -> Unit){
+    fun sendRequest(request: Job, documentId: (String) -> Unit) {
         FirebaseFirestore.getInstance()
             .collection("")
             .add(request)
@@ -87,7 +86,7 @@ object Utils {
         picUrl: String,
         description: String,
         userId: String
-    ){
+    ) {
         CoroutineScope(Dispatchers.IO).launch {
             val notification = Notification(
                 picUrl,
@@ -112,7 +111,7 @@ object Utils {
         picUrl: String,
         description: String,
         workerId: String
-    ){
+    ) {
         CoroutineScope(Dispatchers.IO).launch {
             val notification = Notification(
                 picUrl,
@@ -133,11 +132,23 @@ object Utils {
         }
     }
 
-    fun checkReadNotifications(userId: String){
-//        FirebaseFirestore.getInstance()
-//            .collection("User")
-//            .document(userId)
-//            .collection("Notification")
+    fun checkReadNotifications(userId: String, ids: List<String>) {
+        val db = FirebaseFirestore.getInstance()
+            .collection("User")
+            .document(userId)
+            .collection("Notifications")
+        ids.forEach {
+            Log.d("Notifivation", "checkReadNotifications: $it")
+            CoroutineScope(Dispatchers.IO).launch {
+                db.document(it.trim())
+                    .update(mapOf("hasRead" to true))
+                    .addOnSuccessListener {
+                        Log.d("Notifivation", "checkReadNotifications: booom")
+                    }.addOnFailureListener {
+
+                    }
+            }
+        }
     }
 
 

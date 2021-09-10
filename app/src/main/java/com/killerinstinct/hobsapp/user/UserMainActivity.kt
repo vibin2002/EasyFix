@@ -30,11 +30,13 @@ class UserMainActivity : AppCompatActivity() {
         viewModel.notification.observe(this){ notiList ->
             var count = 0
             notiList.forEach {
-                if (!it.isRead)
+                if (!it.hasRead)
                     count++
             }
-            binding.userBtmNavbar.getOrCreateBadge(R.id.user_navigation_notifications)
-                .number = count
+            if (count > 0) {
+                binding.userBtmNavbar.getOrCreateBadge(R.id.user_navigation_notifications)
+                    .number = count
+            }
         }
 
     }

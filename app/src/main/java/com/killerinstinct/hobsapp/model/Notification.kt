@@ -9,6 +9,5 @@ data class Notification(
     val description: String = "",
     @ServerTimestamp
     val timestamp: Timestamp = Timestamp.now(),
-    @field:JvmField
-    val isRead: Boolean = false,
+    val hasRead: Boolean = false,
 )
