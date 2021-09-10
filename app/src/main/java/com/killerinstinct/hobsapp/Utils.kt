@@ -5,8 +5,10 @@ import android.location.Address
 import android.location.Geocoder
 import android.util.Log
 import androidx.lifecycle.viewModelScope
+import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import com.killerinstinct.hobsapp.model.Job
+import com.killerinstinct.hobsapp.model.Notification
 import com.killerinstinct.hobsapp.model.Worker
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -30,9 +32,9 @@ object Utils {
     )
 
     fun getLocationAddress(lat: Double, long: Double, context: Context): String {
-        var sb = StringBuilder()
+        val sb = StringBuilder()
         val geocoder = Geocoder(context, Locale.getDefault())
-        var addresses: List<Address> = geocoder.getFromLocation(lat, long, 1)
+        val addresses: List<Address> = geocoder.getFromLocation(lat, long, 1)
 //            binding.location.text = addresses[0].locality+","+addresses[0].
         try {
 
@@ -79,6 +81,56 @@ object Utils {
         .map { i -> kotlin.random.Random.nextInt(0, charPool.size) }
         .map(charPool::get)
         .joinToString("")
+
+    fun sendNotificationToUser(
+        picUrl: String,
+        description: String,
+        userId: String
+    ){
+        CoroutineScope(Dispatchers.IO).launch {
+            val notification = Notification(
+                picUrl,
+                description,
+                FieldValue.serverTimestamp().toString(),
+                false
+            )
+            FirebaseFirestore.getInstance()
+                .collection("User")
+                .document(userId)
+                .collection("Notifications")
+                .add(notification)
+                .addOnSuccessListener {
+
+                }.addOnFailureListener {
+
+                }
+        }
+    }
+
+    fun sendNotificationToWorker(
+        picUrl: String,
+        description: String,
+        workerId: String
+    ){
+        CoroutineScope(Dispatchers.IO).launch {
+            val notification = Notification(
+                picUrl,
+                description,
+                FieldValue.serverTimestamp().toString(),
+                false
+            )
+            FirebaseFirestore.getInstance()
+                .collection("User")
+                .document(workerId)
+                .collection("Notifications")
+                .add(notification)
+                .addOnSuccessListener {
+                    TODO()
+                }.addOnFailureListener {
+                    TODO()
+                }
+        }
+    }
 
 
 }

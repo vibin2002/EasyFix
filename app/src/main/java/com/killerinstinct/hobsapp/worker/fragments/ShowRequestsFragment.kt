@@ -1,6 +1,5 @@
 package com.killerinstinct.hobsapp.worker.fragments
 
-import android.opengl.Visibility
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,7 +9,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.firestore.GeoPoint
-import com.killerinstinct.hobsapp.adapters.UserShowRequestsAdapter
+import com.killerinstinct.hobsapp.Utils
 import com.killerinstinct.hobsapp.adapters.WorkerShowRequestsAdapter
 import com.killerinstinct.hobsapp.databinding.FragmentShowRequestsBinding
 import com.killerinstinct.hobsapp.model.Job
@@ -65,11 +64,21 @@ class ShowRequestsFragment : Fragment() {
                     decision.first.contact,
                 )
                 viewModel.addJob(job)
+                Utils.sendNotificationToUser(
+                    viewModel.worker.value?.profilePic ?: "",
+                    "${viewModel.worker.value!!.userName} has accepted your service request" ,
+                    decision.first.from
+                )
             } else {                // If request declined
                 viewModel.deleteRequest(
                     decision.first.requestId,
                     decision.first.from,
                     decision.first.to,
+                )
+                Utils.sendNotificationToUser(
+                    viewModel.worker.value?.profilePic ?: "",
+                    "${viewModel.worker.value!!.userName} has declined your service request" ,
+                    decision.first.from,
                 )
             }
             findNavController().navigateUp()
