@@ -80,7 +80,8 @@ class SearchAdapter(
             } else {
                 val list = ArrayList<Worker>()
                 for (worker in workerList) {
-                    if (worker.userName.toLowerCase().contains(charSequence.toString().toLowerCase())) {
+                    if (worker.userName.toLowerCase().contains(charSequence.toString().toLowerCase())
+                    || worker.category.contains(charSequence.toString())) {
                         list.add(worker)
                         Log.e("FilterResultinFirebase",worker.userName)
                     }

@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.killerinstinct.hobsapp.R
@@ -28,9 +29,20 @@ class NotificationsAdapter(
         timestamp.removeLast()
         holder.description.text = list[position].description
         holder.timestamp.text = timestamp.toList().toString().removeSuffix("]").removePrefix("[")
-        Glide.with(context)
-            .load(list[position].picUrl)
-            .into(holder.image)
+        if (list[position].picUrl == "")
+        {
+            holder.image.setImageDrawable(
+                AppCompatResources.getDrawable(
+                    context,
+                    R.drawable.ic_person
+                )
+            )
+        }
+        else {
+            Glide.with(context)
+                .load(list[position].picUrl)
+                .into(holder.image)
+        }
     }
 
     override fun getItemCount() = list.size
