@@ -54,7 +54,7 @@ class UserNotificationFragment : Fragment() {
     }
 
     private fun setupRecyclerView(notificationList: List<Notification>) {
-        binding.notifyRv.adapter = NotificationsAdapter(notificationList)
+        binding.notifyRv.adapter = NotificationsAdapter(requireContext(),notificationList)
         binding.notifyRv.layoutManager = LinearLayoutManager(requireContext())
     }
 

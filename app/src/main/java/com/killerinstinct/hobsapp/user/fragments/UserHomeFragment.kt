@@ -82,7 +82,7 @@ class UserHomeFragment : Fragment(),OnMapReadyCallback {
     }
 
     private fun setUpRecyclerView(list: List<Job>){
-        binding.userJobsRv.adapter = JobsAdapter(list)
+        binding.userJobsRv.adapter = JobsAdapter(requireContext(),list)
         binding.userJobsRv.layoutManager = LinearLayoutManager(requireContext())
     }
 

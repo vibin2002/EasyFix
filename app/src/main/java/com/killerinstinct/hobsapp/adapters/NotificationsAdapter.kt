@@ -1,15 +1,18 @@
 package com.killerinstinct.hobsapp.adapters
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.killerinstinct.hobsapp.R
 import com.killerinstinct.hobsapp.model.Notification
 import de.hdodenhof.circleimageview.CircleImageView
 
 class NotificationsAdapter(
+    val context: Context,
     val list: List<Notification>
 ): RecyclerView.Adapter<NotificationsAdapter.NotificationViewHolder>() {
 
@@ -25,6 +28,9 @@ class NotificationsAdapter(
         timestamp.removeLast()
         holder.description.text = list[position].description
         holder.timestamp.text = timestamp.toList().toString().removeSuffix("]").removePrefix("[")
+        Glide.with(context)
+            .load(list[position].picUrl)
+            .into(holder.image)
     }
 
     override fun getItemCount() = list.size
