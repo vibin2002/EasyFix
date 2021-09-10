@@ -3,6 +3,8 @@ package com.killerinstinct.hobsapp.model
 import com.google.firebase.firestore.GeoPoint
 
 data class Request(
+    val requestId: String = "",
+    val fromName: String = "",
     val from: String = "",
     val to: String = "",
     val description: String = "",

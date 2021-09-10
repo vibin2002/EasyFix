@@ -31,7 +31,6 @@ class UserHiringFragment : Fragment() {
     private var endDateSelected: String? = null
     private var time:String?=null
     private val TAG = "UserHiringFragment"
-    private val useruid = FirebaseAuth.getInstance().currentUser?.uid
     private var userid: String? = null
     private var contact: String? = null
 
@@ -88,6 +87,7 @@ class UserHiringFragment : Fragment() {
                 return@setOnClickListener
             }
             viewModel.sendWorkRequest(
+                viewModel.user.value!!.userName ,
                 userid!!,
                 args.workerId,
                 binding.description.text.toString(),

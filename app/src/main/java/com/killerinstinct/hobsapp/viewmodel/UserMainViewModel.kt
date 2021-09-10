@@ -9,6 +9,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.GeoPoint
+import com.killerinstinct.hobsapp.Utils
 import com.killerinstinct.hobsapp.model.Request
 import com.killerinstinct.hobsapp.model.User
 import com.killerinstinct.hobsapp.model.Worker
@@ -64,6 +65,7 @@ class UserMainViewModel: ViewModel() {
     }
 
     fun sendWorkRequest(
+        name: String,
         fromId: String,
         toId: String,
         description: String,
@@ -73,7 +75,10 @@ class UserMainViewModel: ViewModel() {
         contact: String,
         isSent: (Boolean) -> Unit
     ){
+        val reqId = Utils.randomString()
         val request = Request(
+            reqId,
+            name,
             fromId,
             toId,
             description,
@@ -83,9 +88,9 @@ class UserMainViewModel: ViewModel() {
             contact
         )
         db.collection("Request")
-            .add(request)
+            .document(reqId)
+            .set(request)
             .addOnSuccessListener {
-                val reqId = it.id
                 db.collection("Worker")
                     .document(toId)
                     .update("requests",FieldValue.arrayUnion(reqId))

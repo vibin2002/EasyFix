@@ -8,8 +8,11 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.firebase.Timestamp
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
+import com.killerinstinct.hobsapp.model.Job
+import com.killerinstinct.hobsapp.model.Request
 import com.killerinstinct.hobsapp.model.Worker
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
@@ -27,6 +30,9 @@ class WorkerMainViewModel : ViewModel() {
 
     private val _allWorkers: MutableLiveData<MutableList<Worker>> = MutableLiveData()
     val allWorkers: LiveData<MutableList<Worker>> = _allWorkers
+
+    private val _requests: MutableLiveData<List<Request>> = MutableLiveData()
+    val requests: LiveData<List<Request>> = _requests
 
     fun getWorkerDetails() {
         viewModelScope.launch {
@@ -124,6 +130,81 @@ class WorkerMainViewModel : ViewModel() {
                     Log.d(TAG, "updateWorkerInfo: $it")
                 }
         }
+    }
+
+    fun getWorkerRequests(){
+        db.collection("Request")
+            .get()
+            .addOnSuccessListener {
+                val mutableList = mutableListOf<Request>()
+                it.forEach { doc ->
+                    val request = doc.toObject(Request::class.java)
+                    if(request.to == userUid)
+                        mutableList.add(request)
+                }
+                _requests.value = mutableList.toList()
+            }.addOnFailureListener {
+                Log.d(TAG, "getUserRequests: Failed to fetch requests")
+            }
+    }
+
+    fun addJob(job: Job){
+        db.collection("Jobs")
+            .document(job.jobId)
+            .set(job)
+            .addOnSuccessListener {
+                db.collection("User")
+                    .document(job.fromId)
+                    .update("jobs",FieldValue.arrayUnion(job.jobId))
+                    .addOnSuccessListener {
+                        db.collection("Worker")
+                            .document(job.toId)
+                            .update("jobs",FieldValue.arrayUnion(job.jobId))
+                            .addOnSuccessListener {
+                                deleteRequest(
+                                    job.jobId,
+                                    job.fromId,
+                                    job.toId
+                                )
+                            }.addOnFailureListener {
+
+                            }
+                    }.addOnFailureListener {
+
+                    }
+            }.addOnFailureListener {
+
+            }
+    }
+
+    fun deleteRequest(
+        reqId: String,
+        fromId: String,
+        toId: String
+    ){
+        db.collection("Request")
+            .document(reqId)
+            .delete()
+            .addOnSuccessListener {
+                db.collection("User")
+                    .document(fromId)
+                    .update("requests",FieldValue.arrayRemove(reqId))
+                    .addOnSuccessListener {
+                        db.collection("Worker")
+                            .document(toId)
+                            .update("requests",FieldValue.arrayRemove(reqId))
+                            .addOnSuccessListener {
+
+                            }
+                            .addOnFailureListener {
+
+                            }
+                    }.addOnFailureListener {
+
+                    }
+            }.addOnFailureListener {
+
+            }
     }
 
 
