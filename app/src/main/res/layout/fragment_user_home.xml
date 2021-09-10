@@ -48,28 +48,29 @@
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/show_requests"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:layout_marginEnd="16dp"
                     android:src="@drawable/ic_baseline_event_note"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/show_history"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/show_history"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:layout_marginEnd="16dp"
-                    android:src="@drawable/ic_baseline_history"
-                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
+
+<!--                <de.hdodenhof.circleimageview.CircleImageView-->
+<!--                    android:id="@+id/show_history"-->
+<!--                    android:layout_width="40dp"-->
+<!--                    android:layout_height="48dp"-->
+<!--                    android:layout_marginEnd="16dp"-->
+<!--                    android:src="@drawable/ic_baseline_history"-->
+<!--                    app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                    app:layout_constraintEnd_toEndOf="parent"-->
+<!--                    app:layout_constraintTop_toTopOf="parent" />-->
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
 
             <TextView
+                android:id="@+id/upcoming"
                 android:layout_margin="12dp"
                 android:textSize="18sp"
                 android:text="Upcoming services"
@@ -92,7 +93,8 @@
             <HorizontalScrollView
                 android:paddingHorizontal="12dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:scrollbars="none">
 
                 <com.google.android.material.chip.ChipGroup
                     android:id="@+id/catchips"
@@ -115,11 +117,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
-<!--                    <fragment-->
-<!--                        android:id="@+id/map"-->
-<!--                        android:name="com.google.android.gms.maps.SupportMapFragment"-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="match_parent" />-->
+                    <fragment
+                        android:id="@+id/map"
+                        android:name="com.google.android.gms.maps.SupportMapFragment"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
 
                 </androidx.fragment.app.FragmentContainerView>
 

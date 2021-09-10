@@ -10,10 +10,7 @@ import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.GeoPoint
 import com.killerinstinct.hobsapp.Utils
-import com.killerinstinct.hobsapp.model.Notification
-import com.killerinstinct.hobsapp.model.Request
-import com.killerinstinct.hobsapp.model.User
-import com.killerinstinct.hobsapp.model.Worker
+import com.killerinstinct.hobsapp.model.*
 import kotlinx.coroutines.launch
 
 class UserMainViewModel: ViewModel() {
@@ -36,6 +33,10 @@ class UserMainViewModel: ViewModel() {
 
     private val _notifyIds: MutableLiveData<List<String>> = MutableLiveData()
     val notifyIds: LiveData<List<String>> = _notifyIds
+
+    private val _jobs: MutableLiveData<List<Job>> = MutableLiveData()
+    val jobs: LiveData<List<Job>> = _jobs
+
 
     fun getAllWorkers(){
         viewModelScope.launch {
@@ -65,6 +66,7 @@ class UserMainViewModel: ViewModel() {
                 .addOnSuccessListener {
                     _user.value = it.toObject(User::class.java)
                     Log.d(TAG, "fetchUserDetail: User fetched ${user.value}")
+                    getAllJobs()
                     getUserNotifications()
                 }.addOnFailureListener {
                     Log.d(TAG, "fetchUserDetail: User not fetched")
@@ -161,6 +163,24 @@ class UserMainViewModel: ViewModel() {
                 Log.d(TAG, "getUserRequests: Failed to fetch requests")
             }
 
+    }
+
+    fun getAllJobs(){
+        viewModelScope.launch {
+            db.collection("Jobs")
+                .get()
+                .addOnSuccessListener {
+                    val mutableList = mutableListOf<Job>()
+                    it.forEach { doc ->
+                        val job = doc.toObject(Job::class.java)
+                        if(job.fromId == userUid)
+                            mutableList.add(job)
+                    }
+                    _jobs.value = mutableList.toList()
+                }.addOnFailureListener {
+                    Log.d(TAG, "getAllJobs: failed")
+                }
+        }
     }
 
 

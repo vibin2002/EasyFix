@@ -11,6 +11,7 @@ import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -23,8 +24,10 @@ import com.killerinstinct.hobsapp.ChooseLocationFragment
 import com.killerinstinct.hobsapp.PermissionUtils
 import com.killerinstinct.hobsapp.R
 import com.killerinstinct.hobsapp.Utils
+import com.killerinstinct.hobsapp.adapters.JobsAdapter
 import com.killerinstinct.hobsapp.databinding.FragmentUserChatBinding
 import com.killerinstinct.hobsapp.databinding.FragmentUserHomeBinding
+import com.killerinstinct.hobsapp.model.Job
 import com.killerinstinct.hobsapp.viewmodel.UserMainViewModel
 
 class UserHomeFragment : Fragment(),OnMapReadyCallback {
@@ -59,12 +62,30 @@ class UserHomeFragment : Fragment(),OnMapReadyCallback {
             binding.catchips.addView(chip)
         }
 
+        binding.progbar.visibility = View.VISIBLE
+
+        viewModel.jobs.observe(viewLifecycleOwner){
+            binding.progbar.visibility = View.GONE
+            if (it.isEmpty()){
+                binding.upcoming.visibility = View.GONE
+                binding.userJobsRv.visibility = View.GONE
+            }
+            setUpRecyclerView(it)
+        }
+
+
         binding.showRequests.setOnClickListener {
             val action = UserHomeFragmentDirections.actionUserNavigationHomeToUserShowRequestsFragment()
             findNavController().navigate(action)
         }
 
     }
+
+    private fun setUpRecyclerView(list: List<Job>){
+        binding.userJobsRv.adapter = JobsAdapter(list)
+        binding.userJobsRv.layoutManager = LinearLayoutManager(requireContext())
+    }
+
 
     override fun onMapReady(googleMap: GoogleMap) {
         gMap = googleMap
@@ -135,7 +156,7 @@ class UserHomeFragment : Fragment(),OnMapReadyCallback {
         ) {
             fusedLocationProviderClient.lastLocation.addOnSuccessListener { location ->
                 val loc = LatLng(location.latitude,location.longitude)
-                gMap.animateCamera(CameraUpdateFactory.newLatLngZoom(loc,15f))
+                gMap.animateCamera(CameraUpdateFactory.newLatLngZoom(loc,12f))
             }
         }
 

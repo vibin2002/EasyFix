@@ -8,7 +8,12 @@ import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.chip.Chip
+import com.killerinstinct.hobsapp.R
+import com.killerinstinct.hobsapp.Utils
 import com.killerinstinct.hobsapp.adapters.SearchAdapter
 import com.killerinstinct.hobsapp.databinding.FragmentUserSearchBinding
 import com.killerinstinct.hobsapp.model.Worker
@@ -37,9 +42,16 @@ class UserSearchFragment : Fragment() {
             findNavController().navigate(action)
         }
 
+        Utils.categories.forEach {
+            val chip = layoutInflater.inflate(R.layout.categorychip, binding.searchCatchips, false) as Chip
+            chip.text = it
+            binding.searchCatchips.addView(chip)
+        }
+
         binding.searchRv.apply {
             adapter = searchAdapter
             layoutManager = LinearLayoutManager(requireContext())
+            addItemDecoration(DividerItemDecoration(requireContext(),DividerItemDecoration.VERTICAL))
         }
 
         viewModel.allWorkers.observe(viewLifecycleOwner){
