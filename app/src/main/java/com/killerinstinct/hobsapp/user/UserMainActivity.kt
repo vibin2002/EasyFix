@@ -27,6 +27,16 @@ class UserMainActivity : AppCompatActivity() {
         viewModel.getAllWorkers()
         viewModel.fetchUserDetail()
         setupNav()
+        viewModel.notification.observe(this){ notiList ->
+            var count = 0
+            notiList.forEach {
+                if (!it.isRead)
+                    count++
+            }
+            binding.userBtmNavbar.getOrCreateBadge(R.id.user_navigation_notifications)
+                .number = count
+        }
+
     }
 
     private fun setupNav() {

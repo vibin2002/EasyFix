@@ -5,6 +5,7 @@ import android.location.Address
 import android.location.Geocoder
 import android.util.Log
 import androidx.lifecycle.viewModelScope
+import com.google.firebase.Timestamp
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import com.killerinstinct.hobsapp.model.Job
@@ -91,7 +92,7 @@ object Utils {
             val notification = Notification(
                 picUrl,
                 description,
-                FieldValue.serverTimestamp().toString(),
+                Timestamp.now(),
                 false
             )
             FirebaseFirestore.getInstance()
@@ -116,7 +117,7 @@ object Utils {
             val notification = Notification(
                 picUrl,
                 description,
-                FieldValue.serverTimestamp().toString(),
+                Timestamp.now(),
                 false
             )
             FirebaseFirestore.getInstance()
@@ -130,6 +131,13 @@ object Utils {
                     TODO()
                 }
         }
+    }
+
+    fun checkReadNotifications(userId: String){
+//        FirebaseFirestore.getInstance()
+//            .collection("User")
+//            .document(userId)
+//            .collection("Notification")
     }
 
 

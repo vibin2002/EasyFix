@@ -10,6 +10,7 @@ import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.GeoPoint
 import com.killerinstinct.hobsapp.Utils
+import com.killerinstinct.hobsapp.model.Notification
 import com.killerinstinct.hobsapp.model.Request
 import com.killerinstinct.hobsapp.model.User
 import com.killerinstinct.hobsapp.model.Worker
@@ -29,6 +30,9 @@ class UserMainViewModel: ViewModel() {
 
     private val _requests: MutableLiveData<List<Request>> = MutableLiveData()
     val requests: LiveData<List<Request>> = _requests
+
+    private val _notifications: MutableLiveData<List<Notification>> = MutableLiveData()
+    val notification: LiveData<List<Notification>> = _notifications
 
     fun getAllWorkers(){
         viewModelScope.launch {
@@ -58,8 +62,29 @@ class UserMainViewModel: ViewModel() {
                 .addOnSuccessListener {
                     _user.value = it.toObject(User::class.java)
                     Log.d(TAG, "fetchUserDetail: User fetched ${user.value}")
+                    getUserNotifications()
                 }.addOnFailureListener {
                     Log.d(TAG, "fetchUserDetail: User not fetched")
+                }
+        }
+    }
+
+    private fun getUserNotifications(){
+        viewModelScope.launch {
+            val userid = _user.value?.uid ?: return@launch
+            db.collection("User")
+                .document(userid)
+                .collection("Notifications")
+                .get()
+                .addOnSuccessListener {
+                    val list = mutableListOf<Notification>()
+                    it.forEach { document ->
+                        list.add(document.toObject(Notification::class.java))
+                    }
+                    _notifications.value = list.toList()
+                    Log.d(TAG, "getUserNotifications: ${notification.value}")
+                }.addOnFailureListener {
+                    TODO()
                 }
         }
     }
