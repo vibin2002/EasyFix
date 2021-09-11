@@ -19,7 +19,8 @@ import kotlinx.coroutines.launch
 
 class JobsAdapter(
     val context: Context,
-    val list: List<Job>
+    val list: List<Job>,
+    val workerId: (String) -> Unit
 ): RecyclerView.Adapter<JobsAdapter.JobViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): JobViewHolder {
@@ -51,6 +52,9 @@ class JobsAdapter(
         holder.time.text = list[position].reqTime
         holder.date.text = list[position].reqDate
         holder.description.text = list[position].description
+        holder.review.setOnClickListener {
+            workerId(list[position].toId)
+        }
     }
 
     override fun getItemCount() = list.size
@@ -59,6 +63,7 @@ class JobsAdapter(
         val workername = itemView.findViewById<TextView>(R.id.job_name)
         val time = itemView.findViewById<TextView>(R.id.jobtime)
         val date = itemView.findViewById<TextView>(R.id.jobdate)
+        val review = itemView.findViewById<TextView>(R.id.tv_review)
         val description = itemView.findViewById<TextView>(R.id.job_description)
         val image = itemView.findViewById<CircleImageView>(R.id.job_image)
     }

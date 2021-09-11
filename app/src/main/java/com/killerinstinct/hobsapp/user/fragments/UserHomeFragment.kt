@@ -28,6 +28,7 @@ import com.killerinstinct.hobsapp.adapters.JobsAdapter
 import com.killerinstinct.hobsapp.databinding.FragmentUserChatBinding
 import com.killerinstinct.hobsapp.databinding.FragmentUserHomeBinding
 import com.killerinstinct.hobsapp.model.Job
+import com.killerinstinct.hobsapp.user.ReviewDialog
 import com.killerinstinct.hobsapp.viewmodel.UserMainViewModel
 
 class UserHomeFragment : Fragment(),OnMapReadyCallback {
@@ -82,7 +83,16 @@ class UserHomeFragment : Fragment(),OnMapReadyCallback {
     }
 
     private fun setUpRecyclerView(list: List<Job>){
-        binding.userJobsRv.adapter = JobsAdapter(requireContext(),list)
+        binding.userJobsRv.adapter = JobsAdapter(requireContext(),list){
+            val user = viewModel.user.value ?: return@JobsAdapter
+            val dialog = ReviewDialog(
+                user.uid,
+                user.userName,
+                user.profile,
+                it
+            )
+            dialog.show(parentFragmentManager,"Example")
+        }
         binding.userJobsRv.layoutManager = LinearLayoutManager(requireContext())
     }
 

@@ -183,6 +183,20 @@ class UserMainViewModel: ViewModel() {
         }
     }
 
+    fun postReview(review: Review,workerId: String){
+        viewModelScope.launch {
+            db.collection("Worker")
+                .document(workerId)
+                .collection("Review")
+                .add(review)
+                .addOnSuccessListener {
+
+                }.addOnFailureListener {
+
+                }
+        }
+    }
+
 
 
 }
