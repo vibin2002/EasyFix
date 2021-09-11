@@ -16,7 +16,8 @@ class ReviewDialog(
     val userId: String,
     val userName: String,
     val userPropic: String,
-    val workerId: String
+    val workerId: String,
+    val hasPosted: (Boolean) -> Unit
 ): AppCompatDialogFragment() {
 
     private val viewModel: UserMainViewModel by activityViewModels()
@@ -38,7 +39,9 @@ class ReviewDialog(
                     userPropic,
                     Timestamp.now()
                 )
-                postReview(review,workerId)
+                viewModel.postReview(review,workerId){
+                    hasPosted(it)
+                }
             }
             .setNegativeButton("Cancel") { dialog, i ->
                 dismiss()
@@ -46,8 +49,5 @@ class ReviewDialog(
         return builder.create()
     }
 
-    private fun postReview(review: Review,workerId: String) {
-        viewModel.postReview(review,workerId)
-    }
 
 }

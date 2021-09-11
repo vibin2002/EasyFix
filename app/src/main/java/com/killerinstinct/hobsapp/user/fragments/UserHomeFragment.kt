@@ -20,6 +20,7 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.material.chip.Chip
+import com.google.android.material.snackbar.Snackbar
 import com.killerinstinct.hobsapp.ChooseLocationFragment
 import com.killerinstinct.hobsapp.PermissionUtils
 import com.killerinstinct.hobsapp.R
@@ -90,7 +91,13 @@ class UserHomeFragment : Fragment(),OnMapReadyCallback {
                 user.userName,
                 user.profile,
                 it
-            )
+            ){ isPosted ->
+                if (isPosted){
+                    Snackbar.make(requireView(), "Thanks for reviewing", Snackbar.LENGTH_LONG).show()
+                } else {
+                    Snackbar.make(requireView(), "Network Error", Snackbar.LENGTH_LONG).show()
+                }
+            }
             dialog.show(parentFragmentManager,"Example")
         }
         binding.userJobsRv.layoutManager = LinearLayoutManager(requireContext())

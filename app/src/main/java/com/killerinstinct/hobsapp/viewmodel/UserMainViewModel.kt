@@ -183,16 +183,16 @@ class UserMainViewModel: ViewModel() {
         }
     }
 
-    fun postReview(review: Review,workerId: String){
+    fun postReview(review: Review,workerId: String,hasPosted: (Boolean) -> Unit){
         viewModelScope.launch {
             db.collection("Worker")
                 .document(workerId)
                 .collection("Review")
                 .add(review)
                 .addOnSuccessListener {
-
+                    hasPosted(true)
                 }.addOnFailureListener {
-
+                    hasPosted(true)
                 }
         }
     }

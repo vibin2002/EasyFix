@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,28 +7,81 @@
     android:orientation="vertical"
     tools:context=".worker.fragments.WorkerPostDescriptionFragment">
 
-    <ImageView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/postImage"
-        android:minHeight="250dp"
-        android:layout_margin="15dp"
-        android:src="@android:drawable/ic_input_add" />
+        android:orientation="vertical">
 
-    <com.google.android.material.textfield.TextInputLayout
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="15dp">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="400dp">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/descriptionOfPost"
+
+            <ImageView
+                android:id="@+id/postImage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:minHeight="400dp" />
+
+            <ImageView
+                android:id="@+id/iv_imagepreview"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_centerInParent="true"
+                android:src="@drawable/ic_baseline_image_24" />
+
+            <TextView
+                android:id="@+id/tv_imagepreview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/iv_imagepreview"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="24dp"
+                android:text="Image Preview"
+                android:textSize="28sp" />
+
+        </RelativeLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Write a Caption..."
-            android:inputType="textMultiLine"
-            android:maxLines="100" />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_margin="15dp">
 
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/descriptionOfPost"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Write a Caption..."
+                android:inputType="textMultiLine"
+                android:maxLines="100" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-</LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <Button
+                android:id="@+id/upload_post"
+                android:layout_margin="12dp"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="upload" />
+
+            <Button
+                android:id="@+id/choose_image"
+                android:layout_margin="12dp"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Choose image" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

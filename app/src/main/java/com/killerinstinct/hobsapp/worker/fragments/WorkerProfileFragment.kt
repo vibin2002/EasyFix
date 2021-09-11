@@ -12,11 +12,13 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
 import com.bumptech.glide.Glide
 import com.killerinstinct.hobsapp.R
 import com.killerinstinct.hobsapp.Utils
 import com.killerinstinct.hobsapp.adapters.WorkerPostAdapter
 import com.killerinstinct.hobsapp.databinding.FragmentWorkerProfileBinding
+import com.killerinstinct.hobsapp.model.Post
 import com.killerinstinct.hobsapp.viewmodel.WorkerMainViewModel
 
 class WorkerProfileFragment : Fragment() {
@@ -55,14 +57,15 @@ class WorkerProfileFragment : Fragment() {
             findNavController().navigate(R.id.action_worker_navigation_profile_to_workerEditProfileFragment)
         }
 
-        viewModel.worker.observe(viewLifecycleOwner){
-            setUpRecyclerView(it.posts)
+        viewModel.posts.observe(viewLifecycleOwner){
+            setUpRecyclerView(it)
         }
 
     }
 
-    private fun setUpRecyclerView(list: List<String>){
+    private fun setUpRecyclerView(list: List<Post>){
         binding.postsRecyclerView.adapter = WorkerPostAdapter(requireContext(),list)
+        binding.postsRecyclerView.layoutManager = GridLayoutManager(requireContext(),3)
     }
 
 
@@ -96,6 +99,8 @@ class WorkerProfileFragment : Fragment() {
 
         }
     }
+
+
 
 
 }

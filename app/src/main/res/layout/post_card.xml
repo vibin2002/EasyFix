@@ -6,7 +6,7 @@
 
     <ImageView
         android:scaleType="centerCrop"
-        android:id="@+id/postImage"
+        android:id="@+id/worker_post_iv"
         android:layout_width="match_parent"
         android:layout_height="160dp"
         android:layout_margin="2dp"

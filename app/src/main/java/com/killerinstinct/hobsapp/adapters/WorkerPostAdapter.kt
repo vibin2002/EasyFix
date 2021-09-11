@@ -10,11 +10,12 @@ import androidx.navigation.NavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.killerinstinct.hobsapp.R
+import com.killerinstinct.hobsapp.model.Post
 import com.killerinstinct.hobsapp.model.Worker
 
 class WorkerPostAdapter(
     private val context: Context,
-    private var list: List<String>
+    private var list: List<Post>
 ) : RecyclerView.Adapter<WorkerPostAdapter.WorkerPostViewHolder>() {
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -27,14 +28,14 @@ class WorkerPostAdapter(
 
     override fun onBindViewHolder(holder: WorkerPostAdapter.WorkerPostViewHolder, position: Int) {
         Glide.with(context)
-            .load(list[position])
+            .load(list[position].url)
             .into(holder.photoView)
     }
 
     override fun getItemCount() = list.size
 
     inner class WorkerPostViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val photoView: ImageView = itemView.findViewById<ImageView>(R.id.postImage)
+        val photoView: ImageView = itemView.findViewById<ImageView>(R.id.worker_post_iv)
     }
 
 }

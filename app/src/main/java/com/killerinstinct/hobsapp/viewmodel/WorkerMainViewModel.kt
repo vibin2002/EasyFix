@@ -137,37 +137,49 @@ class WorkerMainViewModel : ViewModel() {
                 }
         }
     }
-//    fun uploadPost(post: Post){
-//        viewModelScope.launch {
-//            var rightNow=Calendar.getInstance()
-//            val ref = storage.getReference("Post" +
-//                    "-${rightNow.get(Calendar.DATE)}" +
-//                    "-${rightNow.get(Calendar.MONTH)}" +
-//                    "-${rightNow.get(Calendar.YEAR)}" +
-//                    "-${rightNow.get(Calendar.HOUR)}" +
-//                    "-${rightNow.get(Calendar.MINUTE)}" +
-//                    "-${rightNow.get(Calendar.MILLISECOND)}")
-//            ref.putFile(uri)
-//                .addOnSuccessListener {
-//                    Log.d("ImageUploding", "uploadImage: Success")
-//                    ref.downloadUrl.addOnSuccessListener {
-//                        if (userUid != null) {
-//                            db.collection("Worker")
-//                                .document(userUid)
-//                                .collection("Posts")
-//                                .add(workerPost)
-//                                .addOnSuccessListener {
-//                                    Log.e("ImageUploding","uploaded...")
-//                                }
-//                                .addOnFailureListener{
-//                                    Log.e("ImageUploding","${it.message.toString()}")
-//                                }
-//                        }
-//                    }
-//
-//                }
-//        }
-//    }
+    fun uploadPost(
+        uri: Uri,
+        description: String,
+        workerId: String,
+        isUploaded: (Boolean) -> Unit
+    ){
+        viewModelScope.launch {
+            val rightNow=Calendar.getInstance()
+            val ref = storage.getReference("Post" +
+                    "-${rightNow.get(Calendar.DATE)}" +
+                    "-${rightNow.get(Calendar.MONTH)}" +
+                    "-${rightNow.get(Calendar.YEAR)}" +
+                    "-${rightNow.get(Calendar.HOUR)}" +
+                    "-${rightNow.get(Calendar.MINUTE)}" +
+                    "-${rightNow.get(Calendar.MILLISECOND)}")
+            ref.putFile(uri)
+                .addOnSuccessListener {
+                    Log.d("ImageUploding", "uploadImage: Success")
+                    ref.downloadUrl.addOnSuccessListener {
+                        val post = Post(
+                            description,
+                            it.toString(),
+                            Timestamp.now()
+                        )
+                        db.collection("Worker")
+                            .document(workerId)
+                            .collection("Posts")
+                            .add(post)
+                            .addOnSuccessListener {
+                                Log.e("ImageUploding","uploaded...")
+                                isUploaded(true)
+                            }
+                            .addOnFailureListener {
+                                Log.e("ImageUploding", it.message.toString())
+                                isUploaded(false)
+                            }
+                    }.addOnFailureListener {
+                        isUploaded(false)
+                    }
+
+                }
+        }
+    }
 
     fun getWorkerRequests(){
         db.collection("Request")
@@ -244,7 +256,7 @@ class WorkerMainViewModel : ViewModel() {
             }
     }
 
-    private fun fetchWorkerPosts(userUid: String){
+    fun fetchWorkerPosts(userUid: String){
         db.collection("Worker")
             .document(userUid)
             .collection("Posts")
