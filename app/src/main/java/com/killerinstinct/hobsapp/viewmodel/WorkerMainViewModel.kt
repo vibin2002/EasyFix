@@ -6,6 +6,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.Timestamp
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FieldValue
@@ -136,6 +137,37 @@ class WorkerMainViewModel : ViewModel() {
                 }
         }
     }
+//    fun uploadPost(post: Post){
+//        viewModelScope.launch {
+//            var rightNow=Calendar.getInstance()
+//            val ref = storage.getReference("Post" +
+//                    "-${rightNow.get(Calendar.DATE)}" +
+//                    "-${rightNow.get(Calendar.MONTH)}" +
+//                    "-${rightNow.get(Calendar.YEAR)}" +
+//                    "-${rightNow.get(Calendar.HOUR)}" +
+//                    "-${rightNow.get(Calendar.MINUTE)}" +
+//                    "-${rightNow.get(Calendar.MILLISECOND)}")
+//            ref.putFile(uri)
+//                .addOnSuccessListener {
+//                    Log.d("ImageUploding", "uploadImage: Success")
+//                    ref.downloadUrl.addOnSuccessListener {
+//                        if (userUid != null) {
+//                            db.collection("Worker")
+//                                .document(userUid)
+//                                .collection("Posts")
+//                                .add(workerPost)
+//                                .addOnSuccessListener {
+//                                    Log.e("ImageUploding","uploaded...")
+//                                }
+//                                .addOnFailureListener{
+//                                    Log.e("ImageUploding","${it.message.toString()}")
+//                                }
+//                        }
+//                    }
+//
+//                }
+//        }
+//    }
 
     fun getWorkerRequests(){
         db.collection("Request")

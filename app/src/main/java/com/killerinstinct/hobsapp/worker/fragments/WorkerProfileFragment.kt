@@ -24,6 +24,7 @@ class WorkerProfileFragment : Fragment() {
     lateinit var binding: FragmentWorkerProfileBinding
     private val TAG = "WorkerProfile"
     private val viewModel: WorkerMainViewModel by activityViewModels()
+    private var imageUri: Uri? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -32,7 +33,6 @@ class WorkerProfileFragment : Fragment() {
     ): View {
         setWorkerData()
         binding = FragmentWorkerProfileBinding.inflate(inflater, container, false)
-
         return binding.root
     }
 
@@ -42,6 +42,9 @@ class WorkerProfileFragment : Fragment() {
             var i=Intent(Intent.ACTION_DIAL)
             i.setData(Uri.parse("tel:"+(binding.phno.text)))
             startActivity(i)
+        }
+        binding.addPosts.setOnClickListener {
+            findNavController().navigate(R.id.action_worker_navigation_profile_to_workerPostDescriptionFragment)
         }
         binding.mailIntent.setOnClickListener {
              var mailIntent=Intent(Intent.ACTION_VIEW,Uri.parse("mailto:"+binding.email.text))
@@ -93,5 +96,6 @@ class WorkerProfileFragment : Fragment() {
 
         }
     }
+
 
 }

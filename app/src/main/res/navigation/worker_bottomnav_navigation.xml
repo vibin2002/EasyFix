@@ -41,6 +41,9 @@
         <action
             android:id="@+id/action_worker_navigation_profile_to_workerEditProfileFragment"
             app:destination="@id/workerEditProfileFragment" />
+        <action
+            android:id="@+id/action_worker_navigation_profile_to_workerPostDescriptionFragment"
+            app:destination="@id/workerPostDescriptionFragment" />
     </fragment>
     <fragment
         android:id="@+id/showProfileFragment"
@@ -115,5 +118,10 @@
             app:argType="float"
             android:defaultValue="0.0" />
     </fragment>
+    <fragment
+        android:id="@+id/workerPostDescriptionFragment"
+        android:name="com.killerinstinct.hobsapp.worker.fragments.WorkerPostDescriptionFragment"
+        android:label="fragment_worker_post_description"
+        tools:layout="@layout/fragment_worker_post_description" />
 
 </navigation>
