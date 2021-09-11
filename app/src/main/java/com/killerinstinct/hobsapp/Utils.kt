@@ -10,6 +10,7 @@ import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import com.killerinstinct.hobsapp.model.Job
 import com.killerinstinct.hobsapp.model.Notification
+import com.killerinstinct.hobsapp.model.Review
 import com.killerinstinct.hobsapp.model.Worker
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -163,6 +164,22 @@ object Utils {
                     }
             }
         }
+    }
+
+    fun getSpecificUserReviews(workerId: String,reviews: (List<Review>) -> Unit){
+        FirebaseFirestore.getInstance()
+            .collection("Worker")
+            .document(workerId)
+            .collection("Review")
+            .get()
+            .addOnSuccessListener {
+                val list = mutableListOf<Review>()
+                it.forEach { doc ->
+                    val review = doc.toObject(Review::class.java)
+                    list.add(review)
+                }
+                reviews(list.toList())
+            }
     }
 
 }

@@ -53,7 +53,7 @@ class UserShowProfileFragment : Fragment() {
                 tutMinwage.text = it.minWage
                 tutExperience.text = it.experience
                 tutCategory.text = it.category.toString().removePrefix("[").removeSuffix("]")
-                usrReviewCount.text = it.ratersCount
+                usrReviewCount.text = "${it.ratersCount} reviewers"
                 usrRating.text = it.rating
                 if (it.profilePic != "") {
                     Log.d("Glidy", "onViewCreated: podA")
@@ -86,6 +86,13 @@ class UserShowProfileFragment : Fragment() {
 
         viewModel.getSpecificWorkerPosts(args.workerId){
             setUpRecyclerView(it)
+        }
+
+        binding.allReviewsTv.setOnClickListener {
+            val action = UserShowProfileFragmentDirections.actionUserShowProfileFragmentToReviewFragment(
+                args.workerId
+            )
+            findNavController().navigate(action)
         }
 
 

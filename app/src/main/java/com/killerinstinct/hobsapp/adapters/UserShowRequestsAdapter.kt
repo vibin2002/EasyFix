@@ -35,7 +35,7 @@ class UserShowRequestsAdapter(
                 .get().addOnSuccessListener {
                     val worker = it.toObject(Worker::class.java)
                     holder.name.text = worker?.userName ?: "NULL"
-                    if(worker == null) {
+                    if(worker == null || worker.profilePic.length < 5) {
                         holder.imageView.setImageDrawable(
                             AppCompatResources.getDrawable(
                                 context,
