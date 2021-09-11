@@ -38,9 +38,19 @@ class JobsAdapter(
                     holder.workername.text = worker?.userName ?: "NULL"
                     if(worker == null)
                         return@addOnSuccessListener
-                    Glide.with(context)
-                        .load(worker.profilePic)
-                        .into(holder.image)
+                    if (worker.profilePic.length < 5)
+                    {
+                        holder.image.setImageDrawable(
+                            AppCompatResources.getDrawable(
+                                context,
+                                R.drawable.ic_person
+                            )
+                        )
+                    } else {
+                        Glide.with(context)
+                            .load(worker.profilePic)
+                            .into(holder.image)
+                    }
                 }
         }
         holder.image.setImageDrawable(

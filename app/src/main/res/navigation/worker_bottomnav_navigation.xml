@@ -12,7 +12,11 @@
         tools:layout="@layout/fragment_worker_home" >
         <action
             android:id="@+id/action_worker_navigation_home_to_showRequestsFragment"
-            app:destination="@id/showRequestsFragment" />
+            app:destination="@id/showRequestsFragment"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/slide_in"
+            app:popExitAnim="@anim/slide_out" />
     </fragment>
     <fragment
         android:id="@+id/worker_navigation_search"
@@ -21,7 +25,11 @@
         tools:layout="@layout/fragment_worker_search" >
         <action
             android:id="@+id/action_worker_navigation_search_to_showProfileFragment"
-            app:destination="@id/showProfileFragment" />
+            app:destination="@id/showProfileFragment"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/slide_in"
+            app:popExitAnim="@anim/slide_out" />
     </fragment>
     <fragment
         android:id="@+id/worker_navigation_chat"
@@ -40,10 +48,18 @@
         tools:layout="@layout/fragment_worker_profile" >
         <action
             android:id="@+id/action_worker_navigation_profile_to_workerEditProfileFragment"
-            app:destination="@id/workerEditProfileFragment" />
+            app:destination="@id/workerEditProfileFragment"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/slide_in"
+            app:popExitAnim="@anim/slide_out" />
         <action
             android:id="@+id/action_worker_navigation_profile_to_workerPostDescriptionFragment"
-            app:destination="@id/workerPostDescriptionFragment" />
+            app:destination="@id/workerPostDescriptionFragment"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/slide_in"
+            app:popExitAnim="@anim/slide_out" />
     </fragment>
     <fragment
         android:id="@+id/showProfileFragment"
@@ -57,7 +73,11 @@
 
         <action
             android:id="@+id/action_showProfileFragment_to_workerHiringFragment"
-            app:destination="@id/workerHiringFragment" />
+            app:destination="@id/workerHiringFragment"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/slide_in"
+            app:popExitAnim="@anim/slide_out" />
 
     </fragment>
     <fragment
@@ -90,7 +110,11 @@
         tools:layout="@layout/fragment_show_requests" >
         <action
             android:id="@+id/action_showRequestsFragment_to_workerViewLocationFragment"
-            app:destination="@id/workerViewLocationFragment" />
+            app:destination="@id/workerViewLocationFragment"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/slide_in"
+            app:popExitAnim="@anim/slide_out" />
     </fragment>
     <fragment
         android:id="@+id/workerViewLocationFragment"

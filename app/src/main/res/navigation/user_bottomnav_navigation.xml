@@ -12,7 +12,11 @@
         tools:layout="@layout/fragment_user_home" >
         <action
             android:id="@+id/action_user_navigation_home_to_userShowRequestsFragment"
-            app:destination="@id/userShowRequestsFragment" />
+            app:destination="@id/userShowRequestsFragment"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/slide_in"
+            app:popExitAnim="@anim/slide_out" />
     </fragment>
     <fragment
         android:id="@+id/user_navigation_search"
@@ -21,7 +25,11 @@
         tools:layout="@layout/fragment_user_search" >
         <action
             android:id="@+id/action_user_navigation_search_to_userShowProfileFragment"
-            app:destination="@id/userShowProfileFragment" />
+            app:destination="@id/userShowProfileFragment"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/slide_in"
+            app:popExitAnim="@anim/slide_out" />
     </fragment>
     <fragment
         android:id="@+id/user_navigation_notifications"

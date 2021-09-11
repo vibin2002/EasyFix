@@ -52,7 +52,6 @@ class UserSearchFragment : Fragment() {
         binding.searchRv.apply {
             adapter = searchAdapter
             layoutManager = LinearLayoutManager(requireContext())
-            addItemDecoration(DividerItemDecoration(requireContext(),DividerItemDecoration.VERTICAL))
         }
 
         viewModel.allWorkers.observe(viewLifecycleOwner){
