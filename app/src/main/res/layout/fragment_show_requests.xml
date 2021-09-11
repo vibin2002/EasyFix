@@ -33,6 +33,7 @@
         android:id="@+id/show_req_rv"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layoutAnimation="@anim/layout_animation"
         android:layout_marginTop="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />

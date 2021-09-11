@@ -1,13 +1,12 @@
 package com.killerinstinct.hobsapp.user.fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.killerinstinct.hobsapp.R
 import com.killerinstinct.hobsapp.adapters.UserShowRequestsAdapter
 import com.killerinstinct.hobsapp.databinding.FragmentUserShowRequestsBinding
 import com.killerinstinct.hobsapp.model.Request
@@ -30,8 +29,11 @@ class UserShowRequestsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.progbarreq.visibility = View.VISIBLE
+
         viewModel.getUserRequests()
         viewModel.requests.observe(viewLifecycleOwner){
+            binding.progbarreq.visibility = View.GONE
             setUpRecyclerView(it)
         }
 

@@ -19,6 +19,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/wrkr_notify_rv"
         android:layout_width="match_parent"
+        android:layoutAnimation="@anim/layout_animation"
         android:layout_height="0dp"
         android:layout_marginTop="16dp"
         app:layout_constraintBottom_toBottomOf="parent"

@@ -371,6 +371,18 @@
             </LinearLayout>
 
 
+            <TextView
+                android:layout_margin="12dp"
+                android:text="Posts"
+                android:textSize="22sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/showprofile_rv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
         </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>
