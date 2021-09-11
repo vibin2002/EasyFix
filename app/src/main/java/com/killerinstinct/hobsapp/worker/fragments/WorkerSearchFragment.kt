@@ -13,6 +13,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.chip.Chip
 import com.killerinstinct.hobsapp.adapters.SearchAdapter
 import com.killerinstinct.hobsapp.databinding.FragmentWorkerSearchBinding
 import com.killerinstinct.hobsapp.model.Worker
@@ -54,6 +55,14 @@ class WorkerSearchFragment : Fragment() {
             searchAdapter.notifyDataSetChanged()
         }
 
+        binding.searchCatchips.setOnCheckedChangeListener { _, checkedId ->
+            val chip = view.findViewById<Chip>(checkedId)
+            if(chip == null){
+                searchAdapter.filter.filter("")
+                return@setOnCheckedChangeListener
+            }
+            searchAdapter.filter.filter((chip as Chip).text)
+        }
         binding.wrkrsearchview.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(query: String?): Boolean {
                 return true

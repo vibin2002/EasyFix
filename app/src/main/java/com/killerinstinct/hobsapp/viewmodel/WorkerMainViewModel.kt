@@ -12,6 +12,7 @@ import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import com.killerinstinct.hobsapp.model.Job
+import com.killerinstinct.hobsapp.model.Post
 import com.killerinstinct.hobsapp.model.Request
 import com.killerinstinct.hobsapp.model.Worker
 import kotlinx.coroutines.launch
@@ -34,6 +35,9 @@ class WorkerMainViewModel : ViewModel() {
     private val _requests: MutableLiveData<List<Request>> = MutableLiveData()
     val requests: LiveData<List<Request>> = _requests
 
+    private val _posts: MutableLiveData<List<Post>> = MutableLiveData()
+    val posts: LiveData<List<Post>> = _posts
+
     fun getWorkerDetails() {
         viewModelScope.launch {
             if (userUid == null)
@@ -44,6 +48,7 @@ class WorkerMainViewModel : ViewModel() {
                 .addOnSuccessListener {
                     val worker = it.toObject(Worker::class.java)
                     _worker.value = worker
+                    fetchWorkerPosts(_worker.value!!.uid)
                 }.addOnFailureListener {
                     Log.d(TAG, "getWorkerDetails: $it")
                 }
@@ -204,6 +209,23 @@ class WorkerMainViewModel : ViewModel() {
                     }
             }.addOnFailureListener {
 
+            }
+    }
+
+    private fun fetchWorkerPosts(userUid: String){
+        db.collection("Worker")
+            .document(userUid)
+            .collection("Posts")
+            .get().addOnSuccessListener {
+                val mutableList = mutableListOf<Post>()
+                it.forEach { doc ->
+                    val post = doc.toObject(Post::class.java)
+                    mutableList.add(post)
+                }
+                _posts.value = mutableList.toList()
+                Log.d(TAG, "fetchWorkerPosts: Successful")
+            }.addOnFailureListener {
+                Log.d(TAG, "fetchWorkerPosts: Failure")
             }
     }
 

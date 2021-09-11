@@ -13,33 +13,47 @@
         android:padding="12dp"
         android:orientation="horizontal">
 
-        <androidx.appcompat.widget.SearchView
-            android:id="@+id/wrkrsearchview"
+        <androidx.cardview.widget.CardView
+            android:elevation="24dp"
+            app:cardCornerRadius="24dp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-
-            app:iconifiedByDefault="false"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/circleImageView2"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageButton
-            android:padding="12dp"
-            android:id="@+id/circleImageView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:src="@drawable/ic_filter"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:contentDescription="filter" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.SearchView
+                android:inputType="textCapSentences"
+                android:id="@+id/wrkrsearchview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                app:queryHint="Search"
+                style="@style/Widget.AppCompat.SearchView"
+                app:iconifiedByDefault="false"
+                />
+
+        </androidx.cardview.widget.CardView>
+
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
+    <HorizontalScrollView
+        android:paddingHorizontal="12dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none">
+
+        <com.google.android.material.chip.ChipGroup
+            app:singleSelection="true"
+            android:id="@+id/search_catchips"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </HorizontalScrollView>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/search_rv"

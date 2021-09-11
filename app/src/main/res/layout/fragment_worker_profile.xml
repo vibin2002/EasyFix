@@ -342,14 +342,33 @@
             </androidx.cardview.widget.CardView>
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="100">
+
         <TextView
+            android:layout_weight="70"
+            android:layout_gravity="center"
             android:textSize="24sp"
-            android:layout_marginBottom="24dp"
             android:text="My Posts"
-            android:layout_marginStart="24dp"
+            android:paddingStart="24dp"
             android:textColor="@color/text_blue"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"/>
+
+            <Button
+                android:layout_gravity="center|end"
+                android:text="Add post"
+                android:id="@+id/add_posts"
+                android:layout_marginEnd="24dp"
+                android:layout_weight="30"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/posts_recycler_view"
