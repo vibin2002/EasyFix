@@ -20,6 +20,7 @@
             android:orientation="horizontal">
 
             <TextView
+                android:id="@+id/wrkr_review_count"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="15dp"
@@ -30,6 +31,7 @@
                 android:textSize="15dp" />
 
             <TextView
+                android:id="@+id/wrkr_rating"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
@@ -94,14 +96,6 @@
             android:fontFamily="@font/nunito_bold"
             android:text="Carpenter, Painter, Plumber"
             android:textSize="15dp" />
-
-        <Button
-            android:layout_marginTop="12dp"
-            android:layout_gravity="center"
-            android:id="@+id/btn_hire"
-            android:text="Hire"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
 
         <LinearLayout
             android:layout_width="match_parent"

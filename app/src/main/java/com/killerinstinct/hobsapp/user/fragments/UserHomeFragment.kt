@@ -12,6 +12,7 @@ import androidx.core.app.ActivityCompat
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bumptech.glide.util.Util
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -94,6 +95,11 @@ class UserHomeFragment : Fragment(),OnMapReadyCallback {
             ){ isPosted ->
                 if (isPosted){
                     Snackbar.make(requireView(), "Thanks for reviewing", Snackbar.LENGTH_LONG).show()
+                    Utils.sendNotificationToWorker(
+                        user.profile,
+                        "${user.userName} has given review on your work",
+                        it
+                    )
                 } else {
                     Snackbar.make(requireView(), "Network Error", Snackbar.LENGTH_LONG).show()
                 }

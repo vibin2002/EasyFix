@@ -71,38 +71,12 @@
             android:defaultValue="NULL"
             app:argType="string" />
 
-        <action
-            android:id="@+id/action_showProfileFragment_to_workerHiringFragment"
-            app:destination="@id/workerHiringFragment"
-            app:enterAnim="@anim/fade_in"
-            app:exitAnim="@anim/fade_out"
-            app:popEnterAnim="@anim/slide_in"
-            app:popExitAnim="@anim/slide_out" />
-
     </fragment>
     <fragment
         android:id="@+id/workerEditProfileFragment"
         android:name="com.killerinstinct.hobsapp.worker.fragments.WorkerEditProfileFragment"
         android:label="fragment_worker_edit_profile"
         tools:layout="@layout/fragment_worker_edit_profile" />
-    <fragment
-        android:id="@+id/workerHiringFragment"
-        android:name="com.killerinstinct.hobsapp.worker.WorkerHiringFragment"
-        android:label="fragment_worker_hiring"
-        tools:layout="@layout/fragment_worker_hiring" >
-        <argument
-            android:name="workerName"
-            app:argType="string"
-            android:defaultValue="NULL" />
-        <argument
-            android:name="workerCategory"
-            app:argType="string"
-            android:defaultValue="NULL" />
-        <argument
-            android:name="propic"
-            app:argType="string"
-            android:defaultValue=""/>
-    </fragment>
     <fragment
         android:id="@+id/showRequestsFragment"
         android:name="com.killerinstinct.hobsapp.worker.fragments.ShowRequestsFragment"

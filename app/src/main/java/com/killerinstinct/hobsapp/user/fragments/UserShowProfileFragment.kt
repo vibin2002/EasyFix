@@ -47,6 +47,8 @@ class UserShowProfileFragment : Fragment() {
                 tutMinwage.text = it.minWage
                 tutExperience.text = it.experience
                 tutCategory.text = it.category.toString().removePrefix("[").removeSuffix("]")
+                usrReviewCount.text = it.ratersCount
+                usrRating.text = it.rating
                 if (it.profilePic != "") {
                     Log.d("Glidy", "onViewCreated: podA")
                     Glide.with(requireContext())

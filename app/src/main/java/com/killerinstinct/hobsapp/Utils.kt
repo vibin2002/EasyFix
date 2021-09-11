@@ -120,15 +120,10 @@ object Utils {
                 false
             )
             FirebaseFirestore.getInstance()
-                .collection("User")
+                .collection("Worker")
                 .document(workerId)
                 .collection("Notifications")
                 .add(notification)
-                .addOnSuccessListener {
-                    TODO()
-                }.addOnFailureListener {
-                    TODO()
-                }
         }
     }
 
@@ -151,5 +146,23 @@ object Utils {
         }
     }
 
+    fun checkReadNotificationsWorker(workerId: String, ids: List<String>) {
+        val db = FirebaseFirestore.getInstance()
+            .collection("Worker")
+            .document(workerId)
+            .collection("Notifications")
+        ids.forEach {
+            Log.d("Notifivation", "checkReadNotifications: $it")
+            CoroutineScope(Dispatchers.IO).launch {
+                db.document(it.trim())
+                    .update(mapOf("hasRead" to true))
+                    .addOnSuccessListener {
+                        Log.d("Notifivation", "checkReadNotifications: booom")
+                    }.addOnFailureListener {
+
+                    }
+            }
+        }
+    }
 
 }

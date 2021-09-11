@@ -45,6 +45,8 @@ class ShowProfileFragment : Fragment() {
                 tutMinwage.text = it.minWage
                 tutExperience.text = it.experience
                 tutCategory.text = it.category.toString().removePrefix("[").removeSuffix("]")
+                wrkrReviewCount.text = it.ratersCount
+                wrkrRating.text = it.rating
                 if (it.profilePic != "") {
                     Log.d("Glidy", "onViewCreated: podA")
                     Glide.with(requireContext())
@@ -59,16 +61,6 @@ class ShowProfileFragment : Fragment() {
             }
         }
 //
-        binding.btnHire.setOnClickListener {
-            if (worker == null)
-                return@setOnClickListener
-            val action = ShowProfileFragmentDirections.actionShowProfileFragmentToWorkerHiringFragment(
-                worker!!.userName,
-                worker!!.category.toString().removePrefix("[").removeSuffix("]"),
-                worker!!.profilePic
-            )
-            findNavController().navigate(action)
-        }
 
 
 

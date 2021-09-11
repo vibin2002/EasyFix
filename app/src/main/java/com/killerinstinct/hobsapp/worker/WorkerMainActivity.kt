@@ -24,7 +24,19 @@ class WorkerMainActivity : AppCompatActivity() {
         binding = ActivityWorkerMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-      setupNav()
+        viewModel.getWorkerDetails()
+        setupNav()
+        viewModel.notification.observe(this){ notiList ->
+            var count = 0
+            notiList.forEach {
+                if (!it.hasRead)
+                    count++
+            }
+            if (count > 0) {
+                binding.workerBtmNavbar.getOrCreateBadge(R.id.worker_navigation_notifications)
+                    .number = count
+            }
+        }
 
 
     }

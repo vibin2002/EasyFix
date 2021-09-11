@@ -12,10 +12,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
-import com.killerinstinct.hobsapp.model.Job
-import com.killerinstinct.hobsapp.model.Post
-import com.killerinstinct.hobsapp.model.Request
-import com.killerinstinct.hobsapp.model.Worker
+import com.killerinstinct.hobsapp.model.*
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.*
@@ -39,6 +36,12 @@ class WorkerMainViewModel : ViewModel() {
     private val _posts: MutableLiveData<List<Post>> = MutableLiveData()
     val posts: LiveData<List<Post>> = _posts
 
+    private val _notifications: MutableLiveData<List<Notification>> = MutableLiveData()
+    val notification: LiveData<List<Notification>> = _notifications
+
+    private val _notifyIds: MutableLiveData<List<String>> = MutableLiveData()
+    val notifyIds: LiveData<List<String>> = _notifyIds
+
     fun getWorkerDetails() {
         viewModelScope.launch {
             if (userUid == null)
@@ -50,6 +53,7 @@ class WorkerMainViewModel : ViewModel() {
                     val worker = it.toObject(Worker::class.java)
                     _worker.value = worker
                     fetchWorkerPosts(_worker.value!!.uid)
+                    getWorkerNotifications()
                 }.addOnFailureListener {
                     Log.d(TAG, "getWorkerDetails: $it")
                 }
@@ -273,5 +277,25 @@ class WorkerMainViewModel : ViewModel() {
             }
     }
 
+    private fun getWorkerNotifications(){
+        viewModelScope.launch {
+            val workerId = _worker.value?.uid ?: return@launch
+            db.collection("Worker")
+                .document(workerId)
+                .collection("Notifications")
+                .get()
+                .addOnSuccessListener {
+                    val list = mutableListOf<Notification>()
+                    val ids = mutableListOf<String>()
+                    it.forEach { document ->
+                        ids.add(document.id)
+                        list.add(document.toObject(Notification::class.java))
+                    }
+                    _notifications.value = list.toList()
+                    _notifyIds.value = ids.toList()
+                    Log.d(TAG, "getUserNotifications: ${notification.value}")
+                }
+        }
+    }
 
 }
