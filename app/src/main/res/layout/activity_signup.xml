@@ -15,6 +15,15 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Create a new Account"
+            android:textSize="18dp"
+            android:textColor="@color/text_blue"
+            android:fontFamily="@font/nunito_bold"
+            android:layout_marginBottom="10dp"/>
+
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -24,6 +33,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/sp_username"
+                android:fontFamily="@font/nunito"
                 android:hint="Username" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -38,6 +48,7 @@
                 android:inputType="textEmailAddress"
                 android:layout_height="wrap_content"
                 android:id="@+id/sp_email"
+                android:fontFamily="@font/nunito"
                 android:hint="Email" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -52,6 +63,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/sp_password"
+                android:fontFamily="@font/nunito"
                 android:inputType="textPassword"
                 android:hint="Password" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -68,6 +80,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="50"
+                android:fontFamily="@font/nunito"
                 android:text="Worker"
                 android:textSize="16sp" />
 
@@ -76,6 +89,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="50"
+                android:fontFamily="@font/nunito"
                 android:text="User"
                 android:textSize="16sp" />
         </RadioGroup>
@@ -84,6 +98,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/sp_btn"
+            android:fontFamily="@font/nunito"
             android:layout_marginTop="20dp"
             android:text="Signup" />
 
@@ -91,6 +106,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/already_hav_acc"
+            android:fontFamily="@font/nunito"
             android:layout_marginTop="10dp"
             android:text="Already have an account?Login here"
             android:textAlignment="center" />
