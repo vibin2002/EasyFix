@@ -2,12 +2,14 @@ package com.killerinstinct.hobsapp.worker.fragments
 
 import android.opengl.Visibility
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import com.killerinstinct.hobsapp.R
 import com.killerinstinct.hobsapp.Utils
@@ -20,6 +22,7 @@ class WorkerJobsFragment : Fragment() {
 
     lateinit var binding: FragmentWorkerJobsBinding
     private val viewModel: WorkerMainViewModel by activityViewModels()
+    private val TAG = "WorkerJobsFragment"
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -44,6 +47,7 @@ class WorkerJobsFragment : Fragment() {
     }
 
     private fun setUpRecyclerView(list: List<Job>){
+        Log.d(TAG, "setUpRecyclerView: $list")
         binding.workerJobsrv.adapter = WorkerJobsAdapter(viewModel.worker.value!!.location,findNavController(),requireContext(),list){
             viewModel.markJobAsCompleted(it.second){
                 if (it){
@@ -62,6 +66,7 @@ class WorkerJobsFragment : Fragment() {
                 it.first
             )
         }
+        binding.workerJobsrv.layoutManager = LinearLayoutManager(requireContext())
     }
 
 }

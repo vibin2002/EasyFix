@@ -42,11 +42,9 @@ class WorkerNotificationFragment : Fragment() {
 
         viewModel.notification.observe(viewLifecycleOwner){
             setupRecyclerView(it)
-//
         }
         viewModel.notifyIds.observe(viewLifecycleOwner){
             val workerId = viewModel.worker.value?.uid ?: return@observe
-            Toast.makeText(requireContext(), "$it", Toast.LENGTH_SHORT).show()
             Utils.checkReadNotificationsWorker(workerId,it)
         }
 

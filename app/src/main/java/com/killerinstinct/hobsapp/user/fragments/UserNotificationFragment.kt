@@ -47,7 +47,6 @@ class UserNotificationFragment : Fragment() {
         }
         viewModel.notifyIds.observe(viewLifecycleOwner){
             val userId = viewModel.user.value?.uid ?: return@observe
-            Toast.makeText(requireContext(), "$it", Toast.LENGTH_SHORT).show()
             Utils.checkReadNotifications(userId,it)
         }
 

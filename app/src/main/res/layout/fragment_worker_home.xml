@@ -46,16 +46,6 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/reqs"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginEnd="16dp"
-                android:src="@drawable/ic_baseline_event_note"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/home_propic"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <de.hdodenhof.circleimageview.CircleImageView
                 app:civ_border_width="1dp"
                 app:civ_border_color="@color/grey"
                 android:id="@+id/home_propic"
@@ -87,11 +77,84 @@
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"/>
 
-         <androidx.recyclerview.widget.RecyclerView
-             android:id="@+id/user_jobs_rv"
-             android:layoutAnimation="@anim/layout_animation"
+         <LinearLayout
              android:layout_width="match_parent"
-             android:layout_height="wrap_content"/>
+             android:layout_height="wrap_content"
+             android:orientation="horizontal"
+             android:padding="12dp">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/wrkrcardreq"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="15dp"
+                android:layout_weight="1"
+                app:cardCornerRadius="20dp">
+
+               <LinearLayout
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_gravity="center"
+                   android:orientation="vertical">
+
+                  <TextView
+                      android:id="@+id/wrkr_tv_pendingcount"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_gravity="center"
+                      android:layout_margin="10dp"
+                      android:text="5"
+                      android:textSize="20dp" />
+
+                  <TextView
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_marginStart="10dp"
+                      android:layout_marginEnd="10dp"
+                      android:layout_marginBottom="10dp"
+                      android:text="Pending Requests" />
+
+
+               </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/wrkrcardjobs"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_weight="1"
+                app:cardCornerRadius="20dp">
+
+               <LinearLayout
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_gravity="center"
+                   android:orientation="vertical">
+
+                  <TextView
+                      android:id="@+id/wrkr_tv_jobscount"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_gravity="center"
+                      android:layout_margin="10dp"
+                      android:text="585"
+                      android:textSize="20dp" />
+
+                  <TextView
+                      android:layout_width="120dp"
+                      android:layout_height="wrap_content"
+                      android:layout_marginStart="10dp"
+                      android:layout_marginEnd="10dp"
+                      android:textAlignment="center"
+                      android:layout_marginBottom="10dp"
+                      android:text="All appoinments" />
+
+               </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+
+         </LinearLayout>
 
          <TextView
              android:padding="8dp"

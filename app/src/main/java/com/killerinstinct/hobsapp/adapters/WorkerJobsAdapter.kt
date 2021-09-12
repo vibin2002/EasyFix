@@ -33,7 +33,7 @@ class WorkerJobsAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WorkerJobViewHolder {
         return WorkerJobViewHolder(
-            LayoutInflater.from(parent.context).inflate(R.layout.user_job_card,parent,false)
+            LayoutInflater.from(parent.context).inflate(R.layout.worker_job_card,parent,false)
         )
     }
 
@@ -62,12 +62,6 @@ class WorkerJobsAdapter(
 
                 }
         }
-        holder.image.setImageDrawable(
-            AppCompatResources.getDrawable(
-                context,
-                R.drawable.ic_person
-            )
-        )
         holder.time.text = list[position].reqTime
         holder.date.text = list[position].reqDate
         holder.description.text = list[position].description
@@ -88,6 +82,9 @@ class WorkerJobsAdapter(
             val i = Intent(Intent.ACTION_DIAL)
             i.data = Uri.parse("tel:"+(list[position].contact))
             context.startActivity(i)
+        }
+        if (list[position].completed){
+            holder.markcompleted.visibility = View.INVISIBLE
         }
     }
 

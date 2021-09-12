@@ -30,8 +30,8 @@ class WorkerShowRequestsAdapter(
     }
 
     override fun onBindViewHolder(holder: WorkerShowRequestsViewHolder, position: Int) {
-        holder.name.text = requests[position].from
-        holder.description.text = requests[position].description
+        holder.name.text = requests[position].fromName
+        holder.description.text = " Description : \n      ${requests[position].description}"
         holder.accept.setOnClickListener {
             decision(Pair(requests[position],true))
         }

@@ -70,9 +70,9 @@ class UserHomeFragment : Fragment(),OnMapReadyCallback {
             binding.progbar.visibility = View.GONE
             if (it.isEmpty()){
                 binding.upcoming.visibility = View.GONE
-                binding.userJobsRv.visibility = View.GONE
+//                binding.userJobsRv.visibility = View.GONE
             }
-            setUpRecyclerView(it)
+//            setUpRecyclerView(it)
         }
 
         viewModel.user.observe(viewLifecycleOwner){
@@ -115,30 +115,30 @@ class UserHomeFragment : Fragment(),OnMapReadyCallback {
 
     }
 
-    private fun setUpRecyclerView(list: List<Job>){
-        binding.userJobsRv.adapter = UserJobsAdapter(requireContext(),list){
-            val user = viewModel.user.value ?: return@UserJobsAdapter
-            val dialog = ReviewDialog(
-                user.uid,
-                user.userName,
-                user.profile,
-                it
-            ){ isPosted ->
-                if (isPosted){
-                    Snackbar.make(requireView(), "Thanks for reviewing", Snackbar.LENGTH_LONG).show()
-                    Utils.sendNotificationToWorker(
-                        user.profile,
-                        "${user.userName} has given review on your work",
-                        it
-                    )
-                } else {
-                    Snackbar.make(requireView(), "Network Error", Snackbar.LENGTH_LONG).show()
-                }
-            }
-            dialog.show(parentFragmentManager,"Example")
-        }
-        binding.userJobsRv.layoutManager = LinearLayoutManager(requireContext())
-    }
+//    private fun setUpRecyclerView(list: List<Job>){
+//        binding.userJobsRv.adapter = UserJobsAdapter(requireContext(),list){
+//            val user = viewModel.user.value ?: return@UserJobsAdapter
+//            val dialog = ReviewDialog(
+//                user.uid,
+//                user.userName,
+//                user.profile,
+//                it
+//            ){ isPosted ->
+//                if (isPosted){
+//                    Snackbar.make(requireView(), "Thanks for reviewing", Snackbar.LENGTH_LONG).show()
+//                    Utils.sendNotificationToWorker(
+//                        user.profile,
+//                        "${user.userName} has given review on your work",
+//                        it
+//                    )
+//                } else {
+//                    Snackbar.make(requireView(), "Network Error", Snackbar.LENGTH_LONG).show()
+//                }
+//            }
+//            dialog.show(parentFragmentManager,"Example")
+//        }
+//        binding.userJobsRv.layoutManager = LinearLayoutManager(requireContext())
+//    }
 
 
     override fun onMapReady(googleMap: GoogleMap) {

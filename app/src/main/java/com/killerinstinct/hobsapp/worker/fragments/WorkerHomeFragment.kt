@@ -2,6 +2,7 @@ package com.killerinstinct.hobsapp.worker.fragments
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,6 +22,7 @@ class WorkerHomeFragment : Fragment() {
 
     lateinit var binding: FragmentWorkerHomeBinding
     private val viewModel: WorkerMainViewModel by activityViewModels()
+    private val TAG = "WorkerHomeFragment"
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -34,9 +36,17 @@ class WorkerHomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.getWorkerDetails()
-        binding.reqs.setOnClickListener {
-            val action = WorkerHomeFragmentDirections.actionWorkerNavigationHomeToShowRequestsFragment()
-            findNavController().navigate(action)
+        viewModel.getAllJobs()
+        viewModel.getWorkerRequests()
+
+        viewModel.jobs.observe(viewLifecycleOwner){ jobs ->
+            binding.wrkrTvJobscount.text = jobs.size.toString()
+            Log.d(TAG, "onViewCreated : ${jobs.size}")
+        }
+
+        viewModel.requests.observe(viewLifecycleOwner){ requests ->
+            binding.wrkrTvPendingcount.text = requests.size.toString()
+            Log.d(TAG, "onViewCreated : ${requests.size}")
         }
 
         viewModel.worker.observe(viewLifecycleOwner){
@@ -68,6 +78,16 @@ class WorkerHomeFragment : Fragment() {
                 }
                 show()
             }
+        }
+
+        binding.wrkrcardjobs.setOnClickListener {
+            val action = WorkerHomeFragmentDirections.actionWorkerNavigationHomeToWorkerJobsFragment()
+            findNavController().navigate(action)
+        }
+
+        binding.wrkrcardreq.setOnClickListener {
+            val action = WorkerHomeFragmentDirections.actionWorkerNavigationHomeToShowRequestsFragment()
+            findNavController().navigate(action)
         }
 
 

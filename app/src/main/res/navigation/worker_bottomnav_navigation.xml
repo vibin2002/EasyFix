@@ -19,7 +19,11 @@
             app:popExitAnim="@anim/slide_out" />
         <action
             android:id="@+id/action_worker_navigation_home_to_workerJobsFragment"
-            app:destination="@id/workerJobsFragment" />
+            app:destination="@id/workerJobsFragment"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/slide_in"
+            app:popExitAnim="@anim/slide_out" />
     </fragment>
     <fragment
         android:id="@+id/worker_navigation_search"
