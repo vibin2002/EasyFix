@@ -16,11 +16,15 @@
         <entry key="..\:/Users/admin/AndroidStudioProjects/Project1/HobsApp/app/src/main/res/layout/worker_content_scrolling.xml" value="0.1" />
         <entry key="..\:/androidprojects/HobsApp/app/src/main/res/drawable/border_only.xml" value="0.22395833333333334" />
         <entry key="..\:/androidprojects/HobsApp/app/src/main/res/drawable/decision_bg.xml" value="0.22395833333333334" />
+        <entry key="..\:/androidprojects/HobsApp/app/src/main/res/drawable/ic_baseline_engineering_24.xml" value="0.22395833333333334" />
         <entry key="..\:/androidprojects/HobsApp/app/src/main/res/drawable/ic_baseline_request.xml" value="0.22395833333333334" />
         <entry key="..\:/androidprojects/HobsApp/app/src/main/res/drawable/profle_bg.xml" value="0.22395833333333334" />
+        <entry key="..\:/androidprojects/HobsApp/app/src/main/res/drawable/splash_background.xml" value="0.22395833333333334" />
+        <entry key="..\:/androidprojects/HobsApp/app/src/main/res/drawable/splash_image.xml" value="0.22395833333333334" />
         <entry key="..\:/androidprojects/HobsApp/app/src/main/res/layout/activity_login.xml" value="0.22" />
         <entry key="..\:/androidprojects/HobsApp/app/src/main/res/layout/activity_main.xml" value="0.2078125" />
         <entry key="..\:/androidprojects/HobsApp/app/src/main/res/layout/activity_signup.xml" value="0.1" />
+        <entry key="..\:/androidprojects/HobsApp/app/src/main/res/layout/activity_splash_screen.xml" value="0.2078125" />
         <entry key="..\:/androidprojects/HobsApp/app/src/main/res/layout/activity_user_main.xml" value="0.2078125" />
         <entry key="..\:/androidprojects/HobsApp/app/src/main/res/layout/activity_worker_details.xml" value="0.2078125" />
         <entry key="..\:/androidprojects/HobsApp/app/src/main/res/layout/activity_worker_main.xml" value="0.2078125" />
@@ -62,6 +66,8 @@
         <entry key="..\:/androidprojects/HobsApp/app/src/main/res/layout/worker_showreq_card.xml" value="0.22" />
         <entry key="..\:/androidprojects/HobsApp/app/src/main/res/menu/user_bottomnav_menu.xml" value="0.2078125" />
         <entry key="..\:/androidprojects/HobsApp/app/src/main/res/menu/worker_bottomnav_menu.xml" value="0.2078125" />
+        <entry key="..\:/androidprojects/HobsApp/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.22395833333333334" />
+        <entry key="..\:/androidprojects/HobsApp/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.22395833333333334" />
       </map>
     </option>
   </component>

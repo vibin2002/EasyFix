@@ -15,13 +15,19 @@
         <!-- Customize your theme here. -->
     </style>
 
-    <style name="splashScreenTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
-        <item name="android:windowBackground">@drawable/splash_image</item>
-        <item name="android:statusBarColor">?attr/colorButtonNormal</item>
-    </style>
+<!--    <style name="splashScreenTheme" parent="Theme.MaterialComponents.Light.NoActionBar">-->
+<!--        <item name="android:windowBackground">@drawable/splash_image</item>-->
+<!--        <item name="android:statusBarColor">?attr/colorButtonNormal</item>-->
+<!--    </style>-->
 
 
     <style name="Theme.HobsApp.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.HobsApp.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="SplashTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:windowBackground">@drawable/splash_background</item>
+        <item name="android:statusBarColor">?attr/colorOnPrimary</item>
+    </style>
+
 </resources>
