@@ -44,10 +44,12 @@ class LoginActivity : AppCompatActivity() {
                         progressDialog.dismiss()
                         Toast.makeText(this, "login Successful", Toast.LENGTH_SHORT).show()
                         startActivity(Intent(this, WorkerMainActivity::class.java))
+                        finish()
                     } else if (isValid == "User") {
                         progressDialog.dismiss()
                         Toast.makeText(this, "login Successful", Toast.LENGTH_SHORT).show()
                         startActivity(Intent(this, UserMainActivity::class.java))
+                        finish()
                     } else if (isValid == "Failure") {
                         progressDialog.dismiss()
                         Toast.makeText(this, "Try Again", Toast.LENGTH_SHORT).show()

@@ -6,8 +6,12 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.GeoPoint
 import com.google.firebase.storage.FirebaseStorage
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class WorkerDetailsViewModel : ViewModel() {
 
@@ -17,13 +21,13 @@ class WorkerDetailsViewModel : ViewModel() {
     private val TAG = "WorkerDetailsViewModel"
 
     fun updateWorkerInfo(
-        location: String,
+        location: GeoPoint,
         phoneNumber: String,
         experience: String,
         minWage: String,
         category: List<String>,
         uri: Uri?,
-        isCompleted: (Boolean) -> Unit
+        isCompleted: (String) -> Unit
     ) {
         val workerData = mapOf(
             "location" to location,
@@ -43,23 +47,26 @@ class WorkerDetailsViewModel : ViewModel() {
                             .update("category", category)
                             .addOnSuccessListener {
                                 Log.d(TAG, "updateWorkerInfo: added category")
-                                uploadProPic(uri,userUid) //Upload Profile pic
-                                isCompleted(true)
+                                val job = CoroutineScope(Dispatchers.IO).launch {
+                                    uploadProPic(uri, userUid){
+                                        isCompleted("Picuploaded")
+                                    }
+                                }
                             }.addOnFailureListener {
-                                isCompleted(false)
+                                isCompleted("Failed")
                                 Log.d(TAG, "updateWorkerInfo: category not added")
                             }
                     }.addOnFailureListener {
-                        isCompleted(false)
+                        isCompleted("Failed")
                         Log.d(TAG, "updateWorkerInfo: WorkerInfo not added")
                     }
             }
         } else {
-            isCompleted(false)
+            isCompleted("Failed")
         }
     }
 
-    fun uploadProPic(uri: Uri?,userUid: String){
+    fun uploadProPic(uri: Uri?,userUid: String, isCompleted: (Boolean) -> Unit){
         viewModelScope.launch {
             if (uri == null)
                 return@launch
@@ -74,14 +81,18 @@ class WorkerDetailsViewModel : ViewModel() {
                             .update("profilePic", it.toString())
                             .addOnSuccessListener {
                                 Log.d(TAG, "image url stored in db successfully")
+                                isCompleted(true)
                             }.addOnFailureListener {
+                                isCompleted(true)
                                 Log.d(TAG, "image url failed to store in db")
                             }
                     }.addOnFailureListener {
+                        isCompleted(true)
                         Log.d(TAG, "updateWorkerInfo: $it")
                     }
                 }
                 .addOnFailureListener {
+                    isCompleted(true)
                     Log.d(TAG, "updateWorkerInfo: $it")
                 }
         }

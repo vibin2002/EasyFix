@@ -81,6 +81,9 @@
             android:name="city"
             app:argType="string"
             android:defaultValue="None" />
+        <action
+            android:id="@+id/action_userHiringFragment_to_userShowProfileFragment"
+            app:destination="@id/userShowProfileFragment" />
     </fragment>
     <fragment
         android:id="@+id/userShowProfileFragment"
