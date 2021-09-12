@@ -19,7 +19,11 @@
             app:popExitAnim="@anim/slide_out" />
         <action
             android:id="@+id/action_user_navigation_home_to_userJobsFragment"
-            app:destination="@id/userJobsFragment" />
+            app:destination="@id/userJobsFragment"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/slide_in"
+            app:popExitAnim="@anim/slide_out" />
     </fragment>
     <fragment
         android:id="@+id/user_navigation_search"
@@ -87,7 +91,11 @@
 
         <action
             android:id="@+id/action_userShowProfileFragment_to_userHiringFragment"
-            app:destination="@id/userHiringFragment" />
+            app:destination="@id/userHiringFragment"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/slide_in"
+            app:popExitAnim="@anim/slide_out" />
         <argument
             android:name="workerId"
             app:argType="string"

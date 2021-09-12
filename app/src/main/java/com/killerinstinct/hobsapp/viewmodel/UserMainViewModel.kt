@@ -9,6 +9,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.GeoPoint
+import com.google.firebase.firestore.Query
 import com.killerinstinct.hobsapp.Utils
 import com.killerinstinct.hobsapp.model.*
 import kotlinx.coroutines.launch
@@ -80,6 +81,7 @@ class UserMainViewModel: ViewModel() {
             db.collection("User")
                 .document(userid)
                 .collection("Notifications")
+                .orderBy("timestamp",Query.Direction.DESCENDING)
                 .get()
                 .addOnSuccessListener {
                     val list = mutableListOf<Notification>()

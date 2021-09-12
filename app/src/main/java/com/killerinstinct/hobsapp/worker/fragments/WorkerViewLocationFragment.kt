@@ -9,12 +9,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.navigation.fragment.navArgs
 
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.BitmapDescriptor
+import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.killerinstinct.hobsapp.R
@@ -45,9 +48,27 @@ class WorkerViewLocationFragment : Fragment(), OnMapReadyCallback {
         gMap = googleMap
         val userLoc = LatLng(args.latitude.toDouble(),args.longitude.toDouble())
         val workerloc = LatLng(args.wrkrLat.toDouble(),args.wrkrLong.toDouble())
+        binding.theirname.text = args.name
+        binding.theirpos.setImageDrawable(
+            AppCompatResources.getDrawable(
+                requireContext(),
+                R.drawable.gmapmarkerred
+            )
+        )
+        binding.yourpos.setImageDrawable(
+                AppCompatResources.getDrawable(
+                    requireContext(),
+                    R.drawable.gmapmarkerblue
+                )
+        )
         Toast.makeText(requireContext(), "$workerloc", Toast.LENGTH_SHORT).show()
         gMap.addMarker(MarkerOptions().position(userLoc).title(args.name))
-        gMap.addMarker(MarkerOptions().position(workerloc).title("Your position"))
+        gMap.addMarker(
+            MarkerOptions()
+            .position(workerloc)
+            .title("Your position")
+            .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE))
+        )
         gMap.animateCamera(CameraUpdateFactory.newLatLngZoom(userLoc,12f))
 
         binding.confirmloc.setOnClickListener {
