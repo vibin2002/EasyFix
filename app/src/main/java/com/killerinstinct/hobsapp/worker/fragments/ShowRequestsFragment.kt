@@ -82,6 +82,7 @@ class ShowRequestsFragment : Fragment() {
                 )
             }
             findNavController().navigateUp()
+            viewModel.getWorkerRequests()
         }
         binding.showReqRv.layoutManager = LinearLayoutManager(requireContext())
     }

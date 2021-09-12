@@ -58,6 +58,19 @@ class UserHomeFragment : Fragment(),OnMapReadyCallback {
         val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?
         mapFragment?.getMapAsync(this)
 
+        val navController = findNavController()
+
+        viewModel.getUserRequests()
+        viewModel.getAllJobs()
+
+        viewModel.requests.observe(viewLifecycleOwner){
+            binding.usrReqCountTv.text = it.size.toString()
+        }
+
+        viewModel.jobs.observe(viewLifecycleOwner){
+            binding.usrJobCountTv.text = it.size.toString()
+        }
+
         Utils.categories.forEach {
             val chip = layoutInflater.inflate(R.layout.categorychip, binding.catchips, false) as Chip
             chip.text = it
@@ -66,14 +79,7 @@ class UserHomeFragment : Fragment(),OnMapReadyCallback {
 
         binding.progbar.visibility = View.VISIBLE
 
-        viewModel.jobs.observe(viewLifecycleOwner){
-            binding.progbar.visibility = View.GONE
-            if (it.isEmpty()){
-                binding.upcoming.visibility = View.GONE
-//                binding.userJobsRv.visibility = View.GONE
-            }
-//            setUpRecyclerView(it)
-        }
+
 
         viewModel.user.observe(viewLifecycleOwner){
             if (it.profile.length < 5){
@@ -107,38 +113,17 @@ class UserHomeFragment : Fragment(),OnMapReadyCallback {
             }
         }
 
-
-        binding.showRequests.setOnClickListener {
+        binding.usrReqCard.setOnClickListener {
             val action = UserHomeFragmentDirections.actionUserNavigationHomeToUserShowRequestsFragment()
-            findNavController().navigate(action)
+            navController.navigate(action)
+        }
+
+        binding.usrJobCard.setOnClickListener {
+            val action = UserHomeFragmentDirections.actionUserNavigationHomeToUserJobsFragment()
+            navController.navigate(action)
         }
 
     }
-
-//    private fun setUpRecyclerView(list: List<Job>){
-//        binding.userJobsRv.adapter = UserJobsAdapter(requireContext(),list){
-//            val user = viewModel.user.value ?: return@UserJobsAdapter
-//            val dialog = ReviewDialog(
-//                user.uid,
-//                user.userName,
-//                user.profile,
-//                it
-//            ){ isPosted ->
-//                if (isPosted){
-//                    Snackbar.make(requireView(), "Thanks for reviewing", Snackbar.LENGTH_LONG).show()
-//                    Utils.sendNotificationToWorker(
-//                        user.profile,
-//                        "${user.userName} has given review on your work",
-//                        it
-//                    )
-//                } else {
-//                    Snackbar.make(requireView(), "Network Error", Snackbar.LENGTH_LONG).show()
-//                }
-//            }
-//            dialog.show(parentFragmentManager,"Example")
-//        }
-//        binding.userJobsRv.layoutManager = LinearLayoutManager(requireContext())
-//    }
 
 
     override fun onMapReady(googleMap: GoogleMap) {

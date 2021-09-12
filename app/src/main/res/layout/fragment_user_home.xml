@@ -46,16 +46,6 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/show_requests"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_marginEnd="16dp"
-                    android:src="@drawable/ic_baseline_event_note"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/home_propic"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/home_propic"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
@@ -96,6 +86,7 @@
                 android:orientation="horizontal">
 
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/usr_req_card"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="15dp"
@@ -109,6 +100,7 @@
                         android:orientation="vertical">
 
                         <TextView
+                            android:id="@+id/usr_req_count_tv"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
@@ -128,6 +120,7 @@
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/usr_job_card"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="15dp"
@@ -141,6 +134,7 @@
                         android:orientation="vertical">
 
                         <TextView
+                            android:id="@+id/usr_job_count_tv"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
@@ -205,11 +199,11 @@
                     android:clickable="false"
                     android:focusable="false">
 
-                                        <fragment
-                                            android:id="@+id/map"
-                                            android:name="com.google.android.gms.maps.SupportMapFragment"
-                                            android:layout_width="match_parent"
-                                            android:layout_height="match_parent" />
+<!--                                        <fragment-->
+<!--                                            android:id="@+id/map"-->
+<!--                                            android:name="com.google.android.gms.maps.SupportMapFragment"-->
+<!--                                            android:layout_width="match_parent"-->
+<!--                                            android:layout_height="match_parent" />-->
 
                 </androidx.fragment.app.FragmentContainerView>
 
