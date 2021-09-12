@@ -42,6 +42,9 @@ class WorkerMainViewModel : ViewModel() {
     private val _notifyIds: MutableLiveData<List<String>> = MutableLiveData()
     val notifyIds: LiveData<List<String>> = _notifyIds
 
+    private val _jobs: MutableLiveData<List<Job>> = MutableLiveData()
+    val jobs: LiveData<List<Job>> = _jobs
+
     fun getWorkerDetails() {
         viewModelScope.launch {
             if (userUid == null)
@@ -316,6 +319,37 @@ class WorkerMainViewModel : ViewModel() {
                     posts(mutableList.toList())
                 }.addOnFailureListener {
                     posts(mutableListOf())
+                }
+        }
+    }
+
+    fun getAllJobs(){
+        viewModelScope.launch {
+            db.collection("Jobs")
+                .get()
+                .addOnSuccessListener {
+                    val mutableList = mutableListOf<Job>()
+                    it.forEach { doc ->
+                        val job = doc.toObject(Job::class.java)
+                        if(job.toId == userUid)
+                            mutableList.add(job)
+                    }
+                    _jobs.value = mutableList.toList()
+                }.addOnFailureListener {
+                    Log.d(TAG, "getAllJobs: failed")
+                }
+        }
+    }
+
+    fun markJobAsCompleted(jobId: String,isMarked: (Boolean) -> Unit){
+        viewModelScope.launch {
+            db.collection("Jobs")
+                .document(jobId)
+                .update("completed",true)
+                .addOnSuccessListener {
+                    isMarked(true)
+                }.addOnFailureListener {
+                    isMarked(false)
                 }
         }
     }

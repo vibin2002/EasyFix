@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:tools="http://schemas.android.com/tools"
+    android:layout_margin="12dp"
+    app:cardCornerRadius="18dp"
+    android:elevation="12dp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="12dp">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/jobwrkr_image"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/dummyimageda"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/jobwrkr_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/jobwrkr_image"
+            app:layout_constraintTop_toTopOf="@+id/jobwrkr_image" />
+
+        <TextView
+            android:id="@+id/jobwrkr_description"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/jobwrkr_image" />
+
+        <TextView
+            android:gravity="center"
+            android:id="@+id/jobwrkrtime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:drawableStart="@drawable/ic_baseline_access_time"
+            app:layout_constraintBottom_toTopOf="@+id/jobwrkr_description"
+            app:layout_constraintStart_toEndOf="@+id/jobwrkr_image"
+            app:layout_constraintTop_toBottomOf="@+id/jobwrkr_name" />
+
+        <TextView
+            android:gravity="center"
+            android:id="@+id/jobwrkrdate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="28dp"
+            android:drawableStart="@drawable/ic_baseline_calendar"
+            app:layout_constraintBottom_toTopOf="@+id/jobwrkr_description"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/jobwrkrtime"
+            app:layout_constraintTop_toBottomOf="@+id/jobwrkr_name" />
+
+
+        <TextView
+            android:id="@+id/tv_markcompleted"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:text="Mark as completed"
+            android:textColor="@android:color/holo_blue_dark"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/wrkrjobshowloc"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/wrkrjobcalluser"
+            app:layout_constraintTop_toTopOf="@+id/wrkrjobshowloc" />
+
+        <TextView
+            android:id="@+id/wrkrjobshowloc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/decision_bg"
+            android:drawableStart="@drawable/ic_edit_location"
+            android:padding="8dp"
+            android:text="Location"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/jobwrkr_description" />
+
+        <TextView
+            android:id="@+id/wrkrjobcalluser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:background="@drawable/decision_bg"
+            android:drawableStart="@drawable/ic_baseline_local_phone_24"
+            android:padding="8dp"
+            android:text="Call"
+            app:layout_constraintBottom_toBottomOf="@+id/wrkrjobshowloc"
+            app:layout_constraintStart_toEndOf="@+id/wrkrjobshowloc"
+            app:layout_constraintTop_toTopOf="@+id/wrkrjobshowloc" />
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.cardview.widget.CardView>
+

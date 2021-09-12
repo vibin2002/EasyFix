@@ -16,7 +16,6 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
-import com.bumptech.glide.util.Util
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -27,8 +26,7 @@ import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.material.chip.Chip
 import com.google.android.material.snackbar.Snackbar
 import com.killerinstinct.hobsapp.*
-import com.killerinstinct.hobsapp.adapters.JobsAdapter
-import com.killerinstinct.hobsapp.databinding.FragmentUserChatBinding
+import com.killerinstinct.hobsapp.adapters.UserJobsAdapter
 import com.killerinstinct.hobsapp.databinding.FragmentUserHomeBinding
 import com.killerinstinct.hobsapp.model.Job
 import com.killerinstinct.hobsapp.user.ReviewDialog
@@ -118,8 +116,8 @@ class UserHomeFragment : Fragment(),OnMapReadyCallback {
     }
 
     private fun setUpRecyclerView(list: List<Job>){
-        binding.userJobsRv.adapter = JobsAdapter(requireContext(),list){
-            val user = viewModel.user.value ?: return@JobsAdapter
+        binding.userJobsRv.adapter = UserJobsAdapter(requireContext(),list){
+            val user = viewModel.user.value ?: return@UserJobsAdapter
             val dialog = ReviewDialog(
                 user.uid,
                 user.userName,

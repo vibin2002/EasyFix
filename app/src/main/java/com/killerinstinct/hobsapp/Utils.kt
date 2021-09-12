@@ -8,6 +8,7 @@ import androidx.lifecycle.viewModelScope
 import com.google.firebase.Timestamp
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.Query
 import com.killerinstinct.hobsapp.model.Job
 import com.killerinstinct.hobsapp.model.Notification
 import com.killerinstinct.hobsapp.model.Review
@@ -171,6 +172,7 @@ object Utils {
             .collection("Worker")
             .document(workerId)
             .collection("Review")
+            .orderBy("timestamp", Query.Direction.DESCENDING)
             .get()
             .addOnSuccessListener {
                 val list = mutableListOf<Review>()

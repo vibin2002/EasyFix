@@ -11,5 +11,6 @@ data class Job(
     val reqDate: String = "",
     val reqTime: String = "",
     val location: GeoPoint = GeoPoint(0.0,0.0),
-    val contact: String = ""
+    val contact: String = "",
+    val completed: Boolean = false
 )

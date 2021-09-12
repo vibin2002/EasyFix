@@ -17,6 +17,9 @@
             app:exitAnim="@anim/fade_out"
             app:popEnterAnim="@anim/slide_in"
             app:popExitAnim="@anim/slide_out" />
+        <action
+            android:id="@+id/action_worker_navigation_home_to_workerJobsFragment"
+            app:destination="@id/workerJobsFragment" />
     </fragment>
     <fragment
         android:id="@+id/worker_navigation_search"
@@ -132,6 +135,15 @@
         <argument
             android:name="workerId"
             app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/workerJobsFragment"
+        android:name="com.killerinstinct.hobsapp.worker.fragments.WorkerJobsFragment"
+        android:label="fragment_worker_jobs"
+        tools:layout="@layout/fragment_worker_jobs" >
+        <action
+            android:id="@+id/action_workerJobsFragment_to_workerViewLocationFragment"
+            app:destination="@id/workerViewLocationFragment" />
     </fragment>
 
 </navigation>

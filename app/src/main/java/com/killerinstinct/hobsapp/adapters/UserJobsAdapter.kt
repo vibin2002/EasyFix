@@ -17,11 +17,11 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class JobsAdapter(
+class UserJobsAdapter(
     val context: Context,
     val list: List<Job>,
     val workerId: (String) -> Unit
-): RecyclerView.Adapter<JobsAdapter.JobViewHolder>() {
+): RecyclerView.Adapter<UserJobsAdapter.JobViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): JobViewHolder {
         return JobViewHolder(

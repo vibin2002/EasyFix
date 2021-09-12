@@ -45,6 +45,7 @@
         <entry key="..\:/androidprojects/HobsApp/app/src/main/res/layout/fragment_worker_edit_profile.xml" value="0.2078125" />
         <entry key="..\:/androidprojects/HobsApp/app/src/main/res/layout/fragment_worker_hiring.xml" value="0.2078125" />
         <entry key="..\:/androidprojects/HobsApp/app/src/main/res/layout/fragment_worker_home.xml" value="0.2078125" />
+        <entry key="..\:/androidprojects/HobsApp/app/src/main/res/layout/fragment_worker_jobs.xml" value="0.25" />
         <entry key="..\:/androidprojects/HobsApp/app/src/main/res/layout/fragment_worker_notification.xml" value="0.2078125" />
         <entry key="..\:/androidprojects/HobsApp/app/src/main/res/layout/fragment_worker_post_description.xml" value="0.2078125" />
         <entry key="..\:/androidprojects/HobsApp/app/src/main/res/layout/fragment_worker_profile.xml" value="0.22" />
@@ -62,6 +63,7 @@
         <entry key="..\:/androidprojects/HobsApp/app/src/main/res/layout/user_job_card.xml" value="0.22" />
         <entry key="..\:/androidprojects/HobsApp/app/src/main/res/layout/user_request_card.xml" value="0.2" />
         <entry key="..\:/androidprojects/HobsApp/app/src/main/res/layout/worker_content_scrolling.xml" value="0.2078125" />
+        <entry key="..\:/androidprojects/HobsApp/app/src/main/res/layout/worker_job_card.xml" value="0.2" />
         <entry key="..\:/androidprojects/HobsApp/app/src/main/res/layout/worker_post_rec_card.xml" value="0.2078125" />
         <entry key="..\:/androidprojects/HobsApp/app/src/main/res/layout/worker_showreq_card.xml" value="0.22" />
         <entry key="..\:/androidprojects/HobsApp/app/src/main/res/menu/home_menu.xml" value="0.2078125" />
