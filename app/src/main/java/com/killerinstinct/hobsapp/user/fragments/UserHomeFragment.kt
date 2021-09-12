@@ -182,7 +182,7 @@ class UserHomeFragment : Fragment(),OnMapReadyCallback {
     }
 
     private fun getLastLocation(){
-        Toast.makeText(requireContext(),"getLastLocation", Toast.LENGTH_SHORT).show()
+//        Toast.makeText(requireContext(),"getLastLocation", Toast.LENGTH_SHORT).show()
         val fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(requireContext())
 
         if (ActivityCompat.checkSelfPermission(
