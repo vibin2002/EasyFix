@@ -23,8 +23,10 @@
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -44,10 +46,10 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="15dp"
                     android:layout_weight="1"
-                    android:fontFamily="@font/nunito_bold"
-                    android:text="11M reviews"
+                    android:fontFamily="@font/nunito"
+                    android:text="0 reviews"
                     android:textColor="@color/text_blue"
-                    android:textSize="15dp" />
+                    android:textSize="20dp" />
 
                 <TextView
                     android:id="@+id/usr_rating"
@@ -58,9 +60,9 @@
                     android:drawableStart="@drawable/ic_round_star_24"
                     android:drawableTint="@color/yellow"
                     android:fontFamily="@font/nunito_bold"
-                    android:text="3.5"
+                    android:text="0.0"
                     android:textColor="@color/yellow"
-                    android:textSize="15dp" />
+                    android:textSize="20dp" />
 
             </LinearLayout>
 
@@ -77,7 +79,7 @@
                     android:layout_width="90dp"
                     android:layout_height="90dp"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/dummyimageda" />
+                    android:src="@drawable/businessman" />
             </androidx.cardview.widget.CardView>
 
             <TextView
@@ -87,7 +89,7 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="5dp"
                 android:fontFamily="@font/nunito_bold"
-                android:text="John Smith"
+                android:text=""
                 android:textColor="@color/text_blue"
                 android:textSize="20dp" />
 
@@ -100,7 +102,7 @@
                 android:drawableStart="@drawable/location_image"
                 android:drawablePadding="5dp"
                 android:fontFamily="@font/nunito_semibold"
-                android:text="Hyderabad"
+                android:text=""
                 android:textSize="13dp" />
 
             <TextView
@@ -113,17 +115,9 @@
                 android:layout_marginTop="5dp"
                 android:drawablePadding="5dp"
                 android:fontFamily="@font/nunito_bold"
-                android:text="Carpenter, Painter, Plumber"
+                android:text=""
                 android:textColor="@color/text_blue"
                 android:textSize="15dp" />
-
-            <Button
-                android:id="@+id/btn_hire"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="12dp"
-                android:text="Hire" />
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
@@ -137,12 +131,63 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
 
+                    <Button
+                        android:id="@+id/btn_hire"
+                        android:layout_width="170dp"
+                        android:layout_marginStart="13dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginEnd="10dp"
+                        android:backgroundTint="@color/text_blue"
+                        android:text="Hire" />
+
+                    <Button
+                        android:id="@+id/allReviewsTv"
+                        android:layout_marginStart="10dp"
+                        android:layout_width="170dp"
+                        android:layout_marginEnd="13dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:backgroundTint="@color/text_blue"
+                        android:text="See all reviews" />
+
+                </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1.5dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginEnd="20dp"
+                android:background="@color/med_grey"/>
+
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/clickView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
                     <TextView
+                        android:id="@+id/info"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:fontFamily="@font/nunito_bold"
-                        android:text="More information" />
+                        android:text="More information"
+                        android:textSize="18dp" />
 
                     <androidx.cardview.widget.CardView
                         android:layout_width="wrap_content"
@@ -154,31 +199,37 @@
                         app:cardCornerRadius="250dp">
 
                         <ImageView
+                            android:id="@+id/arrow"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:src="@drawable/arrow_down" />
                     </androidx.cardview.widget.CardView>
                 </LinearLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
+
             <LinearLayout
+                android:id="@+id/ghostLayout"
                 android:layout_width="match_parent"
+                android:visibility="gone"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="25dp"
-                android:layout_marginBottom="10dp"
                 android:layout_marginEnd="25dp"
+                android:layout_marginBottom="10dp"
                 android:orientation="vertical">
+
                 <LinearLayout
+                    android:id="@+id/call"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/call"
                     android:orientation="horizontal">
+
                     <androidx.cardview.widget.CardView
                         android:layout_width="35dp"
                         android:layout_height="35dp"
-                        android:layout_margin="10dp"
                         android:layout_gravity="center"
+                        android:layout_margin="10dp"
                         app:cardCornerRadius="250dp"
-                        app:cardElevation="20dp">
+                        app:cardElevation="5dp">
 
                         <ImageView
                             android:layout_width="20dp"
@@ -187,14 +238,16 @@
                             android:src="@drawable/phonrcall" />
 
                     </androidx.cardview.widget.CardView>
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginEnd="10dp"
+                        android:elevation="10dp"
                         android:fontFamily="@font/nunito"
                         android:text="Phone number:"
-                        android:textSize="12dp" />
+                        android:textSize="15dp" />
 
 
                     <TextView
@@ -203,22 +256,24 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:fontFamily="@font/nunito_bold"
-                        android:text="+919677307005"
+                        android:text=""
                         android:textColor="@color/text_blue"
                         android:textSize="15dp" />
                 </LinearLayout>
+
                 <LinearLayout
+                    android:id="@+id/mailIntent"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/mailIntent"
                     android:orientation="horizontal">
+
                     <androidx.cardview.widget.CardView
                         android:layout_width="35dp"
-                        android:layout_margin="10dp"
                         android:layout_height="35dp"
                         android:layout_gravity="center"
+                        android:layout_margin="10dp"
                         app:cardCornerRadius="255dp"
-                        app:cardElevation="20dp">
+                        app:cardElevation="5dp">
 
                         <ImageView
                             android:layout_width="20dp"
@@ -227,14 +282,15 @@
                             android:src="@drawable/mailimage" />
 
                     </androidx.cardview.widget.CardView>
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
+                        android:layout_marginEnd="10dp"
                         android:fontFamily="@font/nunito"
                         android:text="Email:"
-                        android:layout_marginEnd="10dp"
-                        android:textSize="12dp" />
+                        android:textSize="15sp" />
 
 
                     <TextView
@@ -243,22 +299,25 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:fontFamily="@font/nunito_bold"
-                        android:text="john@gmail.com"
+                        android:text=""
                         android:textColor="@color/text_blue"
-                        android:textSize="15dp" />
+                        android:textSize="15sp" />
 
                 </LinearLayout>
+
                 <LinearLayout
+                    android:id="@+id/rateintent"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
+
                     <androidx.cardview.widget.CardView
                         android:layout_width="35dp"
                         android:layout_height="35dp"
-                        android:layout_margin="10dp"
                         android:layout_gravity="center"
+                        android:layout_margin="10dp"
                         app:cardCornerRadius="250dp"
-                        app:cardElevation="20dp">
+                        app:cardElevation="5dp">
 
                         <ImageView
                             android:layout_width="20dp"
@@ -274,8 +333,8 @@
                         android:layout_gravity="center"
                         android:layout_marginEnd="10dp"
                         android:fontFamily="@font/nunito"
-                        android:text="Rate per month"
-                        android:textSize="12dp" />
+                        android:text="Rate per day:"
+                        android:textSize="15dp" />
 
 
                     <TextView
@@ -284,22 +343,25 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:fontFamily="@font/nunito_bold"
-                        android:text="Rs 20000/day"
+                        android:text=""
                         android:textColor="@color/text_blue"
                         android:textSize="15dp" />
 
                 </LinearLayout>
+
                 <LinearLayout
+                    android:id="@+id/expintent"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
+
                     <androidx.cardview.widget.CardView
                         android:layout_width="35dp"
                         android:layout_height="35dp"
-                        android:layout_margin="10dp"
                         android:layout_gravity="center"
+                        android:layout_margin="10dp"
                         app:cardCornerRadius="255dp"
-                        app:cardElevation="20dp">
+                        app:cardElevation="5dp">
 
                         <ImageView
                             android:layout_width="20dp"
@@ -317,7 +379,7 @@
                         android:fontFamily="@font/nunito"
                         android:text="Experience:"
                         android:textAlignment="center"
-                        android:textSize="12dp" />
+                        android:textSize="15dp" />
 
 
                     <TextView
@@ -326,257 +388,21 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:fontFamily="@font/nunito_bold"
-                        android:text="5 years"
+                        android:text=""
                         android:textColor="@color/text_blue"
                         android:textSize="15dp" />
 
                 </LinearLayout>
             </LinearLayout>
 
-<!--            <LinearLayout-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="match_parent"-->
-<!--                android:orientation="horizontal"-->
-<!--                android:paddingStart="20dp"-->
-<!--                android:paddingTop="20dp"-->
-<!--                android:paddingEnd="20dp">-->
-
-<!--                <androidx.cardview.widget.CardView-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_gravity="fill"-->
-<!--                    android:layout_marginEnd="10dp"-->
-<!--                    android:layout_marginBottom="10dp"-->
-<!--                    android:layout_weight="1"-->
-<!--                    android:elevation="20dp"-->
-<!--                    android:gravity="fill"-->
-<!--                    app:cardCornerRadius="15dp">-->
-
-<!--                    <LinearLayout-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="match_parent"-->
-<!--                        android:orientation="vertical">-->
-
-<!--                        <androidx.cardview.widget.CardView-->
-<!--                            android:layout_width="35dp"-->
-<!--                            android:layout_height="35dp"-->
-<!--                            android:layout_gravity="center"-->
-<!--                            android:layout_marginTop="20dp"-->
-<!--                            app:cardCornerRadius="250dp"-->
-<!--                            app:cardElevation="20dp">-->
-
-<!--                            <ImageView-->
-<!--                                android:layout_width="20dp"-->
-<!--                                android:layout_height="20dp"-->
-<!--                                android:layout_gravity="center"-->
-<!--                                android:src="@drawable/phonrcall" />-->
-
-<!--                        </androidx.cardview.widget.CardView>-->
-
-<!--                        <TextView-->
-<!--                            android:layout_width="wrap_content"-->
-<!--                            android:layout_height="wrap_content"-->
-<!--                            android:layout_gravity="center"-->
-<!--                            android:layout_marginTop="5dp"-->
-<!--                            android:fontFamily="@font/nunito"-->
-<!--                            android:text="Phone number"-->
-<!--                            android:textSize="12dp" />-->
-
-
-<!--                        <TextView-->
-<!--                            android:id="@+id/tut_phonenum"-->
-<!--                            android:layout_width="wrap_content"-->
-<!--                            android:layout_height="wrap_content"-->
-<!--                            android:layout_gravity="center"-->
-<!--                            android:layout_marginTop="5dp"-->
-<!--                            android:layout_marginBottom="20dp"-->
-<!--                            android:fontFamily="@font/nunito_bold"-->
-<!--                            android:text="+919677307005"-->
-<!--                            android:textColor="@color/text_blue"-->
-<!--                            android:textSize="15dp" />-->
-
-<!--                    </LinearLayout>-->
-
-<!--                </androidx.cardview.widget.CardView>-->
-
-<!--                <androidx.cardview.widget.CardView-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_gravity="fill"-->
-<!--                    android:layout_marginStart="10dp"-->
-<!--                    android:layout_weight="1"-->
-<!--                    app:cardCornerRadius="15dp">-->
-
-<!--                    <LinearLayout-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:orientation="vertical">-->
-
-<!--                        <androidx.cardview.widget.CardView-->
-<!--                            android:layout_width="35dp"-->
-<!--                            android:layout_height="35dp"-->
-<!--                            android:layout_gravity="center"-->
-<!--                            android:layout_marginTop="20dp"-->
-<!--                            app:cardCornerRadius="255dp"-->
-<!--                            app:cardElevation="20dp">-->
-
-<!--                            <ImageView-->
-<!--                                android:layout_width="20dp"-->
-<!--                                android:layout_height="20dp"-->
-<!--                                android:layout_gravity="center"-->
-<!--                                android:src="@drawable/mailimage" />-->
-
-<!--                        </androidx.cardview.widget.CardView>-->
-
-<!--                        <TextView-->
-<!--                            android:layout_width="wrap_content"-->
-<!--                            android:layout_height="wrap_content"-->
-<!--                            android:layout_gravity="center"-->
-<!--                            android:layout_marginTop="5dp"-->
-<!--                            android:fontFamily="@font/nunito"-->
-<!--                            android:text="Email"-->
-<!--                            android:textSize="12dp" />-->
-
-
-<!--                        <TextView-->
-<!--                            android:id="@+id/tut_email"-->
-<!--                            android:layout_width="wrap_content"-->
-<!--                            android:layout_height="wrap_content"-->
-<!--                            android:layout_gravity="center"-->
-<!--                            android:layout_marginTop="5dp"-->
-<!--                            android:layout_marginBottom="20dp"-->
-<!--                            android:fontFamily="@font/nunito_bold"-->
-<!--                            android:text="john@gmail.com"-->
-<!--                            android:textColor="@color/text_blue"-->
-<!--                            android:textSize="15dp" />-->
-
-<!--                    </LinearLayout>-->
-
-<!--                </androidx.cardview.widget.CardView>-->
-<!--            </LinearLayout>-->
-
-<!--            <LinearLayout-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="match_parent"-->
-<!--                android:orientation="horizontal"-->
-<!--                android:padding="10dp"-->
-<!--                android:paddingStart="20dp"-->
-<!--                android:paddingTop="10dp"-->
-<!--                android:paddingEnd="20dp">-->
-
-<!--                <androidx.cardview.widget.CardView-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_gravity="fill"-->
-<!--                    android:layout_marginEnd="10dp"-->
-<!--                    android:layout_marginBottom="10dp"-->
-<!--                    android:layout_weight="1"-->
-<!--                    android:gravity="fill"-->
-<!--                    app:cardCornerRadius="15dp">-->
-
-<!--                    <LinearLayout-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="match_parent"-->
-<!--                        android:orientation="vertical">-->
-
-<!--                        <androidx.cardview.widget.CardView-->
-<!--                            android:layout_width="35dp"-->
-<!--                            android:layout_height="35dp"-->
-<!--                            android:layout_gravity="center"-->
-<!--                            android:layout_marginTop="20dp"-->
-<!--                            app:cardCornerRadius="250dp"-->
-<!--                            app:cardElevation="20dp">-->
-
-<!--                            <ImageView-->
-<!--                                android:layout_width="20dp"-->
-<!--                                android:layout_height="20dp"-->
-<!--                                android:layout_gravity="center"-->
-<!--                                android:src="@drawable/money" />-->
-
-<!--                        </androidx.cardview.widget.CardView>-->
-
-<!--                        <TextView-->
-<!--                            android:layout_width="wrap_content"-->
-<!--                            android:layout_height="wrap_content"-->
-<!--                            android:layout_gravity="center"-->
-<!--                            android:layout_marginTop="5dp"-->
-<!--                            android:fontFamily="@font/nunito"-->
-<!--                            android:text="Rate per month"-->
-<!--                            android:textSize="12dp" />-->
-
-
-<!--                        <TextView-->
-<!--                            android:id="@+id/tut_minwage"-->
-<!--                            android:layout_width="wrap_content"-->
-<!--                            android:layout_height="wrap_content"-->
-<!--                            android:layout_gravity="center"-->
-<!--                            android:layout_marginTop="5dp"-->
-<!--                            android:layout_marginBottom="20dp"-->
-<!--                            android:fontFamily="@font/nunito_bold"-->
-<!--                            android:text="Rs 20000/month"-->
-<!--                            android:textColor="@color/text_blue"-->
-<!--                            android:textSize="15dp" />-->
-
-<!--                    </LinearLayout>-->
-
-<!--                </androidx.cardview.widget.CardView>-->
-
-<!--                <androidx.cardview.widget.CardView-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_gravity="fill"-->
-<!--                    android:layout_marginStart="10dp"-->
-<!--                    android:layout_weight="1"-->
-<!--                    app:cardCornerRadius="15dp">-->
-
-<!--                    <LinearLayout-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:orientation="vertical">-->
-
-<!--                        <androidx.cardview.widget.CardView-->
-<!--                            android:layout_width="35dp"-->
-<!--                            android:layout_height="35dp"-->
-<!--                            android:layout_gravity="center"-->
-<!--                            android:layout_marginTop="20dp"-->
-<!--                            app:cardCornerRadius="255dp"-->
-<!--                            app:cardElevation="20dp">-->
-
-<!--                            <ImageView-->
-<!--                                android:layout_width="20dp"-->
-<!--                                android:layout_height="20dp"-->
-<!--                                android:layout_gravity="center"-->
-<!--                                android:src="@drawable/experiene" />-->
-
-<!--                        </androidx.cardview.widget.CardView>-->
-
-<!--                        <TextView-->
-<!--                            android:layout_width="wrap_content"-->
-<!--                            android:layout_height="wrap_content"-->
-<!--                            android:layout_gravity="center"-->
-<!--                            android:layout_marginTop="5dp"-->
-<!--                            android:fontFamily="@font/nunito"-->
-<!--                            android:text="       Experience        "-->
-<!--                            android:textAlignment="center"-->
-<!--                            android:textSize="12dp" />-->
-
-
-<!--                        <TextView-->
-<!--                            android:id="@+id/tut_experience"-->
-<!--                            android:layout_width="wrap_content"-->
-<!--                            android:layout_height="wrap_content"-->
-<!--                            android:layout_gravity="center"-->
-<!--                            android:layout_marginTop="5dp"-->
-<!--                            android:layout_marginBottom="20dp"-->
-<!--                            android:fontFamily="@font/nunito_bold"-->
-<!--                            android:text="5 years"-->
-<!--                            android:textColor="@color/text_blue"-->
-<!--                            android:textSize="15dp" />-->
-
-<!--                    </LinearLayout>-->
-
-<!--                </androidx.cardview.widget.CardView>-->
-<!--            </LinearLayout>-->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1.5dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginEnd="20dp"
+                android:background="@color/med_grey"/>
 
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -586,34 +412,21 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="12dp"
-                    android:layout_marginTop="4dp"
-                    android:layout_marginBottom="16dp"
+                    android:layout_marginStart="25dp"
+                    android:fontFamily="@font/nunito_semibold"
                     android:text="Posts"
                     android:textSize="22sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:id="@+id/allReviewsTv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="12dp"
-                    android:text="See all reviews"
-                    android:textSize="16sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
             </androidx.constraintlayout.widget.ConstraintLayout>
-
 
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/showprofile_rv"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content" />
 
         </LinearLayout>
 

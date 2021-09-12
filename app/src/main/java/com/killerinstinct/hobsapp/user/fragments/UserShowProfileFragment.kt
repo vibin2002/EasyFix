@@ -8,11 +8,16 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.RelativeLayout
+import android.widget.TextView
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.transition.AutoTransition
+import androidx.transition.TransitionManager
 import com.bumptech.glide.Glide
 import com.killerinstinct.hobsapp.R
 import com.killerinstinct.hobsapp.Utils
@@ -81,6 +86,25 @@ class UserShowProfileFragment : Fragment() {
                     )
                 }
             }
+        }
+        binding.clickView.setOnClickListener {
+                if (binding.ghostLayout.getVisibility() == View.VISIBLE) {
+                    TransitionManager.beginDelayedTransition(
+                        binding.ghostLayout,
+                        AutoTransition()
+                    )
+                   binding.ghostLayout.setVisibility(View.GONE)
+                    binding.arrow.setImageResource(R.drawable.arrow_down)
+                    binding.info.setText("More information")
+                } else {
+                    TransitionManager.beginDelayedTransition(
+                        binding.ghostLayout,
+                        AutoTransition()
+                    )
+                    binding.ghostLayout.setVisibility(View.VISIBLE)
+                    binding.arrow.setImageResource(R.drawable.arrow_up)
+                    binding.info.setText("Less information")
+                }
         }
 
         binding.btnHire.setOnClickListener {
