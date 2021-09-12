@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,337 +7,403 @@
     android:fitsSystemWindows="true"
     tools:context=".worker.ShowProfileFragment">
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <ProgressBar
+        android:id="@+id/progbar_load"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedScrollView_workershowprofile"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="30dp"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/wrkr_review_count"
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="30dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/wrkr_review_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="15dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/nunito_bold"
+                    android:text="11M reviews"
+                    android:textColor="@color/text_blue"
+                    android:textSize="15dp" />
+
+                <TextView
+                    android:id="@+id/wrkr_rating"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_marginEnd="15dp"
+                    android:drawableStart="@drawable/ic_round_star_24"
+                    android:drawableTint="@color/yellow"
+                    android:fontFamily="@font/nunito_bold"
+                    android:text="3.5"
+                    android:textColor="@color/yellow"
+                    android:textSize="15dp" />
+
+            </LinearLayout>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="15dp"
-                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:layout_marginTop="15dp"
+                app:cardCornerRadius="250dp">
+
+                <ImageView
+                    android:id="@+id/tutorProfile"
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/dummyimageda" />
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/tutorName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/nunito_bold"
+                android:text="John Smith"
                 android:textColor="@color/text_blue"
-                android:fontFamily="@font/nunito_bold"
-                android:text="11M reviews"
-                android:textSize="15dp" />
+                android:textSize="20dp" />
 
             <TextView
-                android:id="@+id/wrkr_rating"
+                android:id="@+id/tut_location"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="end"
-                android:layout_marginEnd="15dp"
-                android:textColor="@color/yellow"
-                android:drawableTint="@color/yellow"
-                android:drawableStart="@drawable/ic_round_star_24"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:drawableStart="@drawable/location_image"
+                android:drawablePadding="5dp"
+                android:fontFamily="@font/nunito_semibold"
+                android:text="Hyderabad"
+                android:textSize="13dp" />
+
+            <TextView
+                android:id="@+id/tut_category"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginHorizontal="36dp"
+                android:layout_marginVertical="12dp"
+                android:layout_marginTop="5dp"
+                android:drawablePadding="5dp"
                 android:fontFamily="@font/nunito_bold"
-                android:text="3.5"
+                android:text="Carpenter, Painter, Plumber"
+                android:textColor="@color/text_blue"
                 android:textSize="15dp" />
 
-        </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:paddingStart="20dp"
+                android:paddingTop="20dp"
+                android:paddingEnd="20dp">
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cardView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="15dp"
-            app:cardCornerRadius="250dp">
-
-            <ImageView
-                android:id="@+id/tutorProfile"
-                android:layout_width="90dp"
-                android:layout_height="90dp"
-                android:scaleType="centerCrop"
-                android:src="@drawable/dummyimageda" />
-        </androidx.cardview.widget.CardView>
-
-        <TextView
-            android:id="@+id/tutorName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:textColor="@color/text_blue"
-            android:layout_marginTop="5dp"
-            android:fontFamily="@font/nunito_bold"
-            android:text="John Smith"
-            android:textSize="20dp" />
-
-        <TextView
-            android:id="@+id/tut_location"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="5dp"
-            android:drawableStart="@drawable/location_image"
-            android:drawablePadding="5dp"
-            android:fontFamily="@font/nunito_semibold"
-            android:text="Hyderabad"
-            android:textSize="13dp" />
-        <TextView
-            android:layout_marginHorizontal="36dp"
-            android:layout_marginVertical="12dp"
-            android:id="@+id/tut_category"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:textColor="@color/text_blue"
-            android:layout_marginTop="5dp"
-            android:drawablePadding="5dp"
-            android:fontFamily="@font/nunito_bold"
-            android:text="Carpenter, Painter, Plumber"
-            android:textSize="15dp" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:paddingTop="20dp"
-            android:paddingStart="20dp"
-            android:paddingEnd="20dp"
-            android:orientation="horizontal">
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="fill"
-                android:elevation="20dp"
-                android:layout_marginBottom="10dp"
-                android:layout_marginEnd="10dp"
-                android:layout_weight="1"
-                android:gravity="fill"
-                app:cardCornerRadius="15dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="35dp"
-                        android:layout_height="35dp"
-                        app:cardElevation="20dp"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="20dp"
-                        app:cardCornerRadius="250dp">
-
-                        <ImageView
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            android:layout_gravity="center"
-                            android:src="@drawable/phonrcall" />
-
-                    </androidx.cardview.widget.CardView>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="5dp"
-                        android:fontFamily="@font/nunito"
-                        android:text="Phone number"
-                        android:textSize="12dp" />
-
-
-                    <TextView
-                        android:id="@+id/tut_phonenum"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="5dp"
-                        android:textColor="@color/text_blue"
-                        android:layout_marginBottom="20dp"
-                        android:fontFamily="@font/nunito_bold"
-                        android:text="+919677307005"
-                        android:textSize="15dp" />
-
-                </LinearLayout>
-
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="fill"
-                android:layout_weight="1"
-                android:layout_marginStart="10dp"
-                app:cardCornerRadius="15dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
+                <androidx.cardview.widget.CardView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:layout_gravity="fill"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_weight="1"
+                    android:elevation="20dp"
+                    android:gravity="fill"
+                    app:cardCornerRadius="15dp">
 
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="35dp"
-                        android:layout_height="35dp"
-                        app:cardElevation="20dp"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="20dp"
-                        app:cardCornerRadius="255dp">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
 
-                        <ImageView
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"
                             android:layout_gravity="center"
-                            android:src="@drawable/mailimage" />
+                            android:layout_marginTop="20dp"
+                            app:cardCornerRadius="250dp"
+                            app:cardElevation="20dp">
 
-                    </androidx.cardview.widget.CardView>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="5dp"
-                        android:fontFamily="@font/nunito"
-                        android:text="Email"
-                        android:textSize="12dp" />
+                            <ImageView
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:layout_gravity="center"
+                                android:src="@drawable/phonrcall" />
 
+                        </androidx.cardview.widget.CardView>
 
-                    <TextView
-                        android:id="@+id/tut_email"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="5dp"
-                        android:textColor="@color/text_blue"
-                        android:layout_marginBottom="20dp"
-                        android:fontFamily="@font/nunito_bold"
-                        android:text="john@gmail.com"
-                        android:textSize="15dp" />
-
-                </LinearLayout>
-
-            </androidx.cardview.widget.CardView>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:paddingTop="10dp"
-            android:padding="10dp"
-            android:paddingStart="20dp"
-            android:paddingEnd="20dp"
-            android:orientation="horizontal">
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="fill"
-                android:layout_marginBottom="10dp"
-                android:layout_marginEnd="10dp"
-                android:layout_weight="1"
-                android:gravity="fill"
-                app:cardCornerRadius="15dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="35dp"
-                        android:layout_height="35dp"
-                        app:cardElevation="20dp"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="20dp"
-                        app:cardCornerRadius="250dp">
-
-                        <ImageView
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:src="@drawable/money" />
-
-                    </androidx.cardview.widget.CardView>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="5dp"
-                        android:fontFamily="@font/nunito"
-                        android:text="Rate per month"
-                        android:textSize="12dp" />
+                            android:layout_marginTop="5dp"
+                            android:fontFamily="@font/nunito"
+                            android:text="Phone number"
+                            android:textSize="12dp" />
 
 
-                    <TextView
-                        android:id="@+id/tut_minwage"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="5dp"
-                        android:textColor="@color/text_blue"
-                        android:layout_marginBottom="20dp"
-                        android:fontFamily="@font/nunito_bold"
-                        android:text="Rs 20000/month"
-                        android:textSize="15dp" />
+                        <TextView
+                            android:id="@+id/tut_phonenum"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginBottom="20dp"
+                            android:fontFamily="@font/nunito_bold"
+                            android:text="+919677307005"
+                            android:textColor="@color/text_blue"
+                            android:textSize="15dp" />
 
-                </LinearLayout>
+                    </LinearLayout>
 
-            </androidx.cardview.widget.CardView>
+                </androidx.cardview.widget.CardView>
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="fill"
-                android:layout_weight="1"
-                android:layout_marginStart="10dp"
-                app:cardCornerRadius="15dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
+                <androidx.cardview.widget.CardView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:layout_gravity="fill"
+                    android:layout_marginStart="10dp"
+                    android:layout_weight="1"
+                    app:cardCornerRadius="15dp">
 
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="35dp"
-                        android:layout_height="35dp"
-                        app:cardElevation="20dp"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="20dp"
-                        app:cardCornerRadius="255dp">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
 
-                        <ImageView
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"
                             android:layout_gravity="center"
-                            android:src="@drawable/experiene" />
+                            android:layout_marginTop="20dp"
+                            app:cardCornerRadius="255dp"
+                            app:cardElevation="20dp">
 
-                    </androidx.cardview.widget.CardView>
-                    <TextView
-                        android:layout_width="wrap_content"
+                            <ImageView
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:layout_gravity="center"
+                                android:src="@drawable/mailimage" />
+
+                        </androidx.cardview.widget.CardView>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="5dp"
+                            android:fontFamily="@font/nunito"
+                            android:text="Email"
+                            android:textSize="12dp" />
+
+
+                        <TextView
+                            android:id="@+id/tut_email"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginBottom="20dp"
+                            android:fontFamily="@font/nunito_bold"
+                            android:text="john@gmail.com"
+                            android:textColor="@color/text_blue"
+                            android:textSize="15dp" />
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:padding="10dp"
+                android:paddingStart="20dp"
+                android:paddingTop="10dp"
+                android:paddingEnd="20dp">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="fill"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_weight="1"
+                    android:gravity="fill"
+                    app:cardCornerRadius="15dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="20dp"
+                            app:cardCornerRadius="250dp"
+                            app:cardElevation="20dp">
+
+                            <ImageView
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:layout_gravity="center"
+                                android:src="@drawable/money" />
+
+                        </androidx.cardview.widget.CardView>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="5dp"
+                            android:fontFamily="@font/nunito"
+                            android:text="Rate per month"
+                            android:textSize="12dp" />
+
+
+                        <TextView
+                            android:id="@+id/tut_minwage"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginBottom="20dp"
+                            android:fontFamily="@font/nunito_bold"
+                            android:text="Rs 20000/month"
+                            android:textColor="@color/text_blue"
+                            android:textSize="15dp" />
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="fill"
+                    android:layout_marginStart="10dp"
+                    android:layout_weight="1"
+                    app:cardCornerRadius="15dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="5dp"
-                        android:textAlignment="center"
-                        android:fontFamily="@font/nunito"
-                        android:text="       Experience        "
-                        android:textSize="12dp" />
+                        android:orientation="vertical">
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="20dp"
+                            app:cardCornerRadius="255dp"
+                            app:cardElevation="20dp">
+
+                            <ImageView
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:layout_gravity="center"
+                                android:src="@drawable/experiene" />
+
+                        </androidx.cardview.widget.CardView>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="5dp"
+                            android:fontFamily="@font/nunito"
+                            android:text="       Experience        "
+                            android:textAlignment="center"
+                            android:textSize="12dp" />
 
 
-                    <TextView
-                        android:id="@+id/tut_experience"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="5dp"
-                        android:textColor="@color/text_blue"
-                        android:layout_marginBottom="20dp"
-                        android:fontFamily="@font/nunito_bold"
-                        android:text="5 years"
-                        android:textSize="15dp" />
+                        <TextView
+                            android:id="@+id/tut_experience"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginBottom="20dp"
+                            android:fontFamily="@font/nunito_bold"
+                            android:text="5 years"
+                            android:textColor="@color/text_blue"
+                            android:textSize="15dp" />
 
-                </LinearLayout>
+                    </LinearLayout>
 
-            </androidx.cardview.widget.CardView>
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="12dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="16dp"
+                    android:text="Posts"
+                    android:textSize="22sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/allReviewsTv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="12dp"
+                    android:text="See all reviews"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/showprofile_rv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+
+
         </LinearLayout>
 
+    </androidx.core.widget.NestedScrollView>
 
-
-    </LinearLayout>
-</ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

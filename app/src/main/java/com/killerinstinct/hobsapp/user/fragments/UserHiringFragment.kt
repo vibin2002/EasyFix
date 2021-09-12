@@ -20,6 +20,7 @@ import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.GeoPoint
 import com.killerinstinct.hobsapp.R
+import com.killerinstinct.hobsapp.Utils
 import com.killerinstinct.hobsapp.databinding.FragmentUserHiringBinding
 import com.killerinstinct.hobsapp.viewmodel.UserMainViewModel
 import java.util.*
@@ -98,6 +99,11 @@ class UserHiringFragment : Fragment() {
             ){ isSent ->
                 if (isSent){
                     Snackbar.make(requireView(),"Request sent",Snackbar.LENGTH_SHORT).show()
+                    Utils.sendNotificationToWorker(
+                        viewModel.user.value!!.profile,
+                        "You have a work request from ${viewModel.user.value!!.userName}",
+                        args.workerId
+                    )
                 } else {
                     Snackbar.make(requireView(),"Request not sent",Snackbar.LENGTH_SHORT).show()
                 }

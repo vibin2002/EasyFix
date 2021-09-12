@@ -1,10 +1,13 @@
 package com.killerinstinct.hobsapp.viewmodel
 
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
+import com.killerinstinct.hobsapp.R
+import com.killerinstinct.hobsapp.Utils
 import com.killerinstinct.hobsapp.model.User
 import com.killerinstinct.hobsapp.model.Worker
 import kotlinx.coroutines.launch
@@ -37,6 +40,11 @@ class SignupViewModel: ViewModel() {
                                 .addOnSuccessListener {
                                     db.collection("LoginCheck")
                                         .document("LoginCheck").update("workers", FieldValue.arrayUnion(it1.uid))
+                                    Utils.sendNotificationToWorker(
+                                        "https://firebasestorage.googleapis.com/v0/b/hobsapp-dade2.appspot.com/o/hobsicon.png?alt=media&token=6aeb763d-b758-443c-ba2f-8b7ac083308f",
+                                        "Welcome to HobsApp"  ,
+                                        it1.uid
+                                    )
                                     makeToast("Worker")
                                 }.addOnFailureListener {
                                     makeToast(it.message.toString())
@@ -54,6 +62,11 @@ class SignupViewModel: ViewModel() {
                                     db.collection("LoginCheck")
                                         .document("LoginCheck")
                                         .update("users", FieldValue.arrayUnion(it1.uid))
+                                    Utils.sendNotificationToUser(
+                                        "https://firebasestorage.googleapis.com/v0/b/hobsapp-dade2.appspot.com/o/hobsicon.png?alt=media&token=6aeb763d-b758-443c-ba2f-8b7ac083308f",
+                                        "Welcome to HobsApp"  ,
+                                        it1.uid
+                                    )
                                     makeToast("User")
                                 }.addOnFailureListener {
                                     makeToast(it.message.toString())

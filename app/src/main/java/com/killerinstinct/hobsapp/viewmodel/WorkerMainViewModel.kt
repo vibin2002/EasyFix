@@ -298,6 +298,29 @@ class WorkerMainViewModel : ViewModel() {
         }
     }
 
+    fun getSpecificWorkerPosts(
+        workerId: String,
+        posts: (List<Post>) -> Unit
+    ){
+        viewModelScope.launch {
+            db.collection("Worker")
+                .document(workerId)
+                .collection("Posts")
+                .get()
+                .addOnSuccessListener {
+                    val mutableList = mutableListOf<Post>()
+                    it.forEach { doc ->
+                        val post = doc.toObject(Post::class.java)
+                        mutableList.add(post)
+                    }
+                    posts(mutableList.toList())
+                }.addOnFailureListener {
+                    posts(mutableListOf())
+                }
+        }
+    }
+
+
     fun logoutWorker(isSuccessful: (Boolean) -> Unit){
         FirebaseAuth.getInstance().signOut()
         isSuccessful(true)

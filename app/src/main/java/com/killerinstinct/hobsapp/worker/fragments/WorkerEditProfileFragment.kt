@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.view.children
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
@@ -47,9 +48,12 @@ class WorkerEditProfileFragment : Fragment() {
                     .load(it.profilePic)
                     .into(binding.ivPropic)
             }else{
-                Glide.with(requireContext())
-                    .load("https://firebasestorage.googleapis.com/v0/b/hobsapp-dade2.appspot.com/o/3t7eeIK8BdTtKjcm0RTewMk1xPh1%2FprofilePicture?alt=media&token=c3b704f0-12bb-425e-b95d-0deeb7dc3550")
-                    .into(binding.ivPropic)
+                binding.ivPropic.setImageDrawable(
+                    AppCompatResources.getDrawable(
+                        requireContext(),
+                        R.drawable.ic_person
+                    )
+                )
             }
 
             Utils.categories.forEach { category ->

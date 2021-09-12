@@ -70,6 +70,9 @@
             android:name="workerId"
             android:defaultValue="NULL"
             app:argType="string" />
+        <action
+            android:id="@+id/action_showProfileFragment_to_reviewFragment2"
+            app:destination="@id/reviewFragment2" />
 
     </fragment>
     <fragment
@@ -121,5 +124,14 @@
         android:name="com.killerinstinct.hobsapp.worker.fragments.WorkerPostDescriptionFragment"
         android:label="fragment_worker_post_description"
         tools:layout="@layout/fragment_worker_post_description" />
+    <fragment
+        android:id="@+id/reviewFragment2"
+        android:name="com.killerinstinct.hobsapp.ReviewFragment"
+        android:label="fragment_review"
+        tools:layout="@layout/fragment_review" >
+        <argument
+            android:name="workerId"
+            app:argType="string" />
+    </fragment>
 
 </navigation>
