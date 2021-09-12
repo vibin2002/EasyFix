@@ -1,17 +1,21 @@
 package com.killerinstinct.hobsapp.user.fragments
 
 import android.Manifest
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.PopupMenu
 import android.widget.Toast
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bumptech.glide.Glide
 import com.bumptech.glide.util.Util
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -22,10 +26,7 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.material.chip.Chip
 import com.google.android.material.snackbar.Snackbar
-import com.killerinstinct.hobsapp.ChooseLocationFragment
-import com.killerinstinct.hobsapp.PermissionUtils
-import com.killerinstinct.hobsapp.R
-import com.killerinstinct.hobsapp.Utils
+import com.killerinstinct.hobsapp.*
 import com.killerinstinct.hobsapp.adapters.JobsAdapter
 import com.killerinstinct.hobsapp.databinding.FragmentUserChatBinding
 import com.killerinstinct.hobsapp.databinding.FragmentUserHomeBinding
@@ -74,6 +75,38 @@ class UserHomeFragment : Fragment(),OnMapReadyCallback {
                 binding.userJobsRv.visibility = View.GONE
             }
             setUpRecyclerView(it)
+        }
+
+        viewModel.user.observe(viewLifecycleOwner){
+            if (it.profile.length < 5){
+                binding.homePropic.setImageDrawable(
+                    AppCompatResources.getDrawable(
+                        requireContext(),
+                        R.drawable.ic_person
+                    )
+                )
+            } else {
+                Glide.with(requireContext())
+                    .load(it.profile)
+                    .into(binding.homePropic)
+            }
+        }
+
+
+        binding.homePropic.setOnClickListener {
+            PopupMenu(requireContext(),binding.homePropic).apply {
+                inflate(R.menu.home_menu)
+                setOnMenuItemClickListener {
+                    if (it.itemId == R.id.logout){
+                        viewModel.logoutUser(){
+                            startActivity(Intent(requireActivity(),LoginActivity::class.java))
+                            requireActivity().finish()
+                        }
+                    }
+                    true
+                }
+                show()
+            }
         }
 
 

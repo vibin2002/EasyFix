@@ -219,6 +219,11 @@ class UserMainViewModel: ViewModel() {
         }
     }
 
+    fun logoutUser(isSuccessful: (Boolean) -> Unit){
+        FirebaseAuth.getInstance().signOut()
+        isSuccessful(true)
+    }
+
 
 
 }
