@@ -17,8 +17,8 @@
             android:id="@+id/iv_propic"
             android:src="@drawable/ic_person"
             android:layout_gravity="center"
-            android:layout_width="160dp"
-            android:layout_height="160dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:layout_marginBottom="12dp"
             app:srcCompat="@drawable/ic_person"
             />

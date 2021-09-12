@@ -40,17 +40,9 @@ class WorkerProfileFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.call.setOnClickListener {
-            var i=Intent(Intent.ACTION_DIAL)
-            i.setData(Uri.parse("tel:"+(binding.phno.text)))
-            startActivity(i)
-        }
+
         binding.addPosts.setOnClickListener {
             findNavController().navigate(R.id.action_worker_navigation_profile_to_workerPostDescriptionFragment)
-        }
-        binding.mailIntent.setOnClickListener {
-             var mailIntent=Intent(Intent.ACTION_VIEW,Uri.parse("mailto:"+binding.email.text))
-            startActivity(mailIntent)
         }
 
         binding.editProfile.setOnClickListener {
@@ -75,7 +67,7 @@ class WorkerProfileFragment : Fragment() {
         viewModel.worker.observe(viewLifecycleOwner) {
             binding.email.text = it.email
             binding.phno.text = "+91 "+it.phoneNumber
-            binding.rate.text = it.minWage+"/month"
+            binding.rate.text = it.minWage+"/day"
             binding.experience.text = it.experience+" years"
             binding.workerName.text = it.userName
             binding.rating.text = it.rating

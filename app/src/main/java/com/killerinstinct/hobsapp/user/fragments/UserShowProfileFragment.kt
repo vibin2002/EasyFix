@@ -1,5 +1,7 @@
 package com.killerinstinct.hobsapp.user.fragments
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -38,6 +40,15 @@ class UserShowProfileFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.call.setOnClickListener {
+            var i= Intent(Intent.ACTION_DIAL)
+            i.setData(Uri.parse("tel:"+(binding.tutPhonenum.text)))
+            startActivity(i)
+        }
+        binding.mailIntent.setOnClickListener {
+            var mailIntent=Intent(Intent.ACTION_VIEW,Uri.parse("mailto:"+binding.tutEmail.text))
+            startActivity(mailIntent)
+        }
 
         binding.nestedScrollView.visibility = View.INVISIBLE
         binding.progbar.visibility = View.VISIBLE
