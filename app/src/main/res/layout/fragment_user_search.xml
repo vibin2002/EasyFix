@@ -10,12 +10,14 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="12dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
         android:orientation="horizontal">
 
         <androidx.cardview.widget.CardView
             android:elevation="24dp"
-            app:cardCornerRadius="24dp"
+            app:cardCornerRadius="20dp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -28,7 +30,7 @@
                 android:id="@+id/wrkrsearchview"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
+                android:layout_marginEnd="15dp"
                 app:queryHint="Search"
                 style="@style/Widget.AppCompat.SearchView"
                 app:iconifiedByDefault="false"
@@ -42,7 +44,9 @@
 
 
     <HorizontalScrollView
-        android:paddingHorizontal="12dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:scrollbars="none">
@@ -57,6 +61,7 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/search_rv"
+        android:layout_marginTop="10dp"
         android:layoutAnimation="@anim/layout_animation"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>

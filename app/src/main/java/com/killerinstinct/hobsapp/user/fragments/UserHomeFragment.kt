@@ -71,22 +71,24 @@ class UserHomeFragment : Fragment(),OnMapReadyCallback {
             binding.usrJobCountTv.text = it.size.toString()
         }
 
+
         Utils.categories.forEach {
             val chip = layoutInflater.inflate(R.layout.categorychip, binding.catchips, false) as Chip
             chip.text = it
             binding.catchips.addView(chip)
         }
 
-        binding.progbar.visibility = View.VISIBLE
+
 
 
 
         viewModel.user.observe(viewLifecycleOwner){
+            binding.name.text=it.userName
             if (it.profile.length < 5){
                 binding.homePropic.setImageDrawable(
                     AppCompatResources.getDrawable(
                         requireContext(),
-                        R.drawable.ic_person
+                        R.drawable.businessman
                     )
                 )
             } else {

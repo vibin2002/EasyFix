@@ -41,32 +41,47 @@ class WorkerJobsFragment : Fragment() {
         viewModel.getAllJobs()
         viewModel.jobs.observe(viewLifecycleOwner){
             binding.progbarWorkerJobs.visibility = View.GONE
-            setUpRecyclerView(it)
+            if(it.size==0)
+            {
+                binding.emptyRv.visibility=View.VISIBLE
+                binding.workerJobsrv.visibility=View.GONE
+            }
+            else {
+                binding.emptyRv.visibility = View.GONE
+                setUpRecyclerView(it)
+            }
         }
 
     }
 
     private fun setUpRecyclerView(list: List<Job>){
-        Log.d(TAG, "setUpRecyclerView: $list")
-        binding.workerJobsrv.adapter = WorkerJobsAdapter(viewModel.worker.value!!.location,findNavController(),requireContext(),list){
-            viewModel.markJobAsCompleted(it.second){
-                if (it){
-                    findNavController().navigateUp()
-                    Snackbar.make(requireView(),"Marked as done",Snackbar.LENGTH_SHORT).show()
-                } else {
-                    findNavController().navigateUp()
-                    Snackbar.make(requireView(),"Error",Snackbar.LENGTH_SHORT).show()
-                }
 
+            Log.d(TAG, "setUpRecyclerView: $list")
+            binding.workerJobsrv.adapter = WorkerJobsAdapter(
+                viewModel.worker.value!!.location,
+                findNavController(),
+                requireContext(),
+                list
+            ) {
+                viewModel.markJobAsCompleted(it.second) {
+                    if (it) {
+                        findNavController().navigateUp()
+                        Snackbar.make(requireView(), "Marked as done", Snackbar.LENGTH_SHORT).show()
+                    } else {
+                        findNavController().navigateUp()
+                        Snackbar.make(requireView(), "Error", Snackbar.LENGTH_SHORT).show()
+                    }
+
+                }
+                val worker = viewModel.worker.value ?: return@WorkerJobsAdapter
+                Utils.sendNotificationToUser(
+                    worker.profilePic,
+                    "${worker.userName.capitalize()} has completed the job..Don't forget to give a review! ",
+                    it.first
+                )
             }
-            val worker = viewModel.worker.value ?: return@WorkerJobsAdapter
-            Utils.sendNotificationToUser(
-                worker.profilePic,
-                "${worker.userName.capitalize()} has completed the job..Don't forget to give a review! ",
-                it.first
-            )
-        }
-        binding.workerJobsrv.layoutManager = LinearLayoutManager(requireContext())
+            binding.workerJobsrv.layoutManager = LinearLayoutManager(requireContext())
+
     }
 
 }

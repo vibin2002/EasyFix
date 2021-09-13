@@ -52,25 +52,37 @@ class WorkerProfileFragment : Fragment() {
         }
 
         viewModel.posts.observe(viewLifecycleOwner){
-            setUpRecyclerView(it)
+            if(it.size==0)
+            {
+                binding.emptyRv.visibility=View.VISIBLE
+                binding.postsRecyclerView.visibility=View.GONE
+            }
+            else {
+                binding.emptyRv.visibility = View.GONE
+                setUpRecyclerView(it)
+            }
         }
 
     }
 
     private fun setUpRecyclerView(list: List<Post>){
-        binding.postsRecyclerView.adapter = WorkerPostAdapter(requireContext(),list){
-            val extras = FragmentNavigatorExtras(it.second to "postpreview")
-            val timestamp = it.first.date.toDate().toString().split(" ").toMutableList()
-            timestamp.removeLast()
-            timestamp.removeLast()
-            val action = WorkerProfileFragmentDirections.actionWorkerNavigationProfileToViewSinglePostFragment2(
-                it.first.url,
-                it.first.description,
-                timestamp.toList().toString().removeSuffix("]").removePrefix("[")
-            )
-            findNavController().navigate(action,extras)
-        }
-        binding.postsRecyclerView.layoutManager = GridLayoutManager(requireContext(),3)
+
+
+            binding.postsRecyclerView.adapter = WorkerPostAdapter(requireContext(), list) {
+                val extras = FragmentNavigatorExtras(it.second to "postpreview")
+                val timestamp = it.first.date.toDate().toString().split(" ").toMutableList()
+                timestamp.removeLast()
+                timestamp.removeLast()
+                val action =
+                    WorkerProfileFragmentDirections.actionWorkerNavigationProfileToViewSinglePostFragment2(
+                        it.first.url,
+                        it.first.description,
+                        timestamp.toList().toString().removeSuffix("]").removePrefix("[")
+                    )
+                findNavController().navigate(action, extras)
+            }
+            binding.postsRecyclerView.layoutManager = GridLayoutManager(requireContext(), 3)
+
     }
 
 
