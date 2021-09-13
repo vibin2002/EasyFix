@@ -38,7 +38,10 @@ class UserSearchFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val searchAdapter = SearchAdapter(requireContext(),workerList){
+        val nosearchresult = binding.emptyRv
+        nosearchresult.visibility = View.GONE
+
+        val searchAdapter = SearchAdapter(nosearchresult,requireContext(),workerList){
             val action = UserSearchFragmentDirections.actionUserNavigationSearchToUserShowProfileFragment(it)
             findNavController().navigate(action)
         }
@@ -55,6 +58,9 @@ class UserSearchFragment : Fragment() {
         }
 
         viewModel.allWorkers.observe(viewLifecycleOwner){
+            if (it.isEmpty()){
+                nosearchresult.visibility = View.VISIBLE
+            }
             workerList.clear()
             workerList.addAll(it)
             searchAdapter.notifyDataSetChanged()

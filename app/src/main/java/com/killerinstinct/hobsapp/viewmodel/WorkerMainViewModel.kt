@@ -11,6 +11,7 @@ import com.google.firebase.Timestamp
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.GeoPoint
 import com.google.firebase.firestore.Query
 import com.google.firebase.storage.FirebaseStorage
 import com.killerinstinct.hobsapp.model.*
@@ -83,7 +84,7 @@ class WorkerMainViewModel : ViewModel() {
     }
 
     fun updateWorkerInfo(
-//        location: String,
+        location: GeoPoint,
         phoneNumber: String,
         experience: String,
         minWage: String,
@@ -92,7 +93,7 @@ class WorkerMainViewModel : ViewModel() {
         isCompleted: (Boolean) -> Unit
     ) {
         val workerData = mapOf(
-//            "location" to location,
+            "location" to location,
             "phoneNumber" to phoneNumber,
             "experience" to experience,
             "minWage" to minWage,
