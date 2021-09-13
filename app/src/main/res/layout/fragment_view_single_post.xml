@@ -9,17 +9,24 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
         <TextView
+            android:fontFamily="@font/nunito_bold"
+            android:id="@+id/postdate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="24dp"
             android:text="May 5,2021"
             android:textAlignment="center"
-            android:textSize="15dp"/>
+            android:textSize="18dp"/>
         <ImageView
+            android:layout_marginTop="36dp"
+            android:transitionName="postpreview"
+            android:id="@+id/postpreview"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:src="@drawable/businessman"/>
+            android:layout_height="wrap_content"
+            android:src="@drawable/businessman"
+            android:contentDescription="postpic" />
         <TextView
+            android:id="@+id/postdescription"
             android:layout_width="match_parent"
             android:textSize="15dp"
             android:layout_marginStart="25dp"

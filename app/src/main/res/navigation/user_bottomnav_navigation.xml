@@ -106,6 +106,9 @@
         <action
             android:id="@+id/action_userShowProfileFragment_to_reviewFragment"
             app:destination="@id/reviewFragment" />
+        <action
+            android:id="@+id/action_userShowProfileFragment_to_viewSinglePostFragment"
+            app:destination="@id/viewSinglePostFragment" />
     </fragment>
     <fragment
         android:id="@+id/chooseLocationFragment"
@@ -148,4 +151,22 @@
         android:name="com.killerinstinct.hobsapp.user.fragments.UserJobsFragment"
         android:label="fragment_user_jobs"
         tools:layout="@layout/fragment_user_jobs" />
+    <fragment
+        android:id="@+id/viewSinglePostFragment"
+        android:name="com.killerinstinct.hobsapp.ViewSinglePostFragment"
+        android:label="fragment_view_single_post"
+        tools:layout="@layout/fragment_view_single_post" >
+        <argument
+            android:name="posturl"
+            app:argType="string"
+            android:defaultValue="NULL" />
+        <argument
+            android:name="description"
+            app:argType="string"
+            android:defaultValue="NULL" />
+        <argument
+            android:name="datetime"
+            app:argType="string"
+            android:defaultValue="NULL" />
+    </fragment>
 </navigation>

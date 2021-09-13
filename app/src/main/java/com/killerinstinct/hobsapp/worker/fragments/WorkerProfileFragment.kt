@@ -11,6 +11,7 @@ import androidx.appcompat.content.res.AppCompatResources
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.bumptech.glide.Glide
@@ -20,6 +21,7 @@ import com.killerinstinct.hobsapp.adapters.WorkerPostAdapter
 import com.killerinstinct.hobsapp.databinding.FragmentWorkerProfileBinding
 import com.killerinstinct.hobsapp.model.Post
 import com.killerinstinct.hobsapp.viewmodel.WorkerMainViewModel
+import com.killerinstinct.hobsapp.worker.ShowProfileFragmentDirections
 
 class WorkerProfileFragment : Fragment() {
 
@@ -56,7 +58,18 @@ class WorkerProfileFragment : Fragment() {
     }
 
     private fun setUpRecyclerView(list: List<Post>){
-        binding.postsRecyclerView.adapter = WorkerPostAdapter(requireContext(),list)
+        binding.postsRecyclerView.adapter = WorkerPostAdapter(requireContext(),list){
+            val extras = FragmentNavigatorExtras(it.second to "postpreview")
+            val timestamp = it.first.date.toDate().toString().split(" ").toMutableList()
+            timestamp.removeLast()
+            timestamp.removeLast()
+            val action = WorkerProfileFragmentDirections.actionWorkerNavigationProfileToViewSinglePostFragment2(
+                it.first.url,
+                it.first.description,
+                timestamp.toList().toString().removeSuffix("]").removePrefix("[")
+            )
+            findNavController().navigate(action,extras)
+        }
         binding.postsRecyclerView.layoutManager = GridLayoutManager(requireContext(),3)
     }
 

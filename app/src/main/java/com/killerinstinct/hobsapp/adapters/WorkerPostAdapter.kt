@@ -15,7 +15,8 @@ import com.killerinstinct.hobsapp.model.Worker
 
 class WorkerPostAdapter(
     private val context: Context,
-    private var list: List<Post>
+    private var list: List<Post>,
+    val getPost: (Pair<Post,View>) -> Unit
 ) : RecyclerView.Adapter<WorkerPostAdapter.WorkerPostViewHolder>() {
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -30,6 +31,9 @@ class WorkerPostAdapter(
         Glide.with(context)
             .load(list[position].url)
             .into(holder.photoView)
+        holder.itemView.setOnClickListener {
+            getPost(Pair(list[position],holder.photoView))
+        }
     }
 
     override fun getItemCount() = list.size

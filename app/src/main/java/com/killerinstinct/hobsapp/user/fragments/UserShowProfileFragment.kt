@@ -13,6 +13,7 @@ import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
@@ -134,7 +135,18 @@ class UserShowProfileFragment : Fragment() {
     }
 
     fun setUpRecyclerView(list: List<Post>){
-        binding.showprofileRv.adapter = WorkerPostAdapter(requireContext(),list)
+        binding.showprofileRv.adapter = WorkerPostAdapter(requireContext(),list){
+            val extras = FragmentNavigatorExtras(it.second to "postpreview")
+            val timestamp = it.first.date.toDate().toString().split(" ").toMutableList()
+            timestamp.removeLast()
+            timestamp.removeLast()
+            val action = UserShowProfileFragmentDirections.actionUserShowProfileFragmentToViewSinglePostFragment(
+                it.first.url,
+                it.first.description,
+                timestamp.toList().toString().removeSuffix("]").removePrefix("[")
+            )
+            findNavController().navigate(action,extras)
+        }
         binding.showprofileRv.layoutManager = GridLayoutManager(requireContext(),3)
     }
 

@@ -5,6 +5,7 @@
     android:layout_height="wrap_content">
 
     <ImageView
+        android:transitionName="postpreview"
         android:scaleType="centerCrop"
         android:id="@+id/worker_post_iv"
         android:layout_width="match_parent"
