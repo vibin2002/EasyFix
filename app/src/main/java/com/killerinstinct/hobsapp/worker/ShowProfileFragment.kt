@@ -12,6 +12,8 @@ import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.transition.AutoTransition
+import androidx.transition.TransitionManager
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
 import com.killerinstinct.hobsapp.R
@@ -48,6 +50,26 @@ class ShowProfileFragment : Fragment() {
         binding.nestedScrollViewWorkershowprofile.visibility = View.INVISIBLE
         binding.progbarLoad.visibility = View.VISIBLE
 
+        binding.clickView.setOnClickListener {
+            if (binding.ghostLayout.getVisibility() == View.VISIBLE) {
+                TransitionManager.beginDelayedTransition(
+                    binding.ghostLayout,
+                    AutoTransition()
+                )
+                binding.ghostLayout.setVisibility(View.GONE)
+                binding.arrow.setImageResource(R.drawable.arrow_down)
+                binding.info.setText("More information")
+            } else {
+                TransitionManager.beginDelayedTransition(
+                    binding.ghostLayout,
+                    AutoTransition()
+                )
+                binding.ghostLayout.setVisibility(View.VISIBLE)
+                binding.arrow.setImageResource(R.drawable.arrow_up)
+                binding.info.setText("Less information")
+            }
+        }
+
         Utils.getSpecificWorker(args.workerId){
             binding.apply {
                 nestedScrollViewWorkershowprofile.visibility = View.VISIBLE
@@ -56,10 +78,10 @@ class ShowProfileFragment : Fragment() {
                 tutorName.text = it.userName
                 tutEmail.text = it.email
                 tutPhonenum.text = it.phoneNumber
-                tutMinwage.text = it.minWage
-                tutExperience.text = it.experience
+                tutMinwage.text = it.minWage+"/day"
+                tutExperience.text = it.experience+" years"
                 tutCategory.text = it.category.toString().removePrefix("[").removeSuffix("]")
-                wrkrReviewCount.text = it.ratersCount
+                wrkrReviewCount.text = it.ratersCount+" reviews"
                 wrkrRating.text = it.rating
                 if (it.profilePic != "") {
                     Log.d("Glidy", "onViewCreated: podA")
@@ -78,7 +100,15 @@ class ShowProfileFragment : Fragment() {
         }
 
         viewModel.getSpecificWorkerPosts(args.workerId){
-            setUpRecyclerView(it)
+            if(it.size==0)
+            {
+                binding.emptyRv.visibility=View.VISIBLE
+                binding.showprofileRv.visibility=View.GONE
+            }
+            else {
+                binding.emptyRv.visibility = View.GONE
+                setUpRecyclerView(it)
+            }
         }
 
         binding.allReviewsTv.setOnClickListener {

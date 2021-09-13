@@ -50,11 +50,12 @@ class WorkerHomeFragment : Fragment() {
         }
 
         viewModel.worker.observe(viewLifecycleOwner){
+            binding.name.text=it.userName
             if (it.profilePic.length < 5){
                 binding.homePropic.setImageDrawable(
                     AppCompatResources.getDrawable(
                         requireContext(),
-                        R.drawable.ic_person
+                        R.drawable.businessman
                     )
                 )
             } else {

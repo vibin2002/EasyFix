@@ -121,7 +121,15 @@ class UserShowProfileFragment : Fragment() {
         }
 
         viewModel.getSpecificWorkerPosts(args.workerId){
-            setUpRecyclerView(it)
+            if(it.size==0)
+            {
+                binding.emptyRv.visibility=View.VISIBLE
+                binding.showprofileRv.visibility=View.GONE
+            }
+            else {
+                binding.emptyRv.visibility = View.GONE
+                setUpRecyclerView(it)
+            }
         }
 
         binding.allReviewsTv.setOnClickListener {

@@ -50,7 +50,7 @@ class SearchAdapter(
                 propic.setImageDrawable(
                     AppCompatResources.getDrawable(
                         context,
-                        R.drawable.ic_person
+                        R.drawable.businessman
                     )
                 )
             else {

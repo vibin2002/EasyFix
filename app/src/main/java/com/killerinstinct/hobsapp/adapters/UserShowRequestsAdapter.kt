@@ -39,7 +39,7 @@ class UserShowRequestsAdapter(
                         holder.imageView.setImageDrawable(
                             AppCompatResources.getDrawable(
                                 context,
-                                R.drawable.ic_person
+                                R.drawable.businessman
                             )
                         )
                         return@addOnSuccessListener

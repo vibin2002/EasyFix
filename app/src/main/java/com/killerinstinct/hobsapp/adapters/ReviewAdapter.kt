@@ -36,7 +36,7 @@ class ReviewAdapter(
                 image.setImageDrawable(
                     AppCompatResources.getDrawable(
                         context,
-                        R.drawable.ic_person
+                        R.drawable.businessman
                     )
                 )
             else {

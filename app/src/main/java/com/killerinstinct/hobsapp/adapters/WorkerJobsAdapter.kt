@@ -2,6 +2,7 @@ package com.killerinstinct.hobsapp.adapters
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
 import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
@@ -51,7 +52,7 @@ class WorkerJobsAdapter(
                         holder.image.setImageDrawable(
                             AppCompatResources.getDrawable(
                                 context,
-                                R.drawable.ic_person
+                                R.drawable.businessman
                             )
                         )
                     } else {
@@ -62,8 +63,7 @@ class WorkerJobsAdapter(
 
                 }
         }
-        holder.time.text = list[position].reqTime
-        holder.date.text = list[position].reqDate
+        holder.time.text = list[position].reqTime+" , "+list[position].reqDate
         holder.description.text = list[position].description
         holder.markcompleted.setOnClickListener {
             userId(Pair(list[position].fromId,list[position].jobId))
@@ -85,6 +85,8 @@ class WorkerJobsAdapter(
         }
         if (list[position].completed){
             holder.markcompleted.visibility = View.INVISIBLE
+            holder.time.setTextColor(Color.parseColor("#04C652"))
+            holder.markcompleted.visibility=View.VISIBLE
         }
     }
 
@@ -93,7 +95,6 @@ class WorkerJobsAdapter(
     inner class WorkerJobViewHolder(view: View): RecyclerView.ViewHolder(view){
         val workername = itemView.findViewById<TextView>(R.id.jobwrkr_name)
         val time = itemView.findViewById<TextView>(R.id.jobwrkrtime)
-        val date = itemView.findViewById<TextView>(R.id.jobwrkrdate)
         val markcompleted = itemView.findViewById<TextView>(R.id.tv_markcompleted)
         val description = itemView.findViewById<TextView>(R.id.jobwrkr_description)
         val image = itemView.findViewById<CircleImageView>(R.id.jobwrkr_image)

@@ -43,7 +43,7 @@ class UserJobsAdapter(
                         holder.image.setImageDrawable(
                             AppCompatResources.getDrawable(
                                 context,
-                                R.drawable.ic_person
+                                R.drawable.businessman
                             )
                         )
                     } else {
@@ -56,7 +56,7 @@ class UserJobsAdapter(
         holder.image.setImageDrawable(
             AppCompatResources.getDrawable(
                 context,
-                R.drawable.ic_person
+                R.drawable.businessman
             )
         )
         holder.time.text = list[position].reqTime

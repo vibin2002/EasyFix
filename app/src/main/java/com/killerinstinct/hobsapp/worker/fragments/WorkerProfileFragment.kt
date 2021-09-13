@@ -93,7 +93,7 @@ class WorkerProfileFragment : Fragment() {
             binding.experience.text = it.experience+" years"
             binding.workerName.text = it.userName
             binding.rating.text = it.rating
-            binding.reviewCnt.text = it.ratersCount
+            binding.reviewCnt.text = it.ratersCount+" reviews"
 
             binding.location.text=Utils.getLocationAddress(11.004556,76.961632,requireContext())
             Log.d(TAG,Utils.getLocationAddress(11.004556,76.961632,requireContext()))
