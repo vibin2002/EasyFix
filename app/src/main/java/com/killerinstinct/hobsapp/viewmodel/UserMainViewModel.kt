@@ -1,5 +1,6 @@
 package com.killerinstinct.hobsapp.viewmodel
 
+import android.net.Uri
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -10,6 +11,7 @@ import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.GeoPoint
 import com.google.firebase.firestore.Query
+import com.google.firebase.storage.FirebaseStorage
 import com.killerinstinct.hobsapp.Utils
 import com.killerinstinct.hobsapp.model.*
 import kotlinx.coroutines.launch
@@ -19,6 +21,7 @@ class UserMainViewModel: ViewModel() {
     private val TAG = "UserMainViewModel"
     private val userUid = FirebaseAuth.getInstance().currentUser?.uid
     private val db = FirebaseFirestore.getInstance()
+    private val storage = FirebaseStorage.getInstance()
 
     private val _allWorkers: MutableLiveData<MutableList<Worker>> = MutableLiveData()
     val allWorkers: LiveData<MutableList<Worker>> = _allWorkers
@@ -217,6 +220,63 @@ class UserMainViewModel: ViewModel() {
                     posts(mutableList.toList())
                 }.addOnFailureListener {
                     posts(mutableListOf())
+                }
+        }
+    }
+
+    fun updateUserData(
+        userName: String,
+        contact: String,
+        city: String,
+        imageUri: Uri?,
+        isSuccessful: (Boolean) -> Unit
+    ){
+        val map = mapOf(
+            "city" to city,
+            "phoneNumber" to contact,
+            "userName" to userName
+        )
+        db.collection("User")
+            .document(userUid!!)
+            .update(map)
+            .addOnSuccessListener {
+                uploadProPic(imageUri,user.value!!.uid){
+                    isSuccessful(true)
+                }
+            }.addOnFailureListener {
+                isSuccessful(false)
+                Log.d(TAG, "updateUserData: failed to update user data")
+            }
+    }
+
+    private fun uploadProPic(uri: Uri?, userUid: String,isSuccessful: (Boolean) -> Unit) {
+        viewModelScope.launch {
+            if (uri == null)
+                return@launch
+            val ref = storage.getReference("$userUid/profilePicture")
+            ref.putFile(uri)
+                .addOnSuccessListener {
+                    Log.d(TAG, "uploadImage: Success")
+                    ref.downloadUrl.addOnSuccessListener {
+                        Log.d(TAG, "download url success")
+                        db.collection("User")
+                            .document(userUid)
+                            .update("profile", it.toString())
+                            .addOnSuccessListener {
+                                isSuccessful(true)
+                                Log.d(TAG, "image url stored in db successfully")
+                            }.addOnFailureListener {
+                                isSuccessful(false)
+                                Log.d(TAG, "image url failed to store in db")
+                            }
+                    }.addOnFailureListener {
+                        isSuccessful(false)
+                        Log.d(TAG, "updateWorkerInfo: $it")
+                    }
+                }
+                .addOnFailureListener {
+                    isSuccessful(false)
+                    Log.d(TAG, "updateWorkerInfo: $it")
                 }
         }
     }

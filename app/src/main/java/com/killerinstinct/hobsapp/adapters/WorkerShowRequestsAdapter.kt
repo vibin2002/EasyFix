@@ -47,7 +47,7 @@ class WorkerShowRequestsAdapter(
             val action = ShowRequestsFragmentDirections.actionShowRequestsFragmentToWorkerViewLocationFragment(
                 requests[position].location.latitude.toFloat(),
                 requests[position].location.longitude.toFloat(),
-                requests[position].from,
+                requests[position].fromName,
                 workerLoc.latitude.toFloat(),
                 workerLoc.longitude.toFloat(),
             )

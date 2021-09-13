@@ -107,6 +107,10 @@ class UserHomeFragment : Fragment(),OnMapReadyCallback {
                             requireActivity().finish()
                         }
                     }
+                    if (it.itemId == R.id.user_edit_profile_item){
+                        val action = UserHomeFragmentDirections.actionUserNavigationHomeToUserEditProfileFragment()
+                        findNavController().navigate(action)
+                    }
                     true
                 }
                 show()
