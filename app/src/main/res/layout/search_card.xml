@@ -8,6 +8,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="7dp"
         android:orientation="horizontal">
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/search_propic"
@@ -41,7 +42,7 @@
                 android:drawablePadding="5dp"
                 android:drawableEnd="@drawable/location_image"
                 android:textColor="@color/grey"
-                android:fontFamily="@font/nunito_bold"
+                android:fontFamily="@font/nunito_semibold"
                 android:textSize="18sp" />
 
         </LinearLayout>

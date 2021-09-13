@@ -67,8 +67,8 @@ class UserShowProfileFragment : Fragment() {
                 tutorName.text = it.userName
                 tutEmail.text = it.email
                 tutPhonenum.text = it.phoneNumber
-                tutMinwage.text = it.minWage
-                tutExperience.text = it.experience
+                tutMinwage.text = it.minWage+"/day"
+                tutExperience.text = it.experience+" years"
                 tutCategory.text = it.category.toString().removePrefix("[").removeSuffix("]")
                 usrReviewCount.text = "${it.ratersCount} reviewers"
                 usrRating.text = it.rating
