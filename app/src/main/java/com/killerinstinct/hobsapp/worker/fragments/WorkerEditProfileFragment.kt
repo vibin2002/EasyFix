@@ -1,6 +1,8 @@
 package com.killerinstinct.hobsapp.worker.fragments
 
 import android.content.Intent
+import android.location.Address
+import android.location.Geocoder
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
@@ -15,6 +17,7 @@ import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.google.android.material.chip.Chip
 import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.firestore.GeoPoint
 import com.killerinstinct.hobsapp.R
 import com.killerinstinct.hobsapp.Utils
 import com.killerinstinct.hobsapp.databinding.FragmentWorkerEditProfileBinding
@@ -64,6 +67,18 @@ class WorkerEditProfileFragment : Fragment() {
                 }
                 binding.categoryCg.addView(chip)
             }
+
+            var address: Address? = null
+            val geocoder = Geocoder(context)
+            val addresses = geocoder.getFromLocation(
+                it.location.latitude,
+                it.location.longitude,
+                1
+            )
+            if(addresses.isNotEmpty()){
+                address = addresses[0]
+                binding.wdLocation.setText("${address.subLocality}, ${address.locality}")
+            }
         }
 
         binding.addPropic.setOnClickListener {
@@ -80,6 +95,7 @@ class WorkerEditProfileFragment : Fragment() {
                 cats.add(str.toString())
             }
             viewModel.updateWorkerInfo(
+                GeoPoint(0.0,0.0),
                 binding.wdPhonenumber.text.toString(),
                 binding.wdExperience.text.toString(),
                 binding.wdMinwage.text.toString(),

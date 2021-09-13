@@ -87,6 +87,12 @@
         <action
             android:id="@+id/action_userHiringFragment_to_userShowProfileFragment"
             app:destination="@id/userShowProfileFragment" />
+        <action
+            android:id="@+id/action_userHiringFragment_to_user_navigation_home"
+            app:destination="@id/user_navigation_home"
+            app:launchSingleTop="true"
+            app:popUpTo="@+id/user_bottomnav_navigation"
+            app:popUpToInclusive="true"/>
     </fragment>
     <fragment
         android:id="@+id/userShowProfileFragment"

@@ -24,6 +24,7 @@ import java.util.*
 import kotlin.collections.ArrayList
 
 class SearchAdapter(
+    val view: View,
     private val context: Context,
     private val workerList: MutableList<Worker>,
     val workerid: (String) -> Unit,
@@ -41,6 +42,7 @@ class SearchAdapter(
     }
 
     override fun onBindViewHolder(holder: SearchViewHolder, position: Int) {
+        view.visibility = View.GONE
         holder.apply {
             itemView.setOnClickListener {
                 Log.d("Helloworld", "onBindViewHolder: ${workerListFiltered[position].uid}")
@@ -112,6 +114,9 @@ class SearchAdapter(
 
         override fun publishResults(p0: CharSequence?, filterRes: FilterResults?) {
             workerListFiltered=filterRes?.values as ArrayList<Worker>
+            if (workerListFiltered.isEmpty()){
+                view.visibility = View.VISIBLE
+            }
             notifyDataSetChanged()
         }
 

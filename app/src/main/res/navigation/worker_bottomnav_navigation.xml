@@ -24,6 +24,9 @@
             app:exitAnim="@anim/fade_out"
             app:popEnterAnim="@anim/slide_in"
             app:popExitAnim="@anim/slide_out" />
+        <action
+            android:id="@+id/action_worker_navigation_home_to_worker_navigation_profile"
+            app:destination="@id/worker_navigation_profile" />
     </fragment>
     <fragment
         android:id="@+id/worker_navigation_search"

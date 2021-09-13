@@ -4,26 +4,24 @@ import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.os.Bundle
 import android.text.format.DateFormat
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.DatePicker
 import android.widget.Toast
 import androidx.appcompat.content.res.AppCompatResources
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.google.android.material.snackbar.Snackbar
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.GeoPoint
 import com.killerinstinct.hobsapp.R
 import com.killerinstinct.hobsapp.Utils
 import com.killerinstinct.hobsapp.databinding.FragmentUserHiringBinding
 import com.killerinstinct.hobsapp.viewmodel.UserMainViewModel
 import java.util.*
+
 
 class UserHiringFragment : Fragment() {
     lateinit var binding: FragmentUserHiringBinding
@@ -99,6 +97,8 @@ class UserHiringFragment : Fragment() {
             ){ isSent ->
                 if (isSent){
                     Snackbar.make(requireView(),"Request sent",Snackbar.LENGTH_SHORT).show()
+                    val action = UserHiringFragmentDirections.actionUserHiringFragmentToUserNavigationHome()
+                    findNavController().navigate(action)
                     Utils.sendNotificationToWorker(
                         viewModel.user.value!!.profile,
                         "You have a work request from ${viewModel.user.value!!.userName}",
@@ -145,7 +145,9 @@ class UserHiringFragment : Fragment() {
         val timePickerDialog = TimePickerDialog(
             requireActivity(),
             {view,hours,minutes->
-                time = "$hours:$minutes $ampm"
+                val hourstr = String.format("%02d", hours)
+                val minstr = String.format("%02d", minutes)
+                time = "$hourstr:$minstr $ampm"
                 binding.timePicker.setText(time)
             },
             hour,minute, DateFormat.is24HourFormat(requireContext())

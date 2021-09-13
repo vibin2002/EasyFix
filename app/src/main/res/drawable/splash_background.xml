@@ -2,10 +2,17 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item android:drawable="?attr/colorOnPrimary"/>
-    <item>
+    <item
+        android:bottom="30dp">
         <bitmap
             android:gravity="center"
             android:src="@drawable/hobsiconsplash"/>
+    </item>
+
+    <item android:bottom="50dp">
+        <bitmap
+            android:gravity="bottom"
+            android:src="@drawable/easyfixtxt"/>
     </item>
 
 

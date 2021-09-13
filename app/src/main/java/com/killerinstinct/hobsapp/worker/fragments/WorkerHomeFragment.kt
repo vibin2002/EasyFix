@@ -75,6 +75,10 @@ class WorkerHomeFragment : Fragment() {
                             requireActivity().finish()
                         }
                     }
+                    if (it.itemId == R.id.user_edit_profile_item){
+                        val action = WorkerHomeFragmentDirections.actionWorkerNavigationHomeToWorkerNavigationProfile()
+                        findNavController().navigate(action)
+                    }
                     true
                 }
                 show()

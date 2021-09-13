@@ -39,7 +39,11 @@ class WorkerSearchFragment : Fragment() {
         viewModel.getAllWorkers()
 
 
-        val searchAdapter = SearchAdapter(requireContext(),workerList){
+        val nosearchresult = binding.emptyRv
+        nosearchresult.visibility = View.GONE
+
+        val searchAdapter = SearchAdapter(nosearchresult,requireContext(),workerList){
+            Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
             val action = WorkerSearchFragmentDirections.actionWorkerNavigationSearchToShowProfileFragment(it)
             findNavController().navigate(action)
         }
@@ -49,6 +53,9 @@ class WorkerSearchFragment : Fragment() {
         }
 
         viewModel.allWorkers.observe(viewLifecycleOwner){
+            if (it.isEmpty()){
+                nosearchresult.visibility = View.VISIBLE
+            }
             workerList.clear()
             workerList.addAll(it)
             searchAdapter.notifyDataSetChanged()

@@ -13,7 +13,7 @@ data class Worker (
     val ratersCount:String="0",
     val reviews: List<String> = listOf(),
     val profilePic:String="",
-    val location: GeoPoint=GeoPoint(11.0168,76.9558),
+    val location: GeoPoint=GeoPoint(0.0,0.0),
     val minWage:String="",
     val posts: List<String> = listOf(),
     val requests : List<String> = listOf(),
