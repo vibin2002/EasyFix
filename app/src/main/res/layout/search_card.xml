@@ -40,7 +40,7 @@
                 android:text="Coimbatore"
                 android:layout_marginTop="7dp"
                 android:drawablePadding="5dp"
-                android:drawableEnd="@drawable/location_image"
+                android:drawableStart="@drawable/location_image"
                 android:textColor="@color/grey"
                 android:fontFamily="@font/nunito_semibold"
                 android:textSize="18sp" />
@@ -52,7 +52,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
-            android:id="@+id/rating"
+            android:id="@+id/search_rating"
             android:layout_marginEnd="25dp"
             android:text="0"
             android:drawableTint="@color/yellow"

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">HobsApp</string>
+    <string name="app_name">EasyFix</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="app_bar" translatable="false">com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior</string>

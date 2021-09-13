@@ -101,7 +101,8 @@ class ShowProfileFragment : Fragment() {
             val action = ShowProfileFragmentDirections.actionShowProfileFragmentToViewSinglePostFragment2(
                 it.first.url,
                 it.first.description,
-                timestamp.toList().toString().removeSuffix("]").removePrefix("[")
+                timestamp.toList().toString().removeSuffix("]").removePrefix("["),
+                false
             )
             findNavController().navigate(action,extras)
         }

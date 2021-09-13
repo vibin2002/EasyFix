@@ -29,6 +29,8 @@ class UserShowRequestsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.tvNorequests.visibility = View.GONE
+        binding.norequestsiv.visibility = View.GONE
         binding.progbarreq.visibility = View.VISIBLE
 
         viewModel.getUserRequests()
@@ -40,6 +42,10 @@ class UserShowRequestsFragment : Fragment() {
     }
 
     private fun setUpRecyclerView(requests: List<Request>) {
+        if (requests.isEmpty()){
+            binding.tvNorequests.visibility = View.VISIBLE
+            binding.norequestsiv.visibility = View.VISIBLE
+        }
         binding.showRequestsRv.adapter = UserShowRequestsAdapter(requests,requireContext())
         binding.showRequestsRv.layoutManager = LinearLayoutManager(requireContext())
     }

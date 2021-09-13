@@ -171,6 +171,9 @@
         <argument
             android:name="datetime"
             app:argType="string" />
+        <argument
+            android:name="isWorker"
+            app:argType="boolean" />
     </fragment>
 
 </navigation>

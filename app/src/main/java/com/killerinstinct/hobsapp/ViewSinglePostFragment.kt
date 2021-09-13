@@ -7,8 +7,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
+import com.bumptech.glide.util.Util
+import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.auth.FirebaseAuth
 import com.killerinstinct.hobsapp.databinding.FragmentChooseLocationBinding
 import com.killerinstinct.hobsapp.databinding.FragmentViewSinglePostBinding
 
@@ -32,6 +36,22 @@ class ViewSinglePostFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        if (args.isWorker){
+            binding.deletepost.visibility = View.VISIBLE
+        } else {
+            binding.deletepost.visibility = View.GONE
+        }
+
+        binding.deletepost.setOnClickListener {
+            Utils.deleteWorkerPost(
+                FirebaseAuth.getInstance().currentUser!!.uid,
+                args.posturl,
+            ){
+                Snackbar.make(requireView(),"Post deleted",Snackbar.LENGTH_SHORT).show()
+                findNavController().navigateUp()
+            }
+        }
 
         binding.postdescription.text = args.description
         binding.postdate.text = args.datetime

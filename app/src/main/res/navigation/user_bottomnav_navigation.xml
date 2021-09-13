@@ -171,6 +171,9 @@
             android:name="datetime"
             app:argType="string"
             android:defaultValue="NULL" />
+        <argument
+            android:name="isWorker"
+            app:argType="boolean" />
     </fragment>
     <fragment
         android:id="@+id/userEditProfileFragment"

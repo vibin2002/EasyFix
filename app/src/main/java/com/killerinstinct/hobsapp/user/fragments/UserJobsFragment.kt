@@ -53,6 +53,7 @@ class UserJobsFragment : Fragment() {
             ){ isPosted ->
                 if (isPosted){
                     Snackbar.make(requireView(), "Thanks for reviewing", Snackbar.LENGTH_LONG).show()
+                    viewModel.getAllWorkers()
                     Utils.sendNotificationToWorker(
                         user.profile,
                         "${user.userName} has given review on your work",

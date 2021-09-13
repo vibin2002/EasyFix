@@ -195,7 +195,29 @@ class UserMainViewModel: ViewModel() {
                 .collection("Review")
                 .add(review)
                 .addOnSuccessListener {
-                    hasPosted(true)
+                    for (worker in allWorkers.value!!){
+                        Log.d(TAG, "postReview: HEEREE")
+                        if (worker.uid == workerId){
+                            var raterCount = worker.ratersCount.toInt()
+                            var rating = worker.rating.toDouble()
+                            Log.d(TAG, "postReview:$workerId ${worker.uid} -- $raterCount $rating")
+                            val x = (rating * raterCount + review.rating.toDouble())
+                            raterCount++
+                            rating = x/raterCount
+                            val ratingStr = String.format("%.1f", rating)
+                            Log.d(TAG, "postReview: $raterCount $rating")
+                            db.collection("Worker")
+                                .document(workerId)
+                                .update(mapOf(
+                                    "ratersCount" to raterCount.toString(),
+                                    "rating" to ratingStr
+                                )).addOnSuccessListener {
+                                    hasPosted(true)
+                                }.addOnFailureListener {
+                                    hasPosted(true)
+                                }
+                        }
+                    }
                 }.addOnFailureListener {
                     hasPosted(true)
                 }

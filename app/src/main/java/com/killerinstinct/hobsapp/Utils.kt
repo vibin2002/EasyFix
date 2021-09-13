@@ -184,4 +184,31 @@ object Utils {
             }
     }
 
+    fun deleteWorkerPost(workerId: String,url: String,isSuccessful: (Boolean) -> Unit){
+        FirebaseFirestore.getInstance()
+            .collection("Worker")
+            .document(workerId)
+            .collection("Posts")
+            .whereEqualTo("url",url)
+            .get()
+            .addOnSuccessListener {
+                it.forEach { post ->
+                    FirebaseFirestore.getInstance()
+                        .collection("Worker")
+                        .document(workerId)
+                        .collection("Posts")
+                        .document(post.id)
+                        .delete()
+                        .addOnSuccessListener {
+                            isSuccessful(true)
+                        }.addOnFailureListener {
+                            isSuccessful(false)
+                        }
+                }
+            }.addOnFailureListener {
+                isSuccessful(false)
+            }
+    }
+
+
 }

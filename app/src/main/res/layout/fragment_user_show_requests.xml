@@ -43,19 +43,21 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="80dp"
         android:orientation="vertical"
+        android:layoutAnimation="@anim/layout_animation"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/norequestsiv"
             android:layout_width="90dp"
             android:layout_height="90dp"
             android:layout_gravity="center"
             android:src="@drawable/request" />
 
         <TextView
+            android:id="@+id/tv_norequests"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"

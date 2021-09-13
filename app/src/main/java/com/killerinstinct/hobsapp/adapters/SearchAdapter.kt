@@ -1,6 +1,8 @@
 package com.killerinstinct.hobsapp.adapters
 
 import android.content.Context
+import android.location.Address
+import android.location.Geocoder
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -15,6 +17,9 @@ import com.bumptech.glide.Glide
 import com.killerinstinct.hobsapp.R
 import com.killerinstinct.hobsapp.model.Worker
 import de.hdodenhof.circleimageview.CircleImageView
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -54,7 +59,18 @@ class SearchAdapter(
                     .into(propic)
             }
             name.text = workerListFiltered[position].userName
-            designation.text = workerListFiltered[position].category.toString().removePrefix("[").removeSuffix("]")
+            rating.text = workerListFiltered[position].rating
+            var address: Address? = null
+            val geocoder = Geocoder(context)
+            val addresses = geocoder.getFromLocation(
+                workerListFiltered[position].location.latitude,
+                workerListFiltered[position].location.longitude,
+                1
+            )
+            if(addresses.isNotEmpty()){
+                address = addresses[0]
+                location.text = "${address.subLocality}, ${address.locality}"
+            }
         }
     }
 
@@ -65,7 +81,8 @@ class SearchAdapter(
     ) : RecyclerView.ViewHolder(view) {
         val propic = itemView.findViewById<CircleImageView>(R.id.search_propic)
         val name = itemView.findViewById<TextView>(R.id.search_name)
-        val designation = itemView.findViewById<TextView>(R.id.search_designation)
+        val location = itemView.findViewById<TextView>(R.id.search_location)
+        val rating = itemView.findViewById<TextView>(R.id.search_rating)
     }
 
     override fun getFilter(): Filter {
