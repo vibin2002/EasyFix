@@ -15,6 +15,7 @@
         <TextView
             android:padding="12dp"
             android:textSize="18sp"
+            android:fontFamily="@font/nunito"
             android:text="Let others know about your work experience by your posts"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
@@ -62,6 +63,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Write a Caption..."
+                android:fontFamily="@font/nunito"
                 android:inputType="textMultiLine"
                 android:maxLines="100" />
         </com.google.android.material.textfield.TextInputLayout>

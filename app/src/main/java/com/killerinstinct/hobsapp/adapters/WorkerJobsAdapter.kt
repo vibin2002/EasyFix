@@ -64,7 +64,7 @@ class WorkerJobsAdapter(
                 }
         }
         holder.time.text = list[position].reqTime+" , "+list[position].reqDate
-        holder.description.text = list[position].description
+        holder.description.text = "      "+list[position].description
         holder.markcompleted.setOnClickListener {
             userId(Pair(list[position].fromId,list[position].jobId))
         }
@@ -86,7 +86,7 @@ class WorkerJobsAdapter(
         if (list[position].completed){
             holder.markcompleted.visibility = View.INVISIBLE
             holder.time.setTextColor(Color.parseColor("#04C652"))
-            holder.markcompleted.visibility=View.VISIBLE
+            holder.checkmark.visibility=View.VISIBLE
         }
     }
 
@@ -100,6 +100,7 @@ class WorkerJobsAdapter(
         val image = itemView.findViewById<CircleImageView>(R.id.jobwrkr_image)
         val location = itemView.findViewById<TextView>(R.id.wrkrjobshowloc)
         val call = itemView.findViewById<TextView>(R.id.wrkrjobcalluser)
+        val checkmark=itemView.findViewById<CircleImageView>(R.id.checkmark)
     }
 
 }

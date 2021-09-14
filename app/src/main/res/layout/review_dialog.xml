@@ -11,6 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
+        android:fontFamily="@font/nunito"
         android:text="Give a rating"
         android:textSize="18sp" />
 
@@ -27,7 +28,6 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout4"
         android:layout_width="match_parent"
-        app:startIconDrawable="@drawable/ic_baseline_edit_24"
         android:layout_height="wrap_content"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_marginStart="16dp"
@@ -36,6 +36,7 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_review"
+            android:fontFamily="@font/nunito"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:maxLines="20"

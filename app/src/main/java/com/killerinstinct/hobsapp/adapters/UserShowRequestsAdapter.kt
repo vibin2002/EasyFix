@@ -49,7 +49,7 @@ class UserShowRequestsAdapter(
                         .into(holder.imageView)
                 }
         }
-        holder.description.text = requests[position].description
+        holder.description.text = "    "+requests[position].description
     }
 
     override fun getItemCount() = requests.size

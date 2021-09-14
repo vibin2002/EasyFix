@@ -7,13 +7,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.content.ContextCompat.startActivity
 import androidx.navigation.NavController
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.google.firebase.firestore.GeoPoint
 import com.killerinstinct.hobsapp.R
 import com.killerinstinct.hobsapp.model.Request
 import com.killerinstinct.hobsapp.worker.fragments.ShowRequestsFragmentDirections
+import de.hdodenhof.circleimageview.CircleImageView
 
 class WorkerShowRequestsAdapter(
     private val workerLoc: GeoPoint,
@@ -31,7 +34,9 @@ class WorkerShowRequestsAdapter(
 
     override fun onBindViewHolder(holder: WorkerShowRequestsViewHolder, position: Int) {
         holder.name.text = requests[position].fromName
-        holder.description.text = " Description : \n      ${requests[position].description}"
+        holder.description.text = "      ${requests[position].description}"
+        holder.date.text=requests[position].reqDate
+
         holder.accept.setOnClickListener {
             decision(Pair(requests[position],true))
         }
@@ -64,6 +69,7 @@ class WorkerShowRequestsAdapter(
         val accept = itemView.findViewById<TextView>(R.id.btn_accept)
         val decline = itemView.findViewById<TextView>(R.id.btn_decline)
         val call = itemView.findViewById<TextView>(R.id.calluser)
+        val date=itemView.findViewById<TextView>(R.id.dateandtime)
     }
 
 }

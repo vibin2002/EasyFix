@@ -1,87 +1,108 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView
     android:layout_margin="12dp"
-    app:cardCornerRadius="18dp"
+    app:cardCornerRadius="8dp"
     android:elevation="12dp"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_height="wrap_content"
     android:layout_width="match_parent">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="vertical"
         android:paddingBottom="12dp">
-
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/job_image"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:src="@drawable/dummyimageda"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/job_name"
-            android:layout_width="0dp"
+        <LinearLayout
+            android:id="@+id/linearLayout3"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="12dp"
             android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/job_image"
-            app:layout_constraintTop_toTopOf="@+id/job_image" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/job_image"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:src="@drawable/businessman" />
+
+            <TextView
+                android:id="@+id/job_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="8dp"
+                android:fontFamily="@font/nunito"
+                android:text="Vibin UnniKrishnan"
+                android:textSize="16sp" />
+        </LinearLayout>
+
 
         <TextView
             android:id="@+id/job_description"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="16dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/job_image" />
-
-        <TextView
-            android:gravity="center"
-            android:id="@+id/jobtime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:drawableStart="@drawable/ic_baseline_access_time"
-            app:layout_constraintBottom_toTopOf="@+id/job_description"
-            app:layout_constraintStart_toEndOf="@+id/job_image"
-            app:layout_constraintTop_toBottomOf="@+id/job_name" />
-
-        <TextView
-            android:gravity="center"
-            android:id="@+id/jobdate"
-            android:layout_width="wrap_content"
+            android:fontFamily="@font/nunito"
+            android:textStyle="italic"
+            android:textColor="@color/text_blue"
+            android:text="bkjbkgkgh kvu jvvgvhg"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="16dp" />
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="28dp"
-            android:drawableStart="@drawable/ic_baseline_calendar"
-            app:layout_constraintBottom_toTopOf="@+id/job_description"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/jobtime"
-            app:layout_constraintTop_toBottomOf="@+id/job_name" />
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+            <TextView
+                android:text="10.00am"
+                android:layout_weight="1"
+                android:drawablePadding="10dp"
+                android:id="@+id/jobtime"
+                android:fontFamily="@font/nunito"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:drawableStart="@drawable/clockpng" />
+
+            <TextView
+                android:id="@+id/jobdate"
+                android:layout_weight="1"
+                android:text="2,sep 2021"
+                android:fontFamily="@font/nunito"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawablePadding="10dp"
+                android:layout_marginEnd="28dp"
+                android:drawableStart="@drawable/calendar" />
+
+
+        </LinearLayout>
+
 
 
         <TextView
             android:id="@+id/tv_review"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="32dp"
-            android:textColor="@android:color/holo_blue_dark"
-            android:text="Review"
-            android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/job_description" />
+            android:textAlignment="center"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="16dp"
+            android:padding="8dp"
+            android:background="@drawable/greenbg"
+            android:fontFamily="@font/nunito"
+            android:layout_gravity="center"
+            android:textColor="@color/selected"
+            android:text="Write a Review"
+            android:textSize="14sp" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 
 
 </androidx.cardview.widget.CardView>

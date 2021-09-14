@@ -15,12 +15,12 @@
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/iv_propic"
-            android:src="@drawable/ic_person"
+            android:src="@drawable/businessman"
             android:layout_gravity="center"
-            android:layout_width="160dp"
-            android:layout_height="160dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:layout_marginBottom="12dp"
-            app:srcCompat="@drawable/ic_person"
+            app:srcCompat="@drawable/businessman"
             />
 
         <TextView
@@ -29,6 +29,7 @@
             android:layout_height="wrap_content"
             android:clickable="true"
             android:textSize="18sp"
+            android:fontFamily="@font/nunito"
             android:text="Add profile photo"
             android:layout_gravity="center"
             android:focusable="true" />
@@ -42,6 +43,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/wd_location"
                 android:layout_width="match_parent"
+                android:fontFamily="@font/nunito"
                 android:layout_height="wrap_content"
                 android:hint="Location" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -58,6 +60,7 @@
                 android:id="@+id/wd_phonenumber"
                 android:inputType="number"
                 android:layout_width="match_parent"
+                android:fontFamily="@font/nunito"
                 android:layout_height="wrap_content"
                 android:hint="Phone Number" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -79,6 +82,7 @@
                     android:id="@+id/wd_experience"
                     android:layout_width="match_parent"
                     android:inputType="number"
+                    android:fontFamily="@font/nunito"
                     android:layout_height="wrap_content"
                     android:hint="Experience in years" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -93,6 +97,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/wd_minwage"
                     android:inputType="number"
+                    android:fontFamily="@font/nunito"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Mininum wage / day" />
@@ -106,6 +111,7 @@
             android:layout_marginHorizontal="16sp"
             android:text="Choose categories which fits you :"
             android:textSize="18sp"
+            android:fontFamily="@font/nunito"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
@@ -119,6 +125,7 @@
             android:text="Submit"
             android:id="@+id/btn_ok"
             android:layout_margin="12dp"
+            android:fontFamily="@font/nunito"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 

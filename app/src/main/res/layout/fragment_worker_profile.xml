@@ -77,7 +77,7 @@
             android:layout_marginTop="5dp"
             android:drawableStart="@drawable/location_image"
             android:drawablePadding="5dp"
-            android:fontFamily="@font/nunito_semibold"
+            android:fontFamily="@font/nunito"
             android:text="Hyderabad"
             android:textSize="13dp" />
         <TextView
@@ -162,7 +162,7 @@
                         android:id="@+id/phno"
                         android:textColor="@color/text_blue"
                         android:layout_marginBottom="20dp"
-                        android:fontFamily="@font/nunito_bold"
+                        android:fontFamily="@font/nunito"
                         android:textSize="15dp" />
 
                 </LinearLayout>
@@ -216,7 +216,7 @@
                         android:layout_marginTop="5dp"
                         android:textColor="@color/text_blue"
                         android:layout_marginBottom="20dp"
-                        android:fontFamily="@font/nunito_bold"
+                        android:fontFamily="@font/nunito"
                         android:textSize="15dp" />
 
                 </LinearLayout>
@@ -280,7 +280,7 @@
                         android:id="@+id/rate"
                         android:textColor="@color/text_blue"
                         android:layout_marginBottom="20dp"
-                        android:fontFamily="@font/nunito_bold"
+                        android:fontFamily="@font/nunito"
                         android:textSize="15dp" />
 
                 </LinearLayout>
@@ -334,7 +334,7 @@
                         android:id="@+id/experience"
                         android:textColor="@color/text_blue"
                         android:layout_marginBottom="20dp"
-                        android:fontFamily="@font/nunito_bold"
+                        android:fontFamily="@font/nunito"
                         android:textSize="15dp" />
 
                 </LinearLayout>
@@ -354,6 +354,7 @@
             android:textSize="24sp"
             android:text="My Posts"
             android:paddingStart="24dp"
+            android:fontFamily="@font/nunito"
             android:textColor="@color/text_blue"
             android:layout_width="0dp"
             android:layout_height="wrap_content"/>
