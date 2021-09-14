@@ -19,6 +19,7 @@ USER GUIDE:
 
 - You have now installed the application and ready to use.
 
-- Make sure you provide location permission and also enable location feature in your app for seamless working of the application
+- ## Make sure you provide location permission and also enable location feature in your app for seamless working of the application
 
-- For the features of the application , refer the documentation   
+
+![Logo](https://firebasestorage.googleapis.com/v0/b/hobsapp-dade2.appspot.com/o/hobsicon.png?alt=media&token=6aeb763d-b758-443c-ba2f-8b7ac083308f)
