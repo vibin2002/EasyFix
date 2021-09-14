@@ -44,7 +44,6 @@ class WorkerEditProfileFragment : Fragment() {
         viewModel.worker.observe(viewLifecycleOwner){
             binding.wdPhonenumber.setText(it.phoneNumber)
             binding.wdExperience.setText(it.experience)
-            binding.wdLocation.setText(it.location.toString())
             binding.wdMinwage.setText(it.minWage)
             if (it.profilePic != "") {
                 Glide.with(requireContext())
@@ -77,7 +76,9 @@ class WorkerEditProfileFragment : Fragment() {
             )
             if(addresses.isNotEmpty()){
                 address = addresses[0]
-                binding.wdLocation.setText("${address.subLocality}, ${address.locality}")
+                val locality = address.locality ?: ""
+                val sublocality = address.subLocality ?: ""
+                binding.wdLocation.setText("$sublocality,$locality")
             }
         }
 
@@ -95,7 +96,7 @@ class WorkerEditProfileFragment : Fragment() {
                 cats.add(str.toString())
             }
             viewModel.updateWorkerInfo(
-                GeoPoint(0.0,0.0),
+                viewModel.worker.value!!.location,
                 binding.wdPhonenumber.text.toString(),
                 binding.wdExperience.text.toString(),
                 binding.wdMinwage.text.toString(),

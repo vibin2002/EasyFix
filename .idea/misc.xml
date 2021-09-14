@@ -3,22 +3,6 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/admin/AndroidStudioProjects/HobsApp/app/src/main/res/drawable/background.xml" value="0.19771689497716896" />
-        <entry key="..\:/Users/admin/AndroidStudioProjects/HobsApp/app/src/main/res/drawable/card_gradient.xml" value="0.19771689497716896" />
-        <entry key="..\:/Users/admin/AndroidStudioProjects/HobsApp/app/src/main/res/drawable/email_image.xml" value="0.20046296296296295" />
-        <entry key="..\:/Users/admin/AndroidStudioProjects/HobsApp/app/src/main/res/drawable/smiley.xml" value="0.20046296296296295" />
-        <entry key="..\:/Users/admin/AndroidStudioProjects/HobsApp/app/src/main/res/layout/fragment_user_home.xml" value="0.18" />
-        <entry key="..\:/Users/admin/AndroidStudioProjects/HobsApp/app/src/main/res/layout/fragment_user_search.xml" value="0.19310344827586207" />
-        <entry key="..\:/Users/admin/AndroidStudioProjects/HobsApp/app/src/main/res/layout/fragment_user_show_profile.xml" value="0.18611111111111112" />
-        <entry key="..\:/Users/admin/AndroidStudioProjects/HobsApp/app/src/main/res/layout/fragment_worker_hiring.xml" value="0.18611111111111112" />
-        <entry key="..\:/Users/admin/AndroidStudioProjects/HobsApp/app/src/main/res/layout/fragment_worker_profile.xml" value="0.18611111111111112" />
-        <entry key="..\:/Users/admin/AndroidStudioProjects/HobsApp/app/src/main/res/layout/fragment_worker_search.xml" value="0.18611111111111112" />
-        <entry key="..\:/Users/admin/AndroidStudioProjects/HobsApp/app/src/main/res/layout/fragment_worker_update_details.xml" value="0.18611111111111112" />
-        <entry key="..\:/Users/admin/AndroidStudioProjects/HobsApp/app/src/main/res/layout/review_card.xml" value="0.25" />
-        <entry key="..\:/Users/admin/AndroidStudioProjects/HobsApp/app/src/main/res/layout/review_dialog.xml" value="0.2" />
-        <entry key="..\:/Users/admin/AndroidStudioProjects/HobsApp/app/src/main/res/layout/search_card.xml" value="0.22" />
-        <entry key="..\:/Users/admin/AndroidStudioProjects/HobsApp/app/src/main/res/layout/user_job_card.xml" value="0.18611111111111112" />
-        <entry key="..\:/Users/admin/AndroidStudioProjects/HobsApp/app/src/main/res/layout/user_request_card.xml" value="0.25" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/Project1/HobsApp/app/src/main/res/drawable/email_image.xml" value="0.22552083333333334" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/Project1/HobsApp/app/src/main/res/drawable/ic_baseline_local_phone_24.xml" value="0.22552083333333334" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/Project1/HobsApp/app/src/main/res/drawable/location_image.xml" value="0.2" />
@@ -63,6 +47,8 @@
         <entry key="..\:/androidprojects/HobsApp/app/src/main/res/layout/fragment_user_show_requests.xml" value="0.2078125" />
         <entry key="..\:/androidprojects/HobsApp/app/src/main/res/layout/fragment_view_single_post.xml" value="0.20461538461538462" />
         <entry key="..\:/androidprojects/HobsApp/app/src/main/res/layout/fragment_worker_chat.xml" value="0.2078125" />
+        <entry key="..\:/androidprojects/HobsApp/app/src/main/res/layout/fragment_worker_detail_location.xml" value="0.2078125" />
+        <entry key="..\:/androidprojects/HobsApp/app/src/main/res/layout/fragment_worker_details.xml" value="0.2078125" />
         <entry key="..\:/androidprojects/HobsApp/app/src/main/res/layout/fragment_worker_edit_profile.xml" value="0.2078125" />
         <entry key="..\:/androidprojects/HobsApp/app/src/main/res/layout/fragment_worker_hiring.xml" value="0.2078125" />
         <entry key="..\:/androidprojects/HobsApp/app/src/main/res/layout/fragment_worker_home.xml" value="0.25" />
@@ -78,7 +64,7 @@
         <entry key="..\:/androidprojects/HobsApp/app/src/main/res/layout/notification_card.xml" value="0.2078125" />
         <entry key="..\:/androidprojects/HobsApp/app/src/main/res/layout/photocard.xml" value="0.2078125" />
         <entry key="..\:/androidprojects/HobsApp/app/src/main/res/layout/post_card.xml" value="0.2078125" />
-        <entry key="..\:/androidprojects/HobsApp/app/src/main/res/layout/review_card.xml" value="0.2078125" />
+        <entry key="..\:/androidprojects/HobsApp/app/src/main/res/layout/review_card.xml" value="0.25" />
         <entry key="..\:/androidprojects/HobsApp/app/src/main/res/layout/review_dialog.xml" value="0.2" />
         <entry key="..\:/androidprojects/HobsApp/app/src/main/res/layout/search_card.xml" value="0.22" />
         <entry key="..\:/androidprojects/HobsApp/app/src/main/res/layout/user_job_card.xml" value="0.22" />
