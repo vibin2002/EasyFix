@@ -18,14 +18,17 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Welcome to AppName!"
+            android:text="Welcome to EasyFix!"
             android:textSize="18sp"
             android:textColor="@color/text_blue"
             android:fontFamily="@font/nunito_bold"
             android:textAlignment="center"/>
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="200dp" />
+         <ImageView
+             android:layout_marginVertical="24dp"
+             android:layout_gravity="center"
+             android:src="@drawable/hobsicon"
+             android:layout_width="80dp"
+             android:layout_height="80dp"/>
 
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"

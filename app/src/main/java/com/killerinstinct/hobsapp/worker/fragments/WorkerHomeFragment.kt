@@ -178,20 +178,25 @@ class WorkerHomeFragment : Fragment(), OnMapReadyCallback {
     }
 
     private fun getLastLocation(){
-        val fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(requireContext())
+        try {
+            val fusedLocationProviderClient =
+                LocationServices.getFusedLocationProviderClient(requireContext())
 
-        if (ActivityCompat.checkSelfPermission(
-                requireContext(),
-                Manifest.permission.ACCESS_FINE_LOCATION
-            ) == PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
-                requireContext(),
-                Manifest.permission.ACCESS_COARSE_LOCATION
-            ) == PackageManager.PERMISSION_GRANTED
-        ) {
-            fusedLocationProviderClient.lastLocation.addOnSuccessListener { location ->
-                val loc = LatLng(location.latitude,location.longitude)
-                gMap.animateCamera(CameraUpdateFactory.newLatLngZoom(loc,12f))
+            if (ActivityCompat.checkSelfPermission(
+                    requireContext(),
+                    Manifest.permission.ACCESS_FINE_LOCATION
+                ) == PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
+                    requireContext(),
+                    Manifest.permission.ACCESS_COARSE_LOCATION
+                ) == PackageManager.PERMISSION_GRANTED
+            ) {
+                fusedLocationProviderClient.lastLocation.addOnSuccessListener { location ->
+                    val loc = LatLng(location.latitude, location.longitude)
+                    gMap.animateCamera(CameraUpdateFactory.newLatLngZoom(loc, 12f))
+                }
             }
+        } catch (e: Exception){
+
         }
 
     }

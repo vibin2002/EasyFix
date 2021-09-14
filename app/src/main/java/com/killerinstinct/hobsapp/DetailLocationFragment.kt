@@ -143,21 +143,25 @@ class DetailLocationFragment : Fragment(), OnMapReadyCallback ,OnMapClickListene
     }
 
     private fun getLastLocation(){
-        Toast.makeText(requireContext(),"getLastLocation",Toast.LENGTH_SHORT).show()
-        val fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(requireContext())
+        try {
+            val fusedLocationProviderClient =
+                LocationServices.getFusedLocationProviderClient(requireContext())
 
-        if (ActivityCompat.checkSelfPermission(
-                requireContext(),
-                Manifest.permission.ACCESS_FINE_LOCATION
-            ) == PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
-                requireContext(),
-                Manifest.permission.ACCESS_COARSE_LOCATION
-            ) == PackageManager.PERMISSION_GRANTED
-        ) {
-            fusedLocationProviderClient.lastLocation.addOnSuccessListener { location ->
-                val loc = LatLng(location.latitude,location.longitude)
-                gMap.animateCamera(CameraUpdateFactory.newLatLngZoom(loc,15f))
+            if (ActivityCompat.checkSelfPermission(
+                    requireContext(),
+                    Manifest.permission.ACCESS_FINE_LOCATION
+                ) == PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
+                    requireContext(),
+                    Manifest.permission.ACCESS_COARSE_LOCATION
+                ) == PackageManager.PERMISSION_GRANTED
+            ) {
+                fusedLocationProviderClient.lastLocation.addOnSuccessListener { location ->
+                    val loc = LatLng(location.latitude, location.longitude)
+                    gMap.animateCamera(CameraUpdateFactory.newLatLngZoom(loc, 15f))
+                }
             }
+        } catch (e: Exception){
+
         }
 
     }
