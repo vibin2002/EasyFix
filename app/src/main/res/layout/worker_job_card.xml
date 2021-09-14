@@ -1,117 +1,130 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:tools="http://schemas.android.com/tools"
-    android:layout_margin="12dp"
-    app:cardCornerRadius="18dp"
-    android:elevation="12dp"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    app:cardElevation="5dp"
     android:layout_height="wrap_content"
-    android:layout_width="match_parent">
-
+    android:layout_margin="12dp"
+    android:elevation="12dp"
+    app:cardCornerRadius="10dp">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingBottom="12dp">
+        android:layout_height="match_parent">
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/jobwrkr_image"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/jobwrkr_name"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginTop="30dp"
+            android:id="@+id/checkmark"
+            android:visibility="gone"
+            android:layout_marginEnd="25dp"
+            android:elevation="10dp"
+            android:src="@drawable/check"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/jobwrkr_image"
-            app:layout_constraintTop_toTopOf="@+id/jobwrkr_image" />
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="12dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/jobwrkr_image"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="16dp"
+                android:src="@drawable/businessman" />
+
+            <TextView
+                android:id="@+id/jobwrkr_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="16dp"
+                android:fontFamily="@font/nunito"
+                android:text="Sample Name"
+                android:textColor="@color/grey"
+                android:textSize="18dp" />
+
+            <TextView
+                android:id="@+id/tv_markcompleted"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginEnd="15dp"
+                android:fontFamily="@font/nunito"
+                android:gravity="end"
+                android:text="Mark as completed"
+                android:textColor="@android:color/holo_blue_dark"
+                android:textSize="16sp" />
+        </LinearLayout>
+
 
         <TextView
             android:id="@+id/jobwrkr_description"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="12dp"
             android:layout_marginEnd="16dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/jobwrkr_image" />
+            android:fontFamily="@font/nunito"
+            android:text="Make Chapathi for me for 24 hours/day Make Chapathi for me for 24 hours/day Make Chapathi for me for 24 hours/day v"
+            android:textStyle="italic" />
 
-        <TextView
-            android:gravity="center"
-            android:id="@+id/jobwrkrtime"
-            android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/jobwrkrtime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:fontFamily="@font/nunito_semibold"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="25dp"
+                android:text="10:00am"
+                android:textColor="@color/red" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:layout_marginStart="16dp"
-            android:drawableStart="@drawable/ic_baseline_access_time"
-            app:layout_constraintBottom_toTopOf="@+id/jobwrkr_description"
-            app:layout_constraintStart_toEndOf="@+id/jobwrkr_image"
-            app:layout_constraintTop_toBottomOf="@+id/jobwrkr_name" />
-
-        <TextView
-            android:gravity="center"
-            android:id="@+id/jobwrkrdate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="28dp"
-            android:drawableStart="@drawable/ic_baseline_calendar"
-            app:layout_constraintBottom_toTopOf="@+id/jobwrkr_description"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/jobwrkrtime"
-            app:layout_constraintTop_toBottomOf="@+id/jobwrkr_name" />
-
-
-        <TextView
-            android:id="@+id/tv_markcompleted"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
-            android:text="Mark as completed"
-            android:textColor="@android:color/holo_blue_dark"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="@+id/wrkrjobshowloc"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/wrkrjobcalluser"
-            app:layout_constraintTop_toTopOf="@+id/wrkrjobshowloc" />
+            android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/wrkrjobshowloc"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/decision_bg"
-            android:drawableStart="@drawable/ic_edit_location"
-            android:padding="8dp"
-            android:text="Location"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/jobwrkr_description" />
+            <TextView
+                android:id="@+id/wrkrjobshowloc"
+                android:layout_width="0dp"
+                android:gravity="center"
+                android:fontFamily="@font/nunito_semibold"
+                android:layout_marginEnd="8dp"
+                android:textColor="@color/text_blue"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:background="@drawable/background"
+                android:padding="8dp"
+                android:text="Location" />
 
-        <TextView
-            android:id="@+id/wrkrjobcalluser"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:background="@drawable/decision_bg"
-            android:drawableStart="@drawable/ic_baseline_local_phone_24"
-            android:padding="8dp"
-            android:text="Call"
-            app:layout_constraintBottom_toBottomOf="@+id/wrkrjobshowloc"
-            app:layout_constraintStart_toEndOf="@+id/wrkrjobshowloc"
-            app:layout_constraintTop_toTopOf="@+id/wrkrjobshowloc" />
+            <TextView
+                android:id="@+id/wrkrjobcalluser"
+                android:layout_width="0dp"
+                android:fontFamily="@font/nunito_semibold"
+                android:gravity="center"
+                android:layout_marginStart="8dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:textColor="@color/text_blue"
+                android:background="@drawable/background"
+                android:padding="8dp"
+                android:text="Call" />
 
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-
+        </LinearLayout>
+    </LinearLayout>
 </androidx.cardview.widget.CardView>
 
