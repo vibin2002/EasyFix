@@ -29,7 +29,7 @@
             android:layout_height="wrap_content"
             android:clickable="true"
             android:textSize="18sp"
-            android:fontFamily="@font/nunito_bold"
+            android:fontFamily="@font/nunito"
             android:textColor="@color/text_blue"
             android:text="Edit profile photo"
             android:layout_gravity="center"

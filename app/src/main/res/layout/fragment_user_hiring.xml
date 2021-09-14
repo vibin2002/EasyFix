@@ -36,6 +36,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
             android:text="Name"
+            android:fontFamily="@font/nunito"
             android:textSize="18sp"
             app:layout_constraintBottom_toTopOf="@+id/worker_designation"
             app:layout_constraintEnd_toEndOf="parent"
@@ -50,6 +51,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
             android:text="Designation"
+            android:fontFamily="@font/nunito"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -64,6 +66,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="12dp"
+        android:fontFamily="@font/nunito"
         android:text="Provide a detailed description about the problem you are facing"
         android:textSize="14sp"
         app:layout_constraintTop_toBottomOf="@+id/card" />
@@ -74,7 +77,6 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_margin="12dp"
-        app:startIconDrawable="@drawable/ic_baseline_edit_24"
         app:layout_constraintBottom_toTopOf="@+id/loclinear"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -86,6 +88,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Description"
+            android:fontFamily="@font/nunito"
             android:inputType="textMultiLine" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -107,7 +110,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
             android:layout_weight="1"
-            app:startIconDrawable="@drawable/ic_edit_location"
+            app:startIconDrawable="@drawable/location_image"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/choose_location"
             app:layout_constraintHorizontal_bias="0.5"
@@ -117,6 +120,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_location"
                 android:layout_width="match_parent"
+                android:fontFamily="@font/nunito"
                 android:layout_height="match_parent"
                 android:hint="Location" />
 
@@ -138,6 +142,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingHorizontal="12dp"
+        android:fontFamily="@font/nunito"
         android:text="When do you want the service provider to reach you?"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
@@ -168,6 +173,7 @@
                 android:focusableInTouchMode="false"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:fontFamily="@font/nunito"
                 android:hint="Date" />
 
 
@@ -185,6 +191,7 @@
                 android:id="@+id/timePicker"
                 android:focusableInTouchMode="false"
                 android:layout_width="match_parent"
+                android:fontFamily="@font/nunito"
                 android:layout_height="match_parent"
                 android:hint="Time" />
 
@@ -209,6 +216,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="12dp"
+        android:fontFamily="@font/nunito"
         android:text="Send service request"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

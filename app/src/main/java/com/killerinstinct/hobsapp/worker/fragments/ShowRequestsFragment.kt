@@ -39,7 +39,15 @@ class ShowRequestsFragment : Fragment() {
             binding.progbarr.visibility = View.GONE
             if (workerLoc == null)
                 return@observe
-            setUpRecyclerView(it,workerLoc)
+            if(it.size==0)
+            {
+                binding.emptyRv.visibility=View.VISIBLE
+                binding.showReqRv.visibility=View.GONE
+            }
+            else {
+                binding.emptyRv.visibility = View.GONE
+                setUpRecyclerView(it,workerLoc)
+            }
         }
 
 

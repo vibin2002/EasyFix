@@ -400,7 +400,7 @@
                         android:layout_marginTop="10dp"
                         android:fontFamily="@font/nunito"
                         android:gravity="center"
-                        android:text="No match results!"
+                        android:text="No posts yet!"
                         android:textColor="@color/med_grey"
                         android:textSize="18dp" />
 
