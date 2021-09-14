@@ -43,7 +43,7 @@ class WorkerSearchFragment : Fragment() {
         nosearchresult.visibility = View.GONE
 
         val searchAdapter = SearchAdapter(nosearchresult,requireContext(),workerList){
-            Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
+//            Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
             val action = WorkerSearchFragmentDirections.actionWorkerNavigationSearchToShowProfileFragment(it)
             findNavController().navigate(action)
         }

@@ -1,5 +1,7 @@
 package com.killerinstinct.hobsapp.worker
 
+import android.location.Address
+import android.location.Geocoder
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -83,6 +85,19 @@ class ShowProfileFragment : Fragment() {
                 tutCategory.text = it.category.toString().removePrefix("[").removeSuffix("]")
                 wrkrReviewCount.text = it.ratersCount+" reviews"
                 wrkrRating.text = it.rating
+                var address: Address? = null
+                val geocoder = Geocoder(context)
+                val addresses = geocoder.getFromLocation(
+                    it.location.latitude,
+                    it.location.longitude,
+                    1
+                )
+                if(addresses.isNotEmpty()){
+                    address = addresses[0]
+                    val locality = address.locality ?: ""
+                    val sublocality = address.subLocality ?: ""
+                    tutLocation.text = "$sublocality $locality"
+                }
                 if (it.profilePic != "") {
                     Log.d("Glidy", "onViewCreated: podA")
                     Glide.with(requireContext())

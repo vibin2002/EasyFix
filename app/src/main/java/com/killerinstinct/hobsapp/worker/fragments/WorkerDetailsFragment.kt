@@ -72,6 +72,8 @@ class WorkerDetailsFragment : Fragment() {
                 cats.add(str.toString())
             }
 
+            cats.add(binding.otherCategory.text.toString())
+
             CoroutineScope(Dispatchers.IO).launch {
                 if (args.latitude == 0.0f && args.longitude == 0.0f) {
                     Toast.makeText(requireContext(),"Choose a valid location", Toast.LENGTH_SHORT).show()

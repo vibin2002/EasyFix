@@ -71,7 +71,9 @@ class SearchAdapter(
             )
             if(addresses.isNotEmpty()){
                 address = addresses[0]
-                location.text = "${address.subLocality}, ${address.locality}"
+                val locality = address.locality ?: ""
+                val sublocality = address.subLocality ?: ""
+                location.text = "$sublocality $locality"
             }
         }
     }
