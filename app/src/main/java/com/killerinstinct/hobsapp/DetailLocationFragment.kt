@@ -156,6 +156,8 @@ class DetailLocationFragment : Fragment(), OnMapReadyCallback ,OnMapClickListene
                 ) == PackageManager.PERMISSION_GRANTED
             ) {
                 fusedLocationProviderClient.lastLocation.addOnSuccessListener { location ->
+                    if(location == null)
+                        return@addOnSuccessListener
                     val loc = LatLng(location.latitude, location.longitude)
                     gMap.animateCamera(CameraUpdateFactory.newLatLngZoom(loc, 15f))
                 }
