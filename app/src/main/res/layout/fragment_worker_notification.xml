@@ -42,7 +42,7 @@
         android:fontFamily="@font/nunito"
         android:textSize="15dp"
         android:textColor="@color/med_grey"
-        android:text="See your notifications here"
+        android:text="View your notifications here"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout4" />

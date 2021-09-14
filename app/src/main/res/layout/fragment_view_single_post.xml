@@ -9,38 +9,64 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
         <LinearLayout
-            android:weightSum="2"
+            android:id="@+id/linearLayout4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:src="@drawable/camera" />
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="12dp"
+                android:fontFamily="@font/nunito"
+                android:text="your post"
+                android:textColor="@color/text_blue"
+                android:textSize="20sp" />
+            <TextView
+                android:fontFamily="@font/nunito"
+                android:drawableEnd="@drawable/ic_baseline_delete_24"
+                android:id="@+id/deletepost"
+                android:layout_width="match_parent"
+                android:drawablePadding="5dp"
+                android:layout_marginEnd="25dp"
+                android:layout_height="wrap_content"
+                android:text="Delete post"
+                android:layout_marginTop="12dp"
+                android:textColor="@android:color/holo_red_light"
+                android:textAlignment="textEnd"
+                android:textSize="15dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <TextView
                 android:layout_weight="1"
-                android:fontFamily="@font/nunito_bold"
+                android:fontFamily="@font/nunito"
                 android:id="@+id/postdate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
                 android:text="May 5,2021"
                 android:textAlignment="center"
-                android:textSize="18dp"/>
+                android:textSize="14dp"/>
 
-            <TextView
-                android:layout_weight="1"
-                android:fontFamily="@font/nunito_bold"
-                android:id="@+id/deletepost"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:text="Delete post"
-                android:textColor="@android:color/holo_red_light"
-                android:textAlignment="center"
-                android:textSize="18dp"/>
+
 
         </LinearLayout>
 
 
         <ImageView
-            android:layout_marginTop="36dp"
+            android:layout_marginTop="5dp"
             android:transitionName="postpreview"
             android:id="@+id/postpreview"
             android:layout_width="match_parent"
@@ -54,6 +80,7 @@
             android:layout_marginStart="25dp"
             android:layout_marginEnd="25dp"
             android:layout_marginTop="10dp"
+            android:layout_marginBottom="30dp"
             android:fontFamily="@font/nunito_semibold"
             android:textColor="@color/text_blue"
             android:layout_height="wrap_content"
