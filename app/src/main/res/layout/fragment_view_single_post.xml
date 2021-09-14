@@ -27,7 +27,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="12dp"
                 android:fontFamily="@font/nunito"
-                android:text="your post"
+                android:text="Posts"
                 android:textColor="@color/text_blue"
                 android:textSize="20sp" />
             <TextView

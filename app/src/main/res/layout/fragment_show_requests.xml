@@ -91,7 +91,7 @@
             android:layout_marginTop="10dp"
             android:fontFamily="@font/nunito_bold"
             android:gravity="center"
-            android:text="No jobs results!"
+            android:text="No requests yet!"
             android:textColor="@color/med_grey"
             android:textSize="18dp" />
 

@@ -37,11 +37,9 @@ class UserJobsFragment : Fragment() {
 
         viewModel.jobs.observe(viewLifecycleOwner){
             binding.progbarLoadUserJob.visibility = View.GONE
-            binding.userJobRv.visibility = View.GONE
             if(it.size==0)
             {
                 binding.emptyRv.visibility=View.VISIBLE
-                binding.userJobRv.visibility=View.GONE
             }
             else {
                 binding.emptyRv.visibility = View.GONE

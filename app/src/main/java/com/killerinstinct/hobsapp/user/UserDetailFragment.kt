@@ -36,6 +36,8 @@ class UserDetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.etLocation.setText(args.city)
+
         binding.chooseLocation.setOnClickListener {
             val action = UserDetailFragmentDirections.actionUserDetailFragmentToDetailLocationFragment()
             findNavController().navigate(action)

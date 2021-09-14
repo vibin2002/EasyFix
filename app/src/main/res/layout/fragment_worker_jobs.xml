@@ -37,7 +37,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="12dp"
             android:fontFamily="@font/nunito"
-            android:text="Your Notifications"
+            android:text="Your Jobs"
             android:textColor="@color/text_blue"
             android:textSize="24sp" />
 
