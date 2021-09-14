@@ -82,7 +82,7 @@ class UserShowProfileFragment : Fragment() {
                     binding.tutorProfile.setImageDrawable(
                         AppCompatResources.getDrawable(
                             requireContext(),
-                            R.drawable.ic_person
+                            R.drawable.businessman
                         )
                     )
                 }

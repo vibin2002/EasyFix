@@ -43,7 +43,7 @@ class SignupActivity : AppCompatActivity() {
                 || TextUtils.isEmpty(binding.spPassword.toString())) {
                 Toast.makeText(this, "please fill the field!", Toast.LENGTH_SHORT).show()
             } else {
-                progressDialog!!.setMessage("Signing up Please wait")
+                progressDialog!!.setMessage("Signing up Please wait...")
 
                 progressDialog!!.show()
 

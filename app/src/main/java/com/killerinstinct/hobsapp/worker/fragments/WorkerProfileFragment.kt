@@ -102,7 +102,7 @@ class WorkerProfileFragment : Fragment() {
                 binding.workerProfile.setImageDrawable(
                     AppCompatResources.getDrawable(
                         requireContext(),
-                        R.drawable.ic_person
+                        R.drawable.businessman
                     )
                 )
             else {

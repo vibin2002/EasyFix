@@ -72,7 +72,7 @@ class WorkerHomeFragment : Fragment(), OnMapReadyCallback {
         }
 
         viewModel.worker.observe(viewLifecycleOwner){
-            binding.name.text=it.userName
+            binding.name.text="Welcome back "+it.userName
             if (it.profilePic.length < 5){
                 binding.homePropic.setImageDrawable(
                     AppCompatResources.getDrawable(

@@ -20,6 +20,7 @@
     <LinearLayout
         android:id="@+id/linearLayout4"
         android:layout_width="match_parent"
+        android:layout_marginTop="19dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="25dp"
         android:orientation="horizontal"
@@ -52,7 +53,7 @@
         android:fontFamily="@font/nunito"
         android:textSize="15dp"
         android:textColor="@color/med_grey"
-        android:text="View all reviews  here"
+        android:text="Accept or Decline request calls here"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout4" />
@@ -89,9 +90,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:fontFamily="@font/nunito_bold"
+            android:fontFamily="@font/nunito"
             android:gravity="center"
-            android:text="No requests yet!"
+            android:text="No Requests yet!"
             android:textColor="@color/med_grey"
             android:textSize="18dp" />
 

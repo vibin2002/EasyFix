@@ -83,7 +83,7 @@ class UserHomeFragment : Fragment(),OnMapReadyCallback {
 
 
         viewModel.user.observe(viewLifecycleOwner){
-            binding.name.text=it.userName
+            binding.name.text="Hello  "+it.userName
             if (it.profile.length < 5){
                 binding.homePropic.setImageDrawable(
                     AppCompatResources.getDrawable(

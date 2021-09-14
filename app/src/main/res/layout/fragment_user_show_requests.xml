@@ -82,7 +82,7 @@
         android:fontFamily="@font/nunito"
         android:textSize="15dp"
         android:textColor="@color/med_grey"
-        android:text="Decline or Accept the requests"
+        android:text="Requests that are pending"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout4" />
