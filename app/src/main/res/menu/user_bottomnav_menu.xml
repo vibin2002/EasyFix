@@ -11,10 +11,6 @@
             android:icon="@drawable/ic_search"
             android:title="Search" />
         <item
-            android:id="@+id/user_navigation_chat"
-            android:icon="@drawable/ic_baseline_chat_24"
-            android:title="Chat"/>
-        <item
             android:id="@+id/user_navigation_notifications"
             android:icon="@drawable/ic_notifications"
             android:title="Notification" />

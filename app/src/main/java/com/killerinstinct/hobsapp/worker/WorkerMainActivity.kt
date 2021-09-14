@@ -46,7 +46,6 @@ class WorkerMainActivity : AppCompatActivity() {
         binding.workerBtmNavbar.setupWithNavController(navController)
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
-                R.id.worker_navigation_chat -> showBottomNav()
                 R.id.worker_navigation_home -> showBottomNav()
                 R.id.worker_navigation_notifications -> showBottomNav()
                 R.id.worker_navigation_profile -> showBottomNav()

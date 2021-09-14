@@ -47,11 +47,6 @@
         android:label="Notifications"
         tools:layout="@layout/fragment_user_notification" />
     <fragment
-        android:id="@+id/user_navigation_chat"
-        android:name="com.killerinstinct.hobsapp.user.fragments.UserChatFragment"
-        android:label="Chats"
-        tools:layout="@layout/fragment_user_chat" />
-    <fragment
         android:id="@+id/userHiringFragment"
         android:name="com.killerinstinct.hobsapp.user.fragments.UserHiringFragment"
         android:label="fragment_user_hiring"

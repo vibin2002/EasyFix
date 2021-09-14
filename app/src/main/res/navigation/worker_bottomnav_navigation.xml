@@ -42,11 +42,6 @@
             app:popExitAnim="@anim/slide_out" />
     </fragment>
     <fragment
-        android:id="@+id/worker_navigation_chat"
-        android:label="Chat"
-        tools:layout="@layout/fragment_worker_chat"
-        android:name="com.killerinstinct.hobsapp.worker.fragments.WorkerChatFragment"/>
-    <fragment
         android:id="@+id/worker_navigation_notifications"
         android:name="com.killerinstinct.hobsapp.worker.fragments.WorkerNotificationFragment"
         android:label="Notifications"

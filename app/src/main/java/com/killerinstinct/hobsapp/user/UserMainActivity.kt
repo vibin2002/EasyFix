@@ -48,7 +48,6 @@ class UserMainActivity : AppCompatActivity() {
             when (destination.id) {
                 R.id.user_navigation_home -> showBottomNav()
                 R.id.user_navigation_search -> showBottomNav()
-                R.id.user_navigation_chat -> showBottomNav()
                 R.id.user_navigation_notifications -> showBottomNav()
                 else -> hideBottomNav()
             }
