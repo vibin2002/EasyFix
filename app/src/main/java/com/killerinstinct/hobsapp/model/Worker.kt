@@ -17,5 +17,6 @@ data class Worker (
     val minWage:String="",
     val posts: List<String> = listOf(),
     val requests : List<String> = listOf(),
-    val jobs: List<String> = listOf()
-    )
+    val jobs: List<String> = listOf(),
+    val status: String = "Away"
+)

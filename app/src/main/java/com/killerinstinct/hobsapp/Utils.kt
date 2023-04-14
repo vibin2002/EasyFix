@@ -22,16 +22,13 @@ import java.util.*
 object Utils {
 
     val categories = listOf(
-        "Plumber",
-        "Painter",
-        "Fitter",
-        "Electrician",
-        "Gardner",
-        "Interior decorator",
-        "Mason",
-        "Smart appliances installer",
-        "Automobile repair",
-        "Two-wheeler repair"
+        "CSE",
+        "ECE",
+        "EEE",
+        "IT",
+        "Mech",
+        "CSBS",
+        "AI&DS"
     )
 
     fun getLocationAddress(lat: Double, long: Double, context: Context): String {

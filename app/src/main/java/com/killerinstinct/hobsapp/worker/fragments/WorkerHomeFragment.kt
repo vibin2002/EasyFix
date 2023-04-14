@@ -61,15 +61,15 @@ class WorkerHomeFragment : Fragment(), OnMapReadyCallback {
         val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?
         mapFragment?.getMapAsync(this)
 
-        viewModel.jobs.observe(viewLifecycleOwner){ jobs ->
-            binding.wrkrTvJobscount.text = jobs.size.toString()
-            Log.d(TAG, "onViewCreated : ${jobs.size}")
-        }
+//        viewModel.jobs.observe(viewLifecycleOwner){ jobs ->
+//            binding.wrkrTvJobscount.text = jobs.size.toString()
+//            Log.d(TAG, "onViewCreated : ${jobs.size}")
+//        }
 
-        viewModel.requests.observe(viewLifecycleOwner){ requests ->
-            binding.wrkrTvPendingcount.text = requests.size.toString()
-            Log.d(TAG, "onViewCreated : ${requests.size}")
-        }
+//        viewModel.requests.observe(viewLifecycleOwner){ requests ->
+//            binding.wrkrTvPendingcount.text = requests.size.toString()
+//            Log.d(TAG, "onViewCreated : ${requests.size}")
+//        }
 
         viewModel.worker.observe(viewLifecycleOwner){
             binding.name.text="Welcome back "+it.userName
@@ -107,15 +107,15 @@ class WorkerHomeFragment : Fragment(), OnMapReadyCallback {
             }
         }
 
-        binding.wrkrcardjobs.setOnClickListener {
-            val action = WorkerHomeFragmentDirections.actionWorkerNavigationHomeToWorkerJobsFragment()
-            findNavController().navigate(action)
-        }
-
-        binding.wrkrcardreq.setOnClickListener {
-            val action = WorkerHomeFragmentDirections.actionWorkerNavigationHomeToShowRequestsFragment()
-            findNavController().navigate(action)
-        }
+//        binding.wrkrcardjobs.setOnClickListener {
+//            val action = WorkerHomeFragmentDirections.actionWorkerNavigationHomeToWorkerJobsFragment()
+//            findNavController().navigate(action)
+//        }
+//
+//        binding.wrkrcardreq.setOnClickListener {
+//            val action = WorkerHomeFragmentDirections.actionWorkerNavigationHomeToShowRequestsFragment()
+//            findNavController().navigate(action)
+//        }
 
 
 

@@ -88,7 +88,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="50"
                 android:fontFamily="@font/nunito"
-                android:text="Worker"
+                android:text="Faculty"
                 android:textSize="16sp" />
 
             <RadioButton
@@ -97,7 +97,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="50"
                 android:fontFamily="@font/nunito"
-                android:text="User"
+                android:text="Student"
                 android:textSize="16sp" />
         </RadioGroup>
 

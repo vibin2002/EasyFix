@@ -47,7 +47,7 @@ class WorkerSearchFragment : Fragment() {
             val action = WorkerSearchFragmentDirections.actionWorkerNavigationSearchToShowProfileFragment(it)
             findNavController().navigate(action)
         }
-         binding.wrkrSearchRv.apply {
+         binding.searchRv.apply {
             adapter = searchAdapter
             layoutManager = LinearLayoutManager(requireContext())
         }

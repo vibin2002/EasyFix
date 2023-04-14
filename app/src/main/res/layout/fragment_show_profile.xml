@@ -41,6 +41,7 @@
                 android:orientation="horizontal">
 
                 <TextView
+                    android:visibility="gone"
                     android:id="@+id/wrkr_review_count"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -52,6 +53,7 @@
                     android:textSize="15dp" />
 
                 <TextView
+                    android:visibility="gone"
                     android:id="@+id/wrkr_rating"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -192,7 +194,7 @@
                         android:layout_gravity="center"
                         android:layout_marginEnd="10dp"
                         android:fontFamily="@font/nunito"
-                        android:text="Phone number:"
+                        android:text="Phone number : "
                         android:textSize="12dp" />
 
 
@@ -231,7 +233,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:fontFamily="@font/nunito"
-                        android:text="Email:"
+                        android:text="Email : "
                         android:layout_marginEnd="10dp"
                         android:textSize="12dp" />
 
@@ -248,6 +250,7 @@
 
                 </LinearLayout>
                 <LinearLayout
+                    android:visibility="gone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
@@ -273,7 +276,7 @@
                         android:layout_gravity="center"
                         android:layout_marginEnd="10dp"
                         android:fontFamily="@font/nunito"
-                        android:text="Rate per month"
+                        android:text="Location : "
                         android:textSize="12dp" />
 
 
@@ -283,7 +286,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:fontFamily="@font/nunito"
-                        android:text="Rs 20000/day"
+                        android:text="Nowhere"
                         android:textColor="@color/text_blue"
                         android:textSize="15dp" />
 
@@ -314,7 +317,49 @@
                         android:layout_gravity="center"
                         android:layout_marginEnd="10dp"
                         android:fontFamily="@font/nunito"
-                        android:text="Experience:"
+                        android:text="Last seen :"
+                        android:textAlignment="center"
+                        android:textSize="12dp" />
+
+
+                    <TextView
+                        android:id="@+id/lastseenval"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/nunito"
+                        android:text="5 years ago"
+                        android:textColor="@color/text_blue"
+                        android:textSize="15dp" />
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_margin="10dp"
+                        android:layout_gravity="center"
+                        app:cardCornerRadius="255dp"
+                        app:cardElevation="20dp">
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/experiene" />
+
+                    </androidx.cardview.widget.CardView>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginEnd="10dp"
+                        android:fontFamily="@font/nunito"
+                        android:text="Status :"
                         android:textAlignment="center"
                         android:textSize="12dp" />
 
@@ -325,7 +370,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:fontFamily="@font/nunito"
-                        android:text="5 years"
+                        android:text="Unavailable"
                         android:textColor="@color/text_blue"
                         android:textSize="15dp" />
 
@@ -350,6 +395,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
+                    android:visibility="gone"
                     android:id="@+id/allReviewsTv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

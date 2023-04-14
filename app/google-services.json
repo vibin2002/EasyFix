@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "935608779767",
-    "project_id": "hobsapp-dade2",
-    "storage_bucket": "hobsapp-dade2.appspot.com"
+    "project_number": "568245041452",
+    "project_id": "espfinalyear",
+    "storage_bucket": "espfinalyear.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:935608779767:android:913074b81f6e658378e4f2",
+        "mobilesdk_app_id": "1:568245041452:android:e7c7673accca7040ee1489",
         "android_client_info": {
           "package_name": "com.killerinstinct.hobsapp"
         }
       },
       "oauth_client": [
         {
-          "client_id": "935608779767-7v6tj7ki3s100485tbpvrhduiqpammvm.apps.googleusercontent.com",
+          "client_id": "568245041452-uvs6fgid8o8sv3rvnutnifaee0lm1dkf.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyB1AKFCupseMJmuyOslt8wttASdhm8vPQA"
+          "current_key": "AIzaSyBzdWg7HzMiKU5HOikr_e8wkv5D97ozicc"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "935608779767-7v6tj7ki3s100485tbpvrhduiqpammvm.apps.googleusercontent.com",
+              "client_id": "568245041452-uvs6fgid8o8sv3rvnutnifaee0lm1dkf.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

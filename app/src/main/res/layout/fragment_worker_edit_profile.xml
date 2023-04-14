@@ -36,6 +36,7 @@
             android:focusable="true" />
 
         <com.google.android.material.textfield.TextInputLayout
+            android:visibility="gone"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_margin="12dp"
@@ -67,6 +68,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <LinearLayout
+            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -110,7 +112,7 @@
 
         <TextView
             android:layout_marginHorizontal="16sp"
-            android:text="Choose categories which fits you :"
+            android:text="Choose your department : "
             android:textSize="18sp"
             android:fontFamily="@font/nunito"
             android:layout_width="wrap_content"

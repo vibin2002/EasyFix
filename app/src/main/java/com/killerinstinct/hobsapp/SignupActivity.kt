@@ -84,6 +84,9 @@ class SignupActivity : AppCompatActivity() {
     }
     private fun getDesignation(): String {
         val id = binding.radioGrp.checkedRadioButtonId
-        return findViewById<RadioButton>(id).text.toString().trim()
+        val designation = findViewById<RadioButton>(id).text.toString().trim()
+        if(designation.equals("Faculty"))
+            return "Worker";
+        return "User";
     }
 }

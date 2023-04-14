@@ -42,7 +42,7 @@ class SignupViewModel: ViewModel() {
                                         .document("LoginCheck").update("workers", FieldValue.arrayUnion(it1.uid))
                                     Utils.sendNotificationToWorker(
                                         "https://firebasestorage.googleapis.com/v0/b/hobsapp-dade2.appspot.com/o/hobsicon.png?alt=media&token=6aeb763d-b758-443c-ba2f-8b7ac083308f",
-                                        "Welcome to EasyFix\nYour Home's Chief Caretaker"  ,
+                                        "Welcome to Appname\n Description"  ,
                                         it1.uid
                                     )
                                     makeToast("Worker")

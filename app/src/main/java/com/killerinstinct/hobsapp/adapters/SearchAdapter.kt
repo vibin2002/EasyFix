@@ -61,20 +61,20 @@ class SearchAdapter(
                     .into(propic)
             }
             name.text = workerListFiltered[position].userName
-            rating.text = workerListFiltered[position].rating
-            var address: Address? = null
-            val geocoder = Geocoder(context)
-            val addresses = geocoder.getFromLocation(
-                workerListFiltered[position].location.latitude,
-                workerListFiltered[position].location.longitude,
-                1
-            )
-            if(addresses.isNotEmpty()){
-                address = addresses[0]
-                val locality = address.locality ?: ""
-                val sublocality = address.subLocality ?: ""
-                location.text = "$sublocality $locality"
-            }
+            status.text = workerListFiltered[position].status
+//            var address: Address? = null
+//            val geocoder = Geocoder(context)
+//            val addresses = geocoder.getFromLocation(
+//                workerListFiltered[position].location.latitude,
+//                workerListFiltered[position].location.longitude,
+//                1
+//            )
+//            if(addresses.isNotEmpty()){
+//                address = addresses[0]
+//                val locality = address.locality ?: ""
+//                val sublocality = address.subLocality ?: ""
+                location.text = "location"
+//            }
         }
     }
 
@@ -86,7 +86,7 @@ class SearchAdapter(
         val propic = itemView.findViewById<CircleImageView>(R.id.search_propic)
         val name = itemView.findViewById<TextView>(R.id.search_name)
         val location = itemView.findViewById<TextView>(R.id.search_location)
-        val rating = itemView.findViewById<TextView>(R.id.search_rating)
+        val status = itemView.findViewById<TextView>(R.id.search_status)
     }
 
     override fun getFilter(): Filter {

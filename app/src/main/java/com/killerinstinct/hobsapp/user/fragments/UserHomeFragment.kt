@@ -63,13 +63,13 @@ class UserHomeFragment : Fragment(),OnMapReadyCallback {
         viewModel.getUserRequests()
         viewModel.getAllJobs()
 
-        viewModel.requests.observe(viewLifecycleOwner){
-            binding.usrReqCountTv.text = it.size.toString()
-        }
-
-        viewModel.jobs.observe(viewLifecycleOwner){
-            binding.usrJobCountTv.text = it.size.toString()
-        }
+//        viewModel.requests.observe(viewLifecycleOwner){
+//            binding.usrReqCountTv.text = it.size.toString()
+//        }
+//
+//        viewModel.jobs.observe(viewLifecycleOwner){
+//            binding.usrJobCountTv.text = it.size.toString()
+//        }
 
 
         Utils.categories.forEach {
@@ -119,15 +119,15 @@ class UserHomeFragment : Fragment(),OnMapReadyCallback {
             }
         }
 
-        binding.usrReqCard.setOnClickListener {
-            val action = UserHomeFragmentDirections.actionUserNavigationHomeToUserShowRequestsFragment()
-            navController.navigate(action)
-        }
-
-        binding.usrJobCard.setOnClickListener {
-            val action = UserHomeFragmentDirections.actionUserNavigationHomeToUserJobsFragment()
-            navController.navigate(action)
-        }
+//        binding.usrReqCard.setOnClickListener {
+//            val action = UserHomeFragmentDirections.actionUserNavigationHomeToUserShowRequestsFragment()
+//            navController.navigate(action)
+//        }
+//
+//        binding.usrJobCard.setOnClickListener {
+//            val action = UserHomeFragmentDirections.actionUserNavigationHomeToUserJobsFragment()
+//            navController.navigate(action)
+//        }
 
     }
 
