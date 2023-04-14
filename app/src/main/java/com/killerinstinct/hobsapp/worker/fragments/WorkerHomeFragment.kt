@@ -194,7 +194,7 @@ class WorkerHomeFragment : Fragment(), OnMapReadyCallback {
                     if(location == null)
                         return@addOnSuccessListener
                     val loc = LatLng(location.latitude, location.longitude)
-                    gMap.animateCamera(CameraUpdateFactory.newLatLngZoom(loc, 12f))
+                    gMap.animateCamera(CameraUpdateFactory.newLatLngZoom(loc, 18f))
                 }
             }
         } catch (e: Exception){

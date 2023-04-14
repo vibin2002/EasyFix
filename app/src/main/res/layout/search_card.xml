@@ -4,46 +4,64 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:orientation="vertical"
+    android:layout_marginTop="6dp"
     android:layout_height="wrap_content">
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="7dp"
+        android:layout_height="90dp"
         android:orientation="horizontal">
+
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/search_propic"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_marginStart="16dp"
             android:layout_marginBottom="8dp"
-            android:src="@drawable/businessman"/>
+            android:layout_gravity="center"
+            android:src="@drawable/businessman" />
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_marginStart="16dp"
             android:layout_gravity="fill"
-            android:layout_weight="1"
+            android:layout_marginStart="16dp"
             android:layout_marginEnd="15dp"
+            android:layout_weight="1"
             android:orientation="vertical">
+
             <TextView
                 android:id="@+id/search_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/nunito"
                 android:text="Santhiya M"
                 android:textColor="@color/text_blue"
-                android:fontFamily="@font/nunito"
                 android:textSize="18sp" />
+
             <TextView
                 android:id="@+id/search_location"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Coimbatore"
                 android:layout_marginTop="7dp"
+                android:drawableStart="@drawable/ic_baseline_location_on_24"
                 android:drawablePadding="5dp"
-                android:drawableStart="@drawable/location_image"
-                android:textColor="@color/grey"
                 android:fontFamily="@font/nunito"
-                android:textSize="15sp" />
+                android:text="Coimbatore"
+                android:textColor="@color/grey"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/search_lastseen"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7dp"
+                android:drawableStart="@drawable/ic_baseline_access_time_filled_24"
+                android:drawablePadding="5dp"
+                android:fontFamily="@font/nunito"
+                android:text="Last seen "
+                android:textColor="@color/grey"
+                android:textSize="16sp" />
 
         </LinearLayout>
 
@@ -52,23 +70,22 @@
             android:id="@+id/search_status"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="end"
+            android:layout_gravity="top"
+            android:layout_marginTop="4dp"
             android:layout_marginEnd="25dp"
-            android:drawableTint="@color/red"
+            android:drawablePadding="6dp"
             android:fontFamily="@font/nunito"
             android:text="Away"
-            android:textSize="18dp"
-            android:drawablePadding="6dp"
+            android:textSize="12sp"
             app:drawableStartCompat="@android:drawable/ic_notification_overlay" />
 
     </LinearLayout>
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginTop="10dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="2dp"
         android:background="@color/med_grey"/>
 
 

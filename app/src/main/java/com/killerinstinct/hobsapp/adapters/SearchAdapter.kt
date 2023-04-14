@@ -1,8 +1,9 @@
 package com.killerinstinct.hobsapp.adapters
 
+import android.R.color
 import android.content.Context
-import android.location.Address
-import android.location.Geocoder
+import android.graphics.PorterDuff
+import android.graphics.PorterDuffColorFilter
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -11,17 +12,15 @@ import android.widget.Filter
 import android.widget.Filterable
 import android.widget.TextView
 import androidx.appcompat.content.res.AppCompatResources
-import androidx.navigation.NavController
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.killerinstinct.hobsapp.R
+import com.killerinstinct.hobsapp.model.Status
 import com.killerinstinct.hobsapp.model.Worker
 import de.hdodenhof.circleimageview.CircleImageView
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 import java.util.*
-import kotlin.collections.ArrayList
+
 
 class SearchAdapter(
     val view: View,
@@ -61,7 +60,14 @@ class SearchAdapter(
                     .into(propic)
             }
             name.text = workerListFiltered[position].userName
-            status.text = workerListFiltered[position].status
+            val currentStatus = Status.getStatusByName(workerListFiltered[position].status)
+            status.text = currentStatus.statusName
+            for (drawable in status.compoundDrawables) {
+                if (drawable != null) {
+                    drawable.colorFilter =
+                        PorterDuffColorFilter(currentStatus.color, PorterDuff.Mode.SRC_IN)
+                }
+            }
 //            var address: Address? = null
 //            val geocoder = Geocoder(context)
 //            val addresses = geocoder.getFromLocation(
