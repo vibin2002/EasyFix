@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.transition.Visibility
 import com.bumptech.glide.Glide
 import com.killerinstinct.hobsapp.R
+import com.killerinstinct.hobsapp.Utils
 import com.killerinstinct.hobsapp.model.Status
 import com.killerinstinct.hobsapp.model.Worker
 import de.hdodenhof.circleimageview.CircleImageView
@@ -95,29 +96,14 @@ class SearchAdapter(
 //                val locality = address.locality ?: ""
 //                val sublocality = address.subLocality ?: ""
                 val place = workerListFiltered[position].place
-                if(place.isNotEmpty())
+                if(place.isNotEmpty() && currentStatus != Status.DND)
                 {
                     location.text = place
                 }
-                else
-                {
+                else {
                     location.visibility = View.GONE
                 }
-                val currentTime = System.currentTimeMillis()
-                val lastseen =  currentTime - workerListFiltered[position].lastSeen
-                if(lastseen == currentTime){
-                    lastSeen.text = "Long time ago"
-                } else {
-                    val minutes = lastseen / 60000;
-                    if(minutes == 0L){
-                        lastSeen.text = "Just now"
-                    } else if(minutes >= 60L) {
-                        lastSeen.text = "An hour ago"
-                    } else {
-                        lastSeen.text = "${minutes} minutes ago"
-                    }
-                }
-
+                lastSeen.text = Utils.getLastSeenString(workerListFiltered[position].lastSeen)
         }
     }
 

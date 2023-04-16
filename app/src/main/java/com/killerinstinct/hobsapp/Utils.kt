@@ -6,9 +6,15 @@ import android.location.Geocoder
 import android.util.Log
 import androidx.lifecycle.viewModelScope
 import com.google.firebase.Timestamp
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.ktx.database
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
+import com.google.firebase.ktx.Firebase
 import com.killerinstinct.hobsapp.model.Job
 import com.killerinstinct.hobsapp.model.Notification
 import com.killerinstinct.hobsapp.model.Review
@@ -30,6 +36,23 @@ object Utils {
         "CSBS",
         "AI&DS"
     )
+
+    fun getLastSeenString(lastSeen : Long): String{
+        val currentTime = System.currentTimeMillis()
+        var lastSeen = currentTime - lastSeen;
+        return if(lastSeen == currentTime){
+            "Long time ago"
+        } else {
+            val minutes = (lastSeen)/ 60000;
+            if(minutes == 0L){
+                "Just now"
+            } else if(minutes >= 60L) {
+                "An hour ago"
+            } else {
+                "${minutes} minutes ago"
+            }
+        }
+    }
 
     fun getLocationAddress(lat: Double, long: Double, context: Context): String {
         val sb = StringBuilder()
@@ -56,7 +79,22 @@ object Utils {
                 .document(uid)
                 .get()
                 .addOnSuccessListener {
-                    isSuccessful(it.toObject(Worker::class.java)!!)
+                    val worker = it.toObject(Worker::class.java)!!
+                    if(worker.deviceAddress.isNotEmpty()){
+                        FirebaseDatabase.getInstance().getReference(worker.deviceAddress+"/name").addValueEventListener(object :
+                            ValueEventListener {
+                            override fun onDataChange(snapshot: DataSnapshot) {
+                                val data = snapshot.getValue(String::class.java)
+                                worker.place = data ?: ""
+                            }
+                            override fun onCancelled(error: DatabaseError) {
+                                // Handle the error here
+                                println("Error: ${error.message}")
+                            }
+                        })
+
+                    }
+                    isSuccessful(worker)
                 }.addOnFailureListener {
                     Log.d("KEDO", "getSpecificWorker: $it")
                 }

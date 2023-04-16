@@ -69,19 +69,7 @@ class UserShowProfileFragment : Fragment() {
                 tutEmail.text = it.email
                 tutPhonenum.text = it.phoneNumber
                 val currentTime = System.currentTimeMillis()
-                val lastseen =  currentTime - it.lastSeen
-                if(lastseen == currentTime){
-                    tutLastseen.text = "Long time ago"
-                } else {
-                    val minutes = lastseen / 60000;
-                    if(minutes == 0L){
-                        tutLastseen.text = "Just now"
-                    } else if(minutes >= 60L) {
-                        tutLastseen.text = "An hour ago"
-                    } else {
-                        tutLastseen.text = "${minutes} minutes ago"
-                    }
-                }
+                tutLastseen.text = Utils.getLastSeenString(it.lastSeen)
                 val currentStatus = Status.getStatusByName(it.status)
                 tutStatus.text = currentStatus.statusName
                 tutCategory.text = it.category.toString().removePrefix("[").removeSuffix("]")

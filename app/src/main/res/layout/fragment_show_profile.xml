@@ -327,7 +327,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:fontFamily="@font/nunito"
-                        android:text="5 years ago"
+                        android:text="An hour ago"
                         android:textColor="@color/text_blue"
                         android:textSize="15dp" />
 
@@ -364,7 +364,7 @@
 
 
                     <TextView
-                        android:id="@+id/tut_experience"
+                        android:id="@+id/tut_status"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"

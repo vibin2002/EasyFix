@@ -42,7 +42,8 @@ class SignupViewModel: ViewModel() {
                                         .document("LoginCheck").update("workers", FieldValue.arrayUnion(it1.uid))
                                     Utils.sendNotificationToWorker(
                                         "https://firebasestorage.googleapis.com/v0/b/hobsapp-dade2.appspot.com/o/hobsicon.png?alt=media&token=6aeb763d-b758-443c-ba2f-8b7ac083308f",
-                                        "Welcome to Appname\n Description"  ,
+                                        "Welcome to Trackwise!\n" +
+                                                "Keep track of your faculty's location with ease using Trackwise' advanced person tracking technology"   ,
                                         it1.uid
                                     )
                                     makeToast("Worker")

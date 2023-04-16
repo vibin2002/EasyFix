@@ -25,9 +25,9 @@
 
     <style name="Theme.HobsApp.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
-    <style name="SplashTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-        <item name="android:windowBackground">@drawable/splash_background</item>
-        <item name="android:statusBarColor">?attr/colorOnPrimary</item>
-    </style>
+<!--    <style name="SplashTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">-->
+<!--        <item name="android:windowBackground">@drawable/splash_background</item>-->
+<!--        <item name="android:statusBarColor">?attr/colorOnPrimary</item>-->
+<!--    </style>-->
 
 </resources>

@@ -123,6 +123,12 @@ class WorkerMainViewModel : ViewModel() {
                                 if(device != null){
                                     worker.place = device["name"] as String
                                     worker.lastSeen = device["lastseen"] as Long
+                                    if(device["latitude"] != null && device["longitude"] != null) {
+                                        worker.location = GeoPoint(
+                                            device["latitude"] as Double,
+                                            device["longitude"] as Double
+                                        )
+                                    }
                                 }
                                 workers.add(worker)
                             }

@@ -80,24 +80,24 @@ class ShowProfileFragment : Fragment() {
                 tutorName.text = it.userName
                 tutEmail.text = it.email
                 tutPhonenum.text = it.phoneNumber
-                tutMinwage.text = it.minWage+"/day"
-                tutExperience.text = it.experience+" years"
+                tutStatus.text = it.status
+                val lastseen =  Utils.getLastSeenString(it.lastSeen)
                 tutCategory.text = it.category.toString().removePrefix("[").removeSuffix("]")
-                wrkrReviewCount.text = it.ratersCount+" reviews"
-                wrkrRating.text = it.rating
-                var address: Address? = null
-                val geocoder = Geocoder(context)
-                val addresses = geocoder.getFromLocation(
-                    it.location.latitude,
-                    it.location.longitude,
-                    1
-                )
-                if(addresses.isNotEmpty()){
-                    address = addresses[0]
-                    val locality = address.locality ?: ""
-                    val sublocality = address.subLocality ?: ""
-                    tutLocation.text = "$sublocality $locality"
-                }
+//                wrkrReviewCount.text = it.ratersCount+" reviews"
+//                wrkrRating.text = it.rating
+//                var address: Address? = null
+//                val geocoder = Geocoder(context)
+//                val addresses = geocoder.getFromLocation(
+//                    it.location.latitude,
+//                    it.location.longitude,
+//                    1
+//                )
+//                if(addresses.isNotEmpty()){
+//                    address = addresses[0]
+//                    val locality = address.locality ?: ""
+//                    val sublocality = address.subLocality ?: ""
+//                    tutLocation.text = "$sublocality $locality"
+//                }
                 if (it.profilePic != "") {
                     Log.d("Glidy", "onViewCreated: podA")
                     Glide.with(requireContext())
