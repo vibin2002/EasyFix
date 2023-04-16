@@ -14,9 +14,12 @@ data class Worker (
     val reviews: List<String> = listOf(),
     val profilePic:String="",
     val location: GeoPoint=GeoPoint(0.0,0.0),
+    var place: String = "",
     val minWage:String="",
     val posts: List<String> = listOf(),
     val requests : List<String> = listOf(),
     val jobs: List<String> = listOf(),
-    val status: String = "Away"
+    val status: String = "Away",
+    var lastSeen: Long = 0L,
+    val deviceAddress: String = ""
 )

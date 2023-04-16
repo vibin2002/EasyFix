@@ -1,25 +1,26 @@
 package com.killerinstinct.hobsapp.adapters
 
-import android.R.color
 import android.content.Context
 import android.graphics.PorterDuff
 import android.graphics.PorterDuffColorFilter
+import android.media.Image
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Filter
 import android.widget.Filterable
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.content.res.AppCompatResources
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import androidx.transition.Visibility
 import com.bumptech.glide.Glide
 import com.killerinstinct.hobsapp.R
 import com.killerinstinct.hobsapp.model.Status
 import com.killerinstinct.hobsapp.model.Worker
 import de.hdodenhof.circleimageview.CircleImageView
-import java.util.*
+import kotlin.math.min
 
 
 class SearchAdapter(
@@ -62,10 +63,24 @@ class SearchAdapter(
             name.text = workerListFiltered[position].userName
             val currentStatus = Status.getStatusByName(workerListFiltered[position].status)
             status.text = currentStatus.statusName
-            for (drawable in status.compoundDrawables) {
-                if (drawable != null) {
-                    drawable.colorFilter =
-                        PorterDuffColorFilter(currentStatus.color, PorterDuff.Mode.SRC_IN)
+            when(currentStatus){
+                Status.AVAILABLE -> {
+                    statusCircle.setImageResource(R.drawable.ic_circle_green);
+                }
+                Status.AWAY -> {
+                    statusCircle.setImageResource(R.drawable.ic_away)
+                }
+                Status.DND -> {
+                    statusCircle.setImageResource(R.drawable.ic_donotdisturb)
+                }
+                Status.MEETING -> {
+                    statusCircle.setImageResource(R.drawable.ic_inameeting);
+                }
+                Status.ONLEAVE -> {
+                    statusCircle.setImageResource(R.drawable.ic_onleave);
+                }
+                else -> {
+                    statusCircle.setImageResource(R.drawable.ic_away)
                 }
             }
 //            var address: Address? = null
@@ -79,8 +94,30 @@ class SearchAdapter(
 //                address = addresses[0]
 //                val locality = address.locality ?: ""
 //                val sublocality = address.subLocality ?: ""
-                location.text = "location"
-//            }
+                val place = workerListFiltered[position].place
+                if(place.isNotEmpty())
+                {
+                    location.text = place
+                }
+                else
+                {
+                    location.visibility = View.GONE
+                }
+                val currentTime = System.currentTimeMillis()
+                val lastseen =  currentTime - workerListFiltered[position].lastSeen
+                if(lastseen == currentTime){
+                    lastSeen.text = "Long time ago"
+                } else {
+                    val minutes = lastseen / 60000;
+                    if(minutes == 0L){
+                        lastSeen.text = "Just now"
+                    } else if(minutes >= 60L) {
+                        lastSeen.text = "An hour ago"
+                    } else {
+                        lastSeen.text = "${minutes} minutes ago"
+                    }
+                }
+
         }
     }
 
@@ -93,6 +130,8 @@ class SearchAdapter(
         val name = itemView.findViewById<TextView>(R.id.search_name)
         val location = itemView.findViewById<TextView>(R.id.search_location)
         val status = itemView.findViewById<TextView>(R.id.search_status)
+        val statusCircle = itemView.findViewById<ImageView>(R.id.search_status_circle)
+        val lastSeen = itemView.findViewById<TextView>(R.id.search_lastseen)
     }
 
     override fun getFilter(): Filter {

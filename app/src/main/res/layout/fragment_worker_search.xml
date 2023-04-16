@@ -8,69 +8,68 @@
     tools:context=".worker.fragments.WorkerSearchFragment">
 
     <LinearLayout
-        android:orientation="vertical"
+        android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
             android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
             android:layout_marginEnd="20dp"
             android:orientation="horizontal">
 
             <androidx.cardview.widget.CardView
-                android:elevation="24dp"
-                app:cardCornerRadius="20dp"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:elevation="24dp"
+                app:cardCornerRadius="20dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
                 <androidx.appcompat.widget.SearchView
-                    android:inputType="textCapSentences"
                     android:id="@+id/wrkrsearchview"
+                    style="@style/Widget.AppCompat.SearchView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="15dp"
-                    app:queryHint="Search"
-                    style="@style/Widget.AppCompat.SearchView"
+                    android:inputType="textCapSentences"
                     app:iconifiedByDefault="false"
-                    />
+                    app:queryHint="Search" />
 
             </androidx.cardview.widget.CardView>
-
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
         <HorizontalScrollView
-            android:layout_marginTop="15dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="20dp"
             android:scrollbars="none">
 
             <com.google.android.material.chip.ChipGroup
-                app:singleSelection="true"
                 android:id="@+id/search_catchips"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                app:singleSelection="true" />
 
         </HorizontalScrollView>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/search_rv"
-            android:layout_marginTop="10dp"
-            android:layoutAnimation="@anim/layout_animation"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:layoutAnimation="@anim/layout_animation" />
 
     </LinearLayout>
 
@@ -99,10 +98,20 @@
             android:fontFamily="@font/nunito_bold"
             android:gravity="center"
             android:text="No match results!"
-            android:textColor="@color/med_grey"
+            android:textColor="#A1887F"
             android:textSize="18dp" />
 
     </LinearLayout>
 
+    <ProgressBar
+        android:id="@+id/progress_circular"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:outlineAmbientShadowColor="@color/text_blue"
+        android:outlineSpotShadowColor="@color/text_blue"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/linearLayout2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

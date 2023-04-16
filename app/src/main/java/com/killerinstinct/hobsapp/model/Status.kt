@@ -8,7 +8,9 @@ enum class Status(
 ) {
     AVAILABLE("Available",Color.GREEN),
     AWAY("Away", Color.YELLOW),
-    DND("Do not disturb", Color.DKGRAY);
+    DND("Do not disturb", Color.RED),
+    MEETING("In a meeting", Color.MAGENTA),
+    ONLEAVE("On leave", Color.DKGRAY);
 
     companion object{
         fun getStatusByName(name: String) : Status {
@@ -20,6 +22,12 @@ enum class Status(
             }
             else if(name == "Do not disturb"){
                 return DND;
+            }
+            else if(name == "In a meeting") {
+                return MEETING;
+            }
+            else if(name == "On leave") {
+                return ONLEAVE;
             }
             return AWAY;
         }

@@ -9,21 +9,28 @@ import androidx.lifecycle.viewModelScope
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.Timestamp
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.ktx.database
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.GeoPoint
 import com.google.firebase.firestore.Query
+import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import com.killerinstinct.hobsapp.model.*
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.collections.HashMap
 
 class WorkerMainViewModel : ViewModel() {
 
     private val TAG = "WorkerMainViewModel"
     private val userUid = FirebaseAuth.getInstance().currentUser?.uid
     private val db = FirebaseFirestore.getInstance()
+    private val rtdb = Firebase.database
     private val storage = FirebaseStorage.getInstance()
 
     private val _worker: MutableLiveData<Worker> = MutableLiveData()
@@ -31,6 +38,9 @@ class WorkerMainViewModel : ViewModel() {
 
     private val _allWorkers: MutableLiveData<MutableList<Worker>> = MutableLiveData()
     val allWorkers: LiveData<MutableList<Worker>> = _allWorkers
+
+    private val _allDevices: MutableLiveData<HashMap<String,HashMap<String,Any>>> = MutableLiveData()
+    val allDevices: LiveData<HashMap<String,HashMap<String,Any>>> = _allDevices;
 
     private val _requests: MutableLiveData<List<Request>> = MutableLiveData()
     val requests: LiveData<List<Request>> = _requests
@@ -71,15 +81,63 @@ class WorkerMainViewModel : ViewModel() {
             db.collection("Worker")
                 .get()
                 .addOnSuccessListener { documents ->
-                    for (doc in documents) {
-                        val worker = doc.toObject(Worker::class.java)
-                        workers.add(worker)
-                    }
-                    _allWorkers.value = workers
-                    Log.d(TAG, "getAllWorkers: Obtained all workers")
+                    val deviceData = HashMap<String,HashMap<String,Any>>();
+                    rtdb.reference.addValueEventListener(object : ValueEventListener {
+                        override fun onDataChange(snapshot: DataSnapshot) {
+                            snapshot.children.forEach { childSnapshot ->
+                                val childKey = childSnapshot.key // Retrieve the key of the child
+                                val childData = childSnapshot.value // Retrieve the value of the child
+                                if (childKey != null) {
+                                    deviceData[childKey] = childData as HashMap<String, Any>
+                                }
+                            }
+                            for (doc in documents) {
+                                val worker = doc.toObject(Worker::class.java)
+                                val device = deviceData[worker.deviceAddress];
+                                if(device != null){
+                                    worker.place = device["name"] as String
+                                    worker.lastSeen = device["lastseen"] as Long
+                                }
+                                workers.add(worker)
+                            }
+                            _allWorkers.value = workers
+                            Log.d(TAG, "getAllDevices : ${allWorkers.value}")
+                        }
+
+                        override fun onCancelled(error: DatabaseError) {
+                            // Handle the error
+                            println("Error: ${error.message}")
+                        }
+                    })
+
+                    Log.d(TAG, "getAllWorkers: Obtained all workers : $workers")
                 }.addOnFailureListener {
                     Log.d(TAG, "getAllWorkers: $it")
                 }
+        }
+    }
+
+    fun getAllDevices() {
+        viewModelScope.launch {
+            val deviceData = HashMap<String,HashMap<String,Any>>();
+            rtdb.reference.addValueEventListener(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    snapshot.children.forEach { childSnapshot ->
+                        val childKey = childSnapshot.key // Retrieve the key of the child
+                        val childData = childSnapshot.value // Retrieve the value of the child
+                        if (childKey != null) {
+                            deviceData[childKey] = childData as HashMap<String, Any>
+                        }
+                    }
+                    _allDevices.value = deviceData
+                    Log.d(TAG, "getAllDevices : ${allWorkers.value}")
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    // Handle the error
+                    println("Error: ${error.message}")
+                }
+            })
         }
     }
 
