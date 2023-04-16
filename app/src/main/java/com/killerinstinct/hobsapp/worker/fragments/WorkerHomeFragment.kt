@@ -3,11 +3,14 @@ package com.killerinstinct.hobsapp.worker.fragments
 import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import android.widget.PopupMenu
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.app.ActivityCompat
@@ -22,10 +25,12 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.material.snackbar.Snackbar
 import com.killerinstinct.hobsapp.LoginActivity
 import com.killerinstinct.hobsapp.PermissionUtils
 import com.killerinstinct.hobsapp.R
 import com.killerinstinct.hobsapp.databinding.FragmentWorkerHomeBinding
+import com.killerinstinct.hobsapp.model.Status
 import com.killerinstinct.hobsapp.user.fragments.UserHomeFragment
 import com.killerinstinct.hobsapp.viewmodel.WorkerMainViewModel
 
@@ -61,6 +66,8 @@ class WorkerHomeFragment : Fragment(), OnMapReadyCallback {
         val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?
         mapFragment?.getMapAsync(this)
 
+        val adapter = ArrayAdapter.createFromResource(requireContext(), R.array.spinner_values, android.R.layout.simple_dropdown_item_1line)
+        binding.statusdropdown.setAdapter(adapter)
 //        viewModel.jobs.observe(viewLifecycleOwner){ jobs ->
 //            binding.wrkrTvJobscount.text = jobs.size.toString()
 //            Log.d(TAG, "onViewCreated : ${jobs.size}")
@@ -71,8 +78,32 @@ class WorkerHomeFragment : Fragment(), OnMapReadyCallback {
 //            Log.d(TAG, "onViewCreated : ${requests.size}")
 //        }
 
+        binding.statusdropdown.onItemClickListener = AdapterView.OnItemClickListener { parent, view, position, id ->
+            val selectedItem = parent.getItemAtPosition(position).toString()
+            viewModel.updateStatus(
+                selectedItem
+            ){
+                if (it) {
+                    Snackbar.make(
+                        requireActivity().findViewById(android.R.id.content),
+                        "Status updated Successfully",
+                        Snackbar.LENGTH_SHORT
+                    ).show()
+                } else {
+                    Snackbar.make(
+                        requireActivity().findViewById(android.R.id.content),
+                        "Status not updated",
+                        Snackbar.LENGTH_SHORT
+                    ).show()
+                }
+            }
+            // Do something with the selected item
+        }
+
         viewModel.worker.observe(viewLifecycleOwner){
             binding.name.text="Welcome back "+it.userName
+            val statusValue = Status.getStatusByName(it.status)
+            binding.statusdropdown.setText(adapter.getItem(statusValue.index).toString(), false)
             if (it.profilePic.length < 5){
                 binding.homePropic.setImageDrawable(
                     AppCompatResources.getDrawable(

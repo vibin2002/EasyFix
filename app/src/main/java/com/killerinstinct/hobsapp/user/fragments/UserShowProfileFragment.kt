@@ -25,6 +25,7 @@ import com.killerinstinct.hobsapp.Utils
 import com.killerinstinct.hobsapp.adapters.WorkerPostAdapter
 import com.killerinstinct.hobsapp.databinding.FragmentUserShowProfileBinding
 import com.killerinstinct.hobsapp.model.Post
+import com.killerinstinct.hobsapp.model.Status
 import com.killerinstinct.hobsapp.model.Worker
 import com.killerinstinct.hobsapp.viewmodel.UserMainViewModel
 
@@ -67,8 +68,22 @@ class UserShowProfileFragment : Fragment() {
                 tutorName.text = it.userName
                 tutEmail.text = it.email
                 tutPhonenum.text = it.phoneNumber
-                tutMinwage.text = it.minWage+"/day"
-                tutExperience.text = it.experience+" years"
+                val currentTime = System.currentTimeMillis()
+                val lastseen =  currentTime - it.lastSeen
+                if(lastseen == currentTime){
+                    tutLastseen.text = "Long time ago"
+                } else {
+                    val minutes = lastseen / 60000;
+                    if(minutes == 0L){
+                        tutLastseen.text = "Just now"
+                    } else if(minutes >= 60L) {
+                        tutLastseen.text = "An hour ago"
+                    } else {
+                        tutLastseen.text = "${minutes} minutes ago"
+                    }
+                }
+                val currentStatus = Status.getStatusByName(it.status)
+                tutStatus.text = currentStatus.statusName
                 tutCategory.text = it.category.toString().removePrefix("[").removeSuffix("]")
                 usrReviewCount.text = "${it.ratersCount} reviewers"
                 usrRating.text = it.rating

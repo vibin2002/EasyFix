@@ -332,12 +332,12 @@
                         android:layout_gravity="center"
                         android:layout_marginEnd="10dp"
                         android:fontFamily="@font/nunito"
-                        android:text="Rate per day:"
+                        android:text="Last seen : "
                         android:textSize="15dp" />
 
 
                     <TextView
-                        android:id="@+id/tut_minwage"
+                        android:id="@+id/tut_lastseen"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
@@ -376,13 +376,13 @@
                         android:layout_gravity="center"
                         android:layout_marginEnd="10dp"
                         android:fontFamily="@font/nunito"
-                        android:text="Experience:"
+                        android:text="Status : "
                         android:textAlignment="center"
                         android:textSize="15dp" />
 
 
                     <TextView
-                        android:id="@+id/tut_experience"
+                        android:id="@+id/tut_status"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"

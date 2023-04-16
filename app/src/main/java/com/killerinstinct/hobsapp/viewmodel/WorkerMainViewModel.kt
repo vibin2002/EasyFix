@@ -75,6 +75,32 @@ class WorkerMainViewModel : ViewModel() {
         }
     }
 
+    fun updateStatus(
+        status: String,
+        isCompleted: (Boolean) -> Unit
+    ) {
+        val workerData = mapOf(
+            "status" to status
+        )
+        if (userUid != null) {
+            viewModelScope.launch {
+                db.collection("Worker")
+                    .document(userUid)
+                    .update(workerData)
+                    .addOnSuccessListener {
+                        Log.d(TAG, "updateWorkerStatus: successfully added")
+                        getWorkerDetails()
+                        isCompleted(true)
+                    }.addOnFailureListener {
+                        isCompleted(false)
+                        Log.d(TAG, "updateWorkerStatus: WorkerStatus not added")
+                    }
+            }
+        } else {
+            isCompleted(false)
+        }
+    }
+
     fun getAllWorkers() {
         viewModelScope.launch {
             val workers = mutableListOf<Worker>()
